@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Assignment7.UI.Wpf.Windows;
-using WpfApp2;
+using Assignment7;
 
 namespace Assignment7.UI.Wpf
 {
@@ -18,30 +18,60 @@ namespace Assignment7.UI.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
+        #region Constructors
+        /// <summary>
+        /// 
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
 
         }
+        #endregion
+        #region Private Methods
 
-        private void btnSightings_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
-            SightingsWindow window = new SightingsWindow();
+            HistoryWindow window = new HistoryWindow();
             window.ShowDialog();
         }
 
-        private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnManageAnimals_Click(object sender, RoutedEventArgs e)
         {
-            AnimalWindow window = new AnimalWindow();
+            AnimalManagerWindow window = new AnimalManagerWindow();
             window.ShowDialog();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddSighting_Click(object sender, RoutedEventArgs e)
         {
             SightingWindow window = new SightingWindow();
             window.ShowDialog();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuBtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        #endregion
     }
 }

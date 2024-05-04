@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment7.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Assignment7.Enums;
 using static Assignment7.Helpers.EnumHelper;
 
 namespace Assignment7.UI.Wpf.Windows
 {
     /// <summary>
-    /// Interaction logic for AnimalWindow.xaml
+    /// Interaction logic for SightingsWindow.xaml
     /// </summary>
-    public partial class AnimalWindow : Window
+    public partial class HistoryWindow : Window
     {
         #region Constructors
-        public AnimalWindow()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public HistoryWindow()
         {
             InitializeComponent();
 
@@ -48,16 +52,6 @@ namespace Assignment7.UI.Wpf.Windows
             string[] descriptions = GetDescriptions<AnimalType>();
             cmbAnimalType.ItemsSource = descriptions;
             cmbAnimalType.SelectedIndex = (int)AnimalType.Mammal;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
         #endregion
     }

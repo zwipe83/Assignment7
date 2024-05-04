@@ -11,22 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Assignment7.Enums;
-using static Assignment7.Helpers.EnumHelper;
 
 namespace Assignment7.UI.Wpf.Windows
 {
     /// <summary>
-    /// Interaction logic for AnimalWindow.xaml
+    /// Interaction logic for AnimalManagerWindow.xaml
     /// </summary>
-    public partial class AnimalWindow : Window
+    public partial class AnimalManagerWindow : Window
     {
         #region Constructors
-        public AnimalWindow()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public AnimalManagerWindow()
         {
             InitializeComponent();
-
-            InitGUI();
         }
         #endregion
         #region Private Methods
@@ -34,20 +34,12 @@ namespace Assignment7.UI.Wpf.Windows
         /// <summary>
         /// 
         /// </summary>
-        private void InitGUI()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
-            InitComboBox();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void InitComboBox()
-        {
-            cmbAnimalType.Items.Clear();
-            string[] descriptions = GetDescriptions<AnimalType>();
-            cmbAnimalType.ItemsSource = descriptions;
-            cmbAnimalType.SelectedIndex = (int)AnimalType.Mammal;
+            AnimalWindow window = new AnimalWindow();
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -55,7 +47,18 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void btnEditAnimal_Click(object sender, RoutedEventArgs e)
+        {
+            AnimalWindow window = new AnimalWindow();
+            window.ShowDialog();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

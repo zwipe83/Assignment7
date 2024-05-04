@@ -12,7 +12,9 @@
         <TextBox HorizontalAlignment="Left" Margin="353,48,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName"/>
         <Button Content="..." HorizontalAlignment="Left" Margin="659,47,0,0" VerticalAlignment="Top" Width="20" Name="btnSelectImage"/>
         <Label Content="Select Image" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top" Name="lblSelectImage"/>
-        <Image HorizontalAlignment="Left" Height="289" Margin="73,103,0,0" VerticalAlignment="Top" Width="664" Name="imgAnimal"/>
+        <Image HorizontalAlignment="Left" Height="274" Margin="73,118,0,0" VerticalAlignment="Top" Width="664" Name="imgAnimal"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="659,83,0,0" VerticalAlignment="Top" Name="btnSave"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="709,83,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click"/>
 
     </Grid>
 </Window>

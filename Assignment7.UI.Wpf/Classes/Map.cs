@@ -15,24 +15,46 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-namespace WpfApp2
+namespace Assignment7
 {
     public class Map
     {
-        private Mapsui.Map _map;
+        #region Fields
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private Mapsui.Map _map;
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Mapsui.Map MapObj
         {
             get => _map; 
             protected set => _map = value;
         }
+        #endregion
+        #region Constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Map()
         {
             CreateMapAsync();
         }
+        #endregion
 
-        public Task<Mapsui.Map> CreateMapAsync()
+        #region Private Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal Task<Mapsui.Map> CreateMapAsync()
         {
             MapObj = new Mapsui.Map();
 
@@ -74,5 +96,6 @@ namespace WpfApp2
 
             return Task.FromResult(MapObj);
         }
+        #endregion
     }
 }

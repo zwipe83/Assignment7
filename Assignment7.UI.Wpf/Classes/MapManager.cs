@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WpfApp2
+namespace Assignment7
 {
     public class MapManager
     {

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Assignment7\Assignment7.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Classes\" />
+  </ItemGroup>
+
 </Project>

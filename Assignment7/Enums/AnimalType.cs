@@ -10,8 +10,9 @@ namespace Assignment7.Enums
     /// <summary>
     /// 
     /// </summary>
-    internal enum AnimalType
+    public enum AnimalType
     {
+        //TODO: Add Any/Unknown/Other?
         Mammal,
         Invertebrate,
         Fish,

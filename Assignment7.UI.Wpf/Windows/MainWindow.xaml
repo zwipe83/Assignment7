@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="WildSighting by Samuel Jeffman" Height="600" Width="800" Background="LightSteelBlue">
     <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" Name="menuBtnNew"/>
+                    <Separator />
+                    <MenuItem Header="_Open" Name="menuBtnOpen"/>
+                    <MenuItem Header="_Save" Name="menuBtnSave"/>
+                    <Separator />
+                    <MenuItem Header="_Print" Name="menuBtnPrint"/>
+                    <Separator/>
+                    <MenuItem Header="_Exit" Name="menuBtnExit" Click="menuBtnExit_Click"/>
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
         <Label Content="WildSighting" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Button Content="Add Sighting" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddSighting" Click="btnAddSighting_Click">
             <Button.Effect>
@@ -18,7 +33,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Add Animal" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddAnimal" Click="btnAddAnimal_Click">
+        <Button Content="Manage Animals" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnManageAnimals" Click="btnManageAnimals_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -28,7 +43,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Sightings" HorizontalAlignment="Center" Margin="0,409,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Click="btnSightings_Click" Name="btnSightings">
+        <Button Content="History" HorizontalAlignment="Center" Margin="0,409,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnHistory" Click="btnHistory_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
