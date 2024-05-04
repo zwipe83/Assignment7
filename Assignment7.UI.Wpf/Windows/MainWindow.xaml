@@ -1,0 +1,43 @@
+﻿<Window x:Class="Assignment7.UI.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment7.UI.Wpf"
+        mc:Ignorable="d"
+        Title="WildSighting by Samuel Jeffman" Height="600" Width="800" Background="LightSteelBlue">
+    <Grid>
+        <Label Content="WildSighting" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <Button Content="Add Sighting" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddSighting" Click="btnAddSighting_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Add Animal" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddAnimal" Click="btnAddAnimal_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Sightings" HorizontalAlignment="Center" Margin="0,409,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Click="btnSightings_Click" Name="btnSightings">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
