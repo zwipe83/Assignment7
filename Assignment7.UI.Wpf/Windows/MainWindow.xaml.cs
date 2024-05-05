@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Assignment7.UI.Wpf.Windows;
-using Assignment7;
+using Assignment7.Classes;
 
 namespace Assignment7.UI.Wpf
 {
@@ -18,6 +18,9 @@ namespace Assignment7.UI.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Fields
+        private AnimalManager animalManager;
+        #endregion
         #region Constructors
         /// <summary>
         /// 
@@ -26,6 +29,7 @@ namespace Assignment7.UI.Wpf
         {
             InitializeComponent();
 
+            animalManager = new AnimalManager();
         }
         #endregion
         #region Private Methods
@@ -48,8 +52,19 @@ namespace Assignment7.UI.Wpf
         /// <param name="e"></param>
         private void btnManageAnimals_Click(object sender, RoutedEventArgs e)
         {
-            AnimalManagerWindow window = new AnimalManagerWindow();
+            AnimalManager animalManagerCopy = new AnimalManager(animalManager);
+            AnimalManagerWindow window = new AnimalManagerWindow(animalManagerCopy);
             window.ShowDialog();
+
+            if(window.DialogResult.HasValue && window.DialogResult.Value)
+            {
+                animalManager = window.AnimalManager;
+                var dummy = 0;
+            }
+            else
+            {
+                //Do nothing
+            }
         }
 
         /// <summary>

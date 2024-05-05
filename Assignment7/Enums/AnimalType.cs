@@ -18,6 +18,7 @@ namespace Assignment7.Enums
         Fish,
         Amphibian,
         Reptile,
-        Bird
+        Bird,
+        Unknown
     }
 }

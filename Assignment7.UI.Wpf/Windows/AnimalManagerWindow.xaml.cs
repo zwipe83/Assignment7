@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Assignment7.Classes;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -19,14 +20,29 @@ namespace Assignment7.UI.Wpf.Windows
     /// </summary>
     public partial class AnimalManagerWindow : Window
     {
+        #region Fields
+        private AnimalManager animalManager;
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public AnimalManager AnimalManager
+        {
+            get => animalManager;
+        }
+        #endregion
         #region Constructors
 
         /// <summary>
         /// 
         /// </summary>
-        public AnimalManagerWindow()
+        public AnimalManagerWindow(AnimalManager animalManager)
         {
             InitializeComponent();
+
+            this.animalManager = animalManager;
         }
         #endregion
         #region Private Methods
@@ -38,8 +54,18 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
-            AnimalWindow window = new AnimalWindow();
+            AnimalManager animalManagerCopy = new AnimalManager(animalManager);
+            AnimalWindow window = new AnimalWindow(animalManagerCopy);
             window.ShowDialog();
+
+            if(window.DialogResult.HasValue && window.DialogResult.Value)
+            {
+                animalManager = window.AnimalManager;
+            }
+            else 
+            { 
+                //Do nothing...
+            }
         }
 
         /// <summary>
@@ -49,7 +75,8 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnEditAnimal_Click(object sender, RoutedEventArgs e)
         {
-            AnimalWindow window = new AnimalWindow();
+            AnimalManager animalManagerCopy = new AnimalManager();
+            AnimalWindow window = new AnimalWindow(animalManagerCopy);
             window.ShowDialog();
         }
 
@@ -58,8 +85,20 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            DialogResult = false;
+            this.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
             this.Close();
         }
         #endregion

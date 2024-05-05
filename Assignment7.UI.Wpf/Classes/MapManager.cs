@@ -7,10 +7,36 @@ namespace Assignment7
 {
     public class MapManager
     {
-        private Map _map = new();
-        private MapControl _mapControl = new();
+        #region Fields
 
-        public Map Map { get { return _map; } }
-        public MapControl MapControl { get { return _mapControl; } set { _mapControl = value; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        private Map _map = new();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private MapControl _mapControl = new();
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Map Map 
+        { 
+            get => _map;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MapControl MapControl 
+        { 
+            get => _mapControl; 
+            protected set => _mapControl = value; 
+        } 
+        #endregion
     }
 }
