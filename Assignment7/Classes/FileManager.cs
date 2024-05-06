@@ -31,9 +31,17 @@ namespace Assignment7.Classes
             throw new System.NotImplementedException();
         }
 
-        public void CopyFile()
+        public string CopyFile(string sourceFilePath, string destinationFolderPath)
         {
-            throw new System.NotImplementedException();
+            string fileName = Path.GetFileName(sourceFilePath);
+            string destinationFilePath = Path.Combine(destinationFolderPath, fileName);
+
+            // Create the destination folder if it doesn't exist
+            Directory.CreateDirectory(destinationFolderPath);
+
+            System.IO.File.Copy(sourceFilePath, destinationFilePath, true);
+
+            return destinationFilePath;
         }
 
         public void DeleteFile()
@@ -41,9 +49,17 @@ namespace Assignment7.Classes
             throw new System.NotImplementedException();
         }
 
-        public void RenameFile()
+        public void RenameFile(string filePath, string newFileName)
         {
-            throw new System.NotImplementedException();
+            // Get the directory path of the file
+            string directoryPath = Path.GetDirectoryName(filePath);
+
+            // Create the new file path by combining the directory path and the new file name
+            string newFilePath = Path.Combine(directoryPath, newFileName);
+
+            // Rename the file
+            System.IO.File.Move(filePath, newFilePath, true);
         }
+
     }
 }

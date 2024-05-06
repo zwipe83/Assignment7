@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using Assignment7.UI.Wpf.Windows;
 
 namespace Assignment7.UI.Wpf
 {

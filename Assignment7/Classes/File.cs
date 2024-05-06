@@ -14,7 +14,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        private string _path;
+        private string _path; //TODO: Maybe path isnt needed. Consider if you move the app to a different location. Path will need to be updated
 
         /// <summary>
         /// 

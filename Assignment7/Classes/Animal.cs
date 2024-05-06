@@ -29,6 +29,11 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
+        private string? _description;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private AnimalId _id;
 
         /// <summary>
@@ -59,6 +64,15 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
+        public string? Description
+        {
+            get => _description;
+            set => _description = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public AnimalId Id
         {
             get => _id; 
@@ -79,7 +93,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Animal() : this(AnimalType.Mammal)
+        public Animal() : this(new AnimalId())
         {
         }
 
@@ -87,16 +101,7 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         /// <param name="animalType"></param>
-        public Animal(AnimalType animalType) : this(animalType, String.Empty)
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="animalType"></param>
-        /// <param name="name"></param>
-        public Animal(AnimalType animalType, string name) : this(animalType, name, new File())
+        public Animal(AnimalId animalId) : this(animalId, AnimalType.Unknown)
         {
         }
 
@@ -105,8 +110,7 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="animalType"></param>
         /// <param name="name"></param>
-        /// <param name="animalId"></param>
-        public Animal(AnimalType animalType, string name, File image) : this(animalType, name, image, new AnimalId())
+        public Animal(AnimalId animalId, AnimalType animalType) : this(animalId, animalType, string.Empty)
         {
         }
 
@@ -115,13 +119,36 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="animalType"></param>
         /// <param name="name"></param>
-        /// <param name="animalId"></param>
+        /// <param name="description"></param>
+        public Animal(AnimalId animalId, AnimalType animalType, string name) : this(animalId, animalType, name, string.Empty)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="animalType"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
         /// <param name="image"></param>
-        public Animal(AnimalType animalType, string name, File image, AnimalId animalId)
+        public Animal(AnimalId animalId, AnimalType animalType, string name, string description) : this(animalId, animalType, name, description, new File())
         {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="animalType"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="image"></param>
+        /// <param name="animalId"></param>
+        public Animal(AnimalId animalId, AnimalType animalType, string name, string description, File image)
+        {
+            Id = animalId;
             AnimalType = animalType;
             Name = name;
-            Id = animalId;
+            Description = description;
             Image = image;
         }
         #endregion

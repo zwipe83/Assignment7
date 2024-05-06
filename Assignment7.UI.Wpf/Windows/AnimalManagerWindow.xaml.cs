@@ -43,6 +43,8 @@ namespace Assignment7.UI.Wpf.Windows
             InitializeComponent();
 
             this.animalManager = animalManager;
+
+            InitGUI();
         }
         #endregion
         #region Private Methods
@@ -100,6 +102,37 @@ namespace Assignment7.UI.Wpf.Windows
         {
             DialogResult = true;
             this.Close();
+        }
+
+        /// <summary>
+        /// Init GUI
+        /// </summary>
+        private void InitGUI()
+        {
+            InitListView();
+        }
+
+        /// <summary>
+        /// Init listview
+        /// </summary>
+        private void InitListView()
+        {
+            lstAnimals.ItemsSource = animalManager.ListOfAnimals;   //your query result 
+            GridViewColumn column = new GridViewColumn();
+            column.Header = "Name";
+            column.DisplayMemberBinding = new Binding("Name");
+            column.Width = 150;
+            GridViewControl.Columns.Add(column);
+            GridViewColumn column2 = new GridViewColumn();
+            column2.Header = "Type";
+            column2.DisplayMemberBinding = new Binding("AnimalType");
+            column2.Width = 150;
+            GridViewControl.Columns.Add(column2);
+            GridViewColumn column3 = new GridViewColumn();
+            column3.Header = "Description";
+            column3.DisplayMemberBinding = new Binding("Description");
+            column3.Width = 450;
+            GridViewControl.Columns.Add(column3);
         }
         #endregion
     }

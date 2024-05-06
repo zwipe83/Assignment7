@@ -32,7 +32,7 @@
             btnEdit = new Button();
             btnDelete = new Button();
             btnClose = new Button();
-            listView1 = new ListView();
+            lstAnimals = new ListView();
             SuspendLayout();
             // 
             // btnAdd
@@ -74,25 +74,25 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
-            // listView1
+            // lstAnimals
             // 
-            listView1.Location = new Point(57, 175);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1099, 396);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
+            lstAnimals.Location = new Point(57, 175);
+            lstAnimals.Name = "lstAnimals";
+            lstAnimals.Size = new Size(1099, 396);
+            lstAnimals.TabIndex = 1;
+            lstAnimals.UseCompatibleStateImageBehavior = false;
             // 
-            // AnimalmanagerForm
+            // AnimalManagerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1218, 622);
-            Controls.Add(listView1);
+            Controls.Add(lstAnimals);
             Controls.Add(btnClose);
             Controls.Add(btnDelete);
             Controls.Add(btnEdit);
             Controls.Add(btnAdd);
-            Name = "AnimalmanagerForm";
+            Name = "AnimalManagerForm";
             Text = "AnimalmanagerForm";
             ResumeLayout(false);
         }
@@ -103,6 +103,6 @@
         private Button btnEdit;
         private Button btnDelete;
         private Button btnClose;
-        private ListView listView1;
+        private ListView lstAnimals;
     }
 }

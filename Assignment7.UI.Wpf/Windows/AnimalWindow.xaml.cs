@@ -15,6 +15,9 @@ using Assignment7.UI;
 using Assignment7.Enums;
 using static Assignment7.Helpers.EnumHelper;
 using Assignment7.Classes;
+using Microsoft.Win32;
+using static Assignment7.UI.Wpf.MainWindow;
+using Assignment7.UI.Wpf.ViewModels;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -28,7 +31,17 @@ namespace Assignment7.UI.Wpf.Windows
         /// <summary>
         /// 
         /// </summary>
-        private AnimalManager animalManager;
+        private AnimalManager _animalManager;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Animal _animal;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private FileManager _fileManager;
         #endregion
         #region Properties
 
@@ -37,7 +50,26 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         public AnimalManager AnimalManager
         {
-            get => animalManager;
+            get => _animalManager;
+            protected set => _animalManager = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Animal Animal
+        {
+            get => _animal;
+            protected set => _animal = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public FileManager FileManager
+        {
+            get => _fileManager;
+            protected set => _fileManager = value;
         }
         #endregion
         #region Constructors
@@ -50,7 +82,11 @@ namespace Assignment7.UI.Wpf.Windows
         {
             InitializeComponent();
 
-            this.animalManager = animalManager;
+            DataContext = new AnimalWindowViewModel();
+
+            AnimalManager = animalManager;
+            FileManager = new FileManager();
+            Animal = new Animal();
 
             InitGUI();
         }
@@ -94,11 +130,34 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Animal animal = new Animal((AnimalType)cmbAnimalType.SelectedIndex, txtName.Text); //TODO: Add image object
-            AnimalManager.AddAnimal(animal);
+            Animal.AnimalType = (AnimalType)cmbAnimalType.SelectedIndex;
+            Animal.Name = txtName.Text;
+            Animal.Description = txtDescription.Text;
+            AnimalManager.AddAnimal(Animal);
             DialogResult = true;
             this.Close();
         }
         #endregion
+
+        private void btnSelectImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Jpeg files (*.jpg)|*.jpg";
+            if (openFileDialog.ShowDialog() == true)
+            { 
+                string filePath = FileManager.CopyFile(openFileDialog.FileName, ImagesPath);
+                string extension = System.IO.Path.GetExtension(filePath);
+                string newFileName = $"{Animal.Id}{extension}";
+
+                Animal.Image.Path = ImagesPath;
+                Animal.Image.Name = newFileName;
+
+                FileManager.RenameFile(filePath, $"{Animal.Image.Name}");
+
+
+                var viewModel = (AnimalWindowViewModel)DataContext;
+                viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath,$"{Animal.Image.Name}")}";
+            }
+        }
     }
 }

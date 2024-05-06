@@ -10,11 +10,14 @@
         <ComboBox HorizontalAlignment="Left" Margin="55,46,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="286,44,0,0" VerticalAlignment="Top" Name="lblName"/>
         <TextBox HorizontalAlignment="Left" Margin="353,48,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName"/>
-        <Button Content="..." HorizontalAlignment="Left" Margin="659,47,0,0" VerticalAlignment="Top" Width="20" Name="btnSelectImage"/>
+        <Button Content="..." HorizontalAlignment="Left" Margin="659,47,0,0" VerticalAlignment="Top" Width="20" Name="btnSelectImage" Click="btnSelectImage_Click"/>
         <Label Content="Select Image" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top" Name="lblSelectImage"/>
-        <Image HorizontalAlignment="Left" Height="274" Margin="73,118,0,0" VerticalAlignment="Top" Width="664" Name="imgAnimal"/>
+        <Border BorderThickness="4" HorizontalAlignment="Center" Width="800" Margin="0,108,0,0">
+            <Image HorizontalAlignment="Left" Height="263" Margin="498,6,0,0" VerticalAlignment="Top" Width="266" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
+        </Border>
         <Button Content="Save" HorizontalAlignment="Left" Margin="659,83,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="709,83,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click"/>
+        <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="38,122,327,53"/>
 
     </Grid>
 </Window>

@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="AnimalManagerWindow" Height="450" Width="800">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,0,0">
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,0,0" Name="lstAnimals">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
+                <GridView x:Name="GridViewControl"/>
             </ListView.View>
         </ListView>
         <Button Content="Add" HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top" Name="btnAddAnimal" Click="btnAddAnimal_Click"/>

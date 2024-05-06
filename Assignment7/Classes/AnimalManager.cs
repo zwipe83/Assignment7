@@ -1,4 +1,8 @@
-﻿/// <summary>
+﻿
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+
+/// <summary>
 /// Filename: AnimalManager.cs
 /// Created on: 2024-05-05 00:00:00
 /// Author: Samuel Jeffman
@@ -14,14 +18,14 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        private List<Animal> _listOfAnimals;
+        private ObservableCollection<Animal> _listOfAnimals;
         #endregion
         #region Properties
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Animal> ListOfAnimals
+        public ObservableCollection<Animal> ListOfAnimals
         {
             get => _listOfAnimals;
             protected set => _listOfAnimals = value;
@@ -32,9 +36,9 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public AnimalManager() 
-        { 
-            ListOfAnimals = new List<Animal>();
+        public AnimalManager()
+        {
+            ListOfAnimals = new ObservableCollection<Animal>();
         }
 
         /// <summary>

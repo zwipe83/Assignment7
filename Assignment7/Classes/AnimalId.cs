@@ -38,7 +38,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public AnimalId() : this(new Guid())
+        public AnimalId() : this(Guid.NewGuid())
         {
         }
 
@@ -49,6 +49,17 @@ namespace Assignment7.Classes
         public AnimalId(Guid id)
         {
             Id = id;
+        }
+        #endregion
+        #region Public Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() 
+        { 
+            return Id.ToString();
         }
         #endregion
     }
