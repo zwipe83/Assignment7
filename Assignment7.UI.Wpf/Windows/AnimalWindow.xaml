@@ -9,7 +9,7 @@
     <Grid>
         <ComboBox HorizontalAlignment="Left" Margin="55,46,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="286,44,0,0" VerticalAlignment="Top" Name="lblName"/>
-        <TextBox HorizontalAlignment="Left" Margin="353,48,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName"/>
+        <TextBox HorizontalAlignment="Left" Margin="353,48,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName" />
         <Button Content="..." HorizontalAlignment="Left" Margin="659,47,0,0" VerticalAlignment="Top" Width="20" Name="btnSelectImage" Click="btnSelectImage_Click"/>
         <Label Content="Select Image" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top" Name="lblSelectImage"/>
         <Border BorderThickness="4" HorizontalAlignment="Center" Width="800" Margin="0,108,0,0">

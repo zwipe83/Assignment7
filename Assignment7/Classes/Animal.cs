@@ -151,6 +151,19 @@ namespace Assignment7.Classes
             Description = description;
             Image = image;
         }
+
+        /// <summary>
+        /// Copy constructor
+        /// </summary>
+        /// <param name="objToCopyFrom"></param>
+        public Animal(Animal objToCopyFrom)
+        {
+            Id = objToCopyFrom.Id;
+            AnimalType = objToCopyFrom.AnimalType;
+            Name = objToCopyFrom.Name;
+            Description = objToCopyFrom.Description;
+            Image = objToCopyFrom.Image;
+        }
         #endregion
     }
 }

@@ -26,15 +26,34 @@ public partial class MainWindow : Window
     /// </summary>
     private AnimalManager animalManager;
 
+    private DataStore dataStore;
+
     /// <summary>
     /// 
     /// </summary>
-    private static readonly string _imagesPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory,"Images"); //Path to app folder Images folder
+    private static readonly string _imagesPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Images"); //Path to app folder Images folder
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private static readonly string _datastorePath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "DataStore");
     #endregion
     #region Properties
     public static string ImagesPath
     {
         get => _imagesPath;
+    }
+    public static string DataStorePath
+    {
+        get => _datastorePath;
+    }
+    public DataStore DataStore
+    {
+        get => dataStore;
+    }
+    public AnimalManager AnimalManager
+    {
+        get => animalManager;
     }
     #endregion
     #region Constructors
@@ -46,7 +65,9 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         animalManager = new AnimalManager();
+        dataStore = new DataStore();
 
+        DataStore.ReadFromJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
     }
     #endregion
     #region Private Methods
@@ -69,14 +90,15 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void btnManageAnimals_Click(object sender, RoutedEventArgs e)
     {
-        AnimalManager animalManagerCopy = new AnimalManager(animalManager);
+        //AnimalManager animalManagerCopy = new AnimalManager(animalManager);
+        AnimalManager animalManagerCopy = animalManager.DeepCopy();
         AnimalManagerWindow window = new AnimalManagerWindow(animalManagerCopy);
         window.ShowDialog();
 
         if(window.DialogResult.HasValue && window.DialogResult.Value)
         {
             animalManager = window.AnimalManager;
-            var dummy = 0;
+            DataStore.SaveToJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
         }
         else
         {

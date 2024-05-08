@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Assignment7.Classes;
+using Assignment7.Enums;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -21,7 +22,8 @@ namespace Assignment7.UI.Wpf.Windows
     public partial class AnimalManagerWindow : Window
     {
         #region Fields
-        private AnimalManager animalManager;
+        private AnimalManager _animalManager;
+        private Animal _selectedAnimal;
         #endregion
         #region Properties
 
@@ -30,7 +32,14 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         public AnimalManager AnimalManager
         {
-            get => animalManager;
+            get => _animalManager;
+            private protected set => _animalManager = value;
+        }
+
+        private Animal SelectedAnimal
+        {
+            get => _selectedAnimal;
+            set => _selectedAnimal = value;
         }
         #endregion
         #region Constructors
@@ -42,7 +51,7 @@ namespace Assignment7.UI.Wpf.Windows
         {
             InitializeComponent();
 
-            this.animalManager = animalManager;
+            this._animalManager = animalManager;
 
             InitGUI();
         }
@@ -56,13 +65,12 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
-            AnimalManager animalManagerCopy = new AnimalManager(animalManager);
-            AnimalWindow window = new AnimalWindow(animalManagerCopy);
+            AnimalWindow window = new AnimalWindow();
             window.ShowDialog();
 
             if(window.DialogResult.HasValue && window.DialogResult.Value)
             {
-                animalManager = window.AnimalManager;
+                AnimalManager.AddAnimal(window.Animal);
             }
             else 
             { 
@@ -77,9 +85,25 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnEditAnimal_Click(object sender, RoutedEventArgs e)
         {
-            AnimalManager animalManagerCopy = new AnimalManager();
-            AnimalWindow window = new AnimalWindow(animalManagerCopy);
+            Animal animalCopy = new Animal(SelectedAnimal);
+            AnimalWindow window = new AnimalWindow(animalCopy, true);
+
             window.ShowDialog();
+
+            if (window.DialogResult.HasValue && window.DialogResult.Value)
+            {
+                SelectedAnimal.Id = window.Animal.Id;
+                SelectedAnimal.Name = window.Animal.Name;
+                SelectedAnimal.Description = window.Animal.Description;
+                SelectedAnimal.Image = window.Animal.Image;
+                SelectedAnimal.AnimalType = window.Animal.AnimalType;
+                AnimalManager.ChangeAnimal(SelectedAnimal);
+                lstAnimals.Items.Refresh();
+            }
+            else
+            {
+                //Do nothing...
+            }
         }
 
         /// <summary>
@@ -117,7 +141,8 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         private void InitListView()
         {
-            lstAnimals.ItemsSource = animalManager.ListOfAnimals;   //your query result 
+            //TODO: Make this more pretty
+            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals;   //your query result 
             GridViewColumn column = new GridViewColumn();
             column.Header = "Name";
             column.DisplayMemberBinding = new Binding("Name");
@@ -131,9 +156,26 @@ namespace Assignment7.UI.Wpf.Windows
             GridViewColumn column3 = new GridViewColumn();
             column3.Header = "Description";
             column3.DisplayMemberBinding = new Binding("Description");
-            column3.Width = 450;
+            column3.Width = 150;
             GridViewControl.Columns.Add(column3);
         }
         #endregion
+
+
+        private void lstAnimals_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (lstAnimals.SelectedItem != null)
+            {
+                Animal selectedAnimal = (Animal)lstAnimals.SelectedItem;
+                
+                SelectedAnimal = selectedAnimal;
+            }
+
+        }
+
+        private void btnDeleteAnimal_Click(object sender, RoutedEventArgs e)
+        {
+            AnimalManager.DeleteAnimal(SelectedAnimal);
+        }
     }
 }

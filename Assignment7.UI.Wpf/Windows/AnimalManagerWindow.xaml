@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="AnimalManagerWindow" Height="450" Width="800">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,0,0" Name="lstAnimals">
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,0,0" Name="lstAnimals" MouseUp="lstAnimals_MouseUp">
             <ListView.View>
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>
         </ListView>
         <Button Content="Add" HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top" Name="btnAddAnimal" Click="btnAddAnimal_Click"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="106,36,0,0" VerticalAlignment="Top" Name="btnEditAnimal" Click="btnEditAnimal_Click"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="169,36,0,0" VerticalAlignment="Top" Name="btnDeleteAnimal"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="169,36,0,0" VerticalAlignment="Top" Name="btnDeleteAnimal" Click="btnDeleteAnimal_Click"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="689,60,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="627,60,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click"/>
 

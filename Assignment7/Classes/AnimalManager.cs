@@ -52,6 +52,29 @@ namespace Assignment7.Classes
         #endregion
         #region Public Methods
 
+        public AnimalManager DeepCopy()
+        {
+            AnimalManager copy = new AnimalManager();
+
+            // Copy the ListOfAnimals
+            copy.ListOfAnimals = new ObservableCollection<Animal>();
+            foreach (Animal animal in this.ListOfAnimals)
+            {
+                Animal animalCopy = new Animal();
+
+                animalCopy.Name = animal.Name;
+                animalCopy.Id = animal.Id;
+                animalCopy.Image = animal.Image;
+                animalCopy.Description = animal.Description;
+                animalCopy.AnimalType = animal.AnimalType;
+
+                copy.ListOfAnimals.Add(animalCopy);
+            }
+
+            return copy;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -65,27 +88,35 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void ChangeAnimal()
+        public void ChangeAnimal(Animal animal)
         {
-            throw new System.NotImplementedException();
+            int index = ListOfAnimals.IndexOf(animal);
+            if (index != -1)
+            {
+                ListOfAnimals[index] = animal;
+            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void DeleteAnimal()
+        public void DeleteAnimal(Animal animal)
         {
-            throw new System.NotImplementedException();
+            int index = ListOfAnimals.IndexOf(animal);
+            if (index != -1)
+            {
+                ListOfAnimals.Remove(animal);
+            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void GetAnimal()
+        public Animal GetAnimal(AnimalId animalId)
         {
-            throw new System.NotImplementedException();
+            return ListOfAnimals.FirstOrDefault(animal => animal.Id == animalId);
         }
         #endregion
     }

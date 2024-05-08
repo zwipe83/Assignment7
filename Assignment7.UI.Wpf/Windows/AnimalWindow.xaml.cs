@@ -31,28 +31,19 @@ namespace Assignment7.UI.Wpf.Windows
         /// <summary>
         /// 
         /// </summary>
-        private AnimalManager _animalManager;
-
-        /// <summary>
-        /// 
-        /// </summary>
         private Animal _animal;
 
         /// <summary>
         /// 
         /// </summary>
         private FileManager _fileManager;
-        #endregion
-        #region Properties
 
         /// <summary>
         /// 
         /// </summary>
-        public AnimalManager AnimalManager
-        {
-            get => _animalManager;
-            protected set => _animalManager = value;
-        }
+        private bool _editAnimal;
+        #endregion
+        #region Properties
 
         /// <summary>
         /// 
@@ -71,6 +62,15 @@ namespace Assignment7.UI.Wpf.Windows
             get => _fileManager;
             protected set => _fileManager = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EditAnimal
+        {
+            get => _editAnimal;
+            set => _editAnimal = value;
+        }
         #endregion
         #region Constructors
 
@@ -78,15 +78,25 @@ namespace Assignment7.UI.Wpf.Windows
         /// 
         /// </summary>
         /// <param name="animalManager"></param>
-        public AnimalWindow(AnimalManager animalManager)
+        public AnimalWindow() : this(new Animal(), false)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="animalManager"></param>
+        /// <param name="animal"></param>
+        public AnimalWindow(Animal animal, bool editAnimal)
         {
             InitializeComponent();
 
             DataContext = new AnimalWindowViewModel();
 
-            AnimalManager = animalManager;
             FileManager = new FileManager();
-            Animal = new Animal();
+
+            Animal = animal;
+            EditAnimal = editAnimal;
 
             InitGUI();
         }
@@ -99,6 +109,16 @@ namespace Assignment7.UI.Wpf.Windows
         private void InitGUI()
         {
             InitComboBox();
+
+            if(EditAnimal)
+            {
+                cmbAnimalType.SelectedIndex = (int)Animal.AnimalType;
+                txtName.Text = Animal.Name;
+                txtDescription.Text = Animal.Description;
+
+                var viewModel = (AnimalWindowViewModel)DataContext;
+                viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath, $"{Animal.Image.Name}")}";
+            }
         }
 
         /// <summary>
@@ -133,7 +153,7 @@ namespace Assignment7.UI.Wpf.Windows
             Animal.AnimalType = (AnimalType)cmbAnimalType.SelectedIndex;
             Animal.Name = txtName.Text;
             Animal.Description = txtDescription.Text;
-            AnimalManager.AddAnimal(Animal);
+                        
             DialogResult = true;
             this.Close();
         }
