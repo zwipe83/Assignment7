@@ -14,12 +14,16 @@ using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using Assignment7.Structs;
 
 namespace Assignment7
 {
     public class Map
     {
         #region Fields
+
+        private readonly WorldPosition homePosition = new WorldPosition(1460179, 7522646);
+        private WorldPosition currentPosition = new WorldPosition();
 
         /// <summary>
         /// 
@@ -35,6 +39,14 @@ namespace Assignment7
         {
             get => _map; 
             protected set => _map = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public WorldPosition CurrentPosition
+        {
+            get => currentPosition;
         }
         #endregion
         #region Constructors
@@ -60,6 +72,7 @@ namespace Assignment7
 
             MapObj.Layers.Add(OpenStreetMap.CreateTileLayer());
 
+
             var layer = new GenericCollectionLayer<List<IFeature>>
             {
                 //Style = SymbolStyles.CreatePinStyle()
@@ -72,13 +85,17 @@ namespace Assignment7
             // Add a point to the layer using the Info position
             layer?.Features.Add(new GeometryFeature
             {
-                Geometry = new NetTopologySuite.Geometries.Point(56000, 76000)
+                Geometry = new NetTopologySuite.Geometries.Point(homePosition.X, homePosition.Y)
             });
+
+            MapObj.Home = n => n.CenterOn(homePosition.X, homePosition.Y);
 
             MapObj.Info += (s, e) =>
             {
                 if (e.MapInfo?.WorldPosition == null) return;
 
+                currentPosition.X = e.MapInfo.WorldPosition.X;
+                currentPosition.Y = e.MapInfo.WorldPosition.Y;
                 //MessageBox.Show($"{e.MapInfo.WorldPosition}");
                 //return;
 

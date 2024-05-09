@@ -142,7 +142,7 @@ namespace Assignment7.UI.Wpf.Windows
         private void InitListView()
         {
             //TODO: Make this more pretty
-            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals;   //your query result 
+            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals;
             GridViewColumn column = new GridViewColumn();
             column.Header = "Name";
             column.DisplayMemberBinding = new Binding("Name");
@@ -161,7 +161,11 @@ namespace Assignment7.UI.Wpf.Windows
         }
         #endregion
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstAnimals_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (lstAnimals.SelectedItem != null)
@@ -173,6 +177,11 @@ namespace Assignment7.UI.Wpf.Windows
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteAnimal_Click(object sender, RoutedEventArgs e)
         {
             AnimalManager.DeleteAnimal(SelectedAnimal);

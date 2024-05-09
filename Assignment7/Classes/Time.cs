@@ -10,5 +10,14 @@ namespace Assignment7.Classes
     public class Time
     {
         private TimeSpan _time;
+
+        public Time() : this(new TimeSpan())
+        { 
+        }
+
+        public Time(TimeSpan time)
+        {
+            _time = time;
+        }
     }
 }

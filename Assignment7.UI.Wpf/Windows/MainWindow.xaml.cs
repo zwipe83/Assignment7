@@ -24,8 +24,17 @@ public partial class MainWindow : Window
     /// <summary>
     /// 
     /// </summary>
+
+    private SightingManager sightingManager;
+
+    /// <summary>
+    /// 
+    /// </summary>
     private AnimalManager animalManager;
 
+    /// <summary>
+    /// 
+    /// </summary>
     private DataStore dataStore;
 
     /// <summary>
@@ -55,6 +64,10 @@ public partial class MainWindow : Window
     {
         get => animalManager;
     }
+    public SightingManager SightingManager
+    {
+        get => sightingManager;
+    }
     #endregion
     #region Constructors
     /// <summary>
@@ -64,6 +77,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        sightingManager = new SightingManager();
         animalManager = new AnimalManager();
         dataStore = new DataStore();
 
@@ -97,7 +111,7 @@ public partial class MainWindow : Window
 
         if(window.DialogResult.HasValue && window.DialogResult.Value)
         {
-            animalManager = window.AnimalManager;
+            animalManager = window.AnimalManager; //TODO: Deep copy?
             DataStore.SaveToJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
         }
         else
@@ -113,8 +127,19 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void btnAddSighting_Click(object sender, RoutedEventArgs e)
     {
-        SightingWindow window = new SightingWindow();
+        AnimalManager animalManagerCopy = animalManager.DeepCopy();
+        SightingWindow window = new SightingWindow(new Sighting(), animalManagerCopy);
+        
         window.ShowDialog();
+
+        if (window.DialogResult.HasValue && window.DialogResult.Value)
+        {
+            SightingManager.AddSighting(window.Sighting);
+        }
+        else
+        {
+            //Do nothing...
+        }
     }
 
     /// <summary>

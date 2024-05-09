@@ -11,5 +11,20 @@ namespace Assignment7.Classes
     public class Location
     {
         private WorldPosition _worldPosition;
+
+        public WorldPosition WorldPosition 
+        { 
+            get => _worldPosition;
+            set => _worldPosition = value;
+        }
+
+        public Location() : this(new WorldPosition())
+        {
+        }
+
+        public Location(WorldPosition worldPosition)
+        {
+            WorldPosition = worldPosition;
+        }
     }
 }

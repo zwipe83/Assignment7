@@ -4,15 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
+        xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="SightingWindow" Height="450" Width="800">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="76,52,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" Height="22"/>
-        <DatePicker HorizontalAlignment="Left" Margin="298,51,0,0" VerticalAlignment="Top" Name="dateWhen" Width="157" Height="24"/>
+        <ComboBox HorizontalAlignment="Left" Margin="76,52,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="22" IsEditable="True" IsTextSearchEnabled="True"/>
         <Label Content="Count" HorizontalAlignment="Left" Margin="532,50,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="42"/>
-        <TextBox HorizontalAlignment="Left" Margin="579,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="18"/>
         <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" Grid.ColumnSpan="2"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="734,53,0,0" VerticalAlignment="Top" Name="btnSave" Height="20" Width="29"/>
-
+        <Button Content="Save" HorizontalAlignment="Left" Margin="734,53,0,0" VerticalAlignment="Top" Name="btnSave" Height="20" Width="29" Click="btnSave_Click"/>
+        <xceed:DateTimeUpDown HorizontalAlignment="Left" Margin="242,51,0,0" VerticalAlignment="Top" Name="dateWhen" Width="263" Height="24" Format="FullDateTime" />
+        <xceed:IntegerUpDown HorizontalAlignment="Left" Margin="579,54,0,0" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="18" />
     </Grid>
 </Window>
