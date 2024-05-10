@@ -11,13 +11,24 @@ namespace Assignment7.Classes
     {
         private DateTime _date;
 
-        public Date () : this (new DateTime())
+        public DateTime D
+        {
+            get => _date;
+            set => _date = value;
+        }
+
+        public Date () : this (new DateTime().Date)
         {
         }
 
         public Date(DateTime date)
         {
             _date = date;
+        }
+
+        public Date(Date objToCopyFrom)
+        {
+            D = objToCopyFrom.D;
         }
     }
 }

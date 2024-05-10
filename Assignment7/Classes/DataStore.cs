@@ -17,10 +17,11 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="file"></param>
         /// <param name="taskList"></param>
-        public void SaveToJsonFile(File file, ObservableCollection<Animal> animalList)
+        public void SaveToJsonFile<T>(File file, ObservableCollection<T> collection)
         {
+            Directory.CreateDirectory(file.Path);
             string fullPath = Path.Combine(file.Path, file.Name);
-            string json = JsonSerializer.Serialize(animalList);
+            string json = JsonSerializer.Serialize(collection);
             System.IO.File.WriteAllText(fullPath, json);
         }
 
@@ -29,16 +30,22 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="file"></param>
         /// <param name="taskList"></param>
-        public void ReadFromJsonFile(File file, ObservableCollection<Animal> animalList)
+        public void ReadFromJsonFile<T>(File file, ObservableCollection<T> collection)
         {
             string fullPath = Path.Combine(file.Path, file.Name);
             if (System.IO.File.Exists(fullPath))
             {
                 string json = System.IO.File.ReadAllText(fullPath);
-                var deserializedList = JsonSerializer.Deserialize<List<Animal>>(json);
-                foreach (var animal in deserializedList)
+
+                if(json.Length <= 0)
                 {
-                    animalList.Add(animal);
+                    return;
+                }
+
+                var deserializedList = JsonSerializer.Deserialize<List<T>>(json);
+                foreach (var obj in deserializedList)
+                {
+                    collection.Add(obj);
                 }
             }
         }

@@ -11,6 +11,12 @@ namespace Assignment7.Classes
     {
         private TimeSpan _time;
 
+        public TimeSpan T
+        {
+            get => _time; 
+            set => _time = value;
+        }
+
         public Time() : this(new TimeSpan())
         { 
         }
@@ -18,6 +24,11 @@ namespace Assignment7.Classes
         public Time(TimeSpan time)
         {
             _time = time;
+        }
+
+        public Time(Time objToCopyFrom)
+        {
+            T = objToCopyFrom.T;
         }
     }
 }

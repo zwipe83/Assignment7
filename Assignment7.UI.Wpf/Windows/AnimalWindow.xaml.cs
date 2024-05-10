@@ -119,6 +119,9 @@ namespace Assignment7.UI.Wpf.Windows
                 var viewModel = (AnimalWindowViewModel)DataContext;
                 viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath, $"{Animal.Image.Name}")}";
             }
+
+            lblAnimalId.Content = Animal.AnimalId;
+            lblAnimalImageId.Content = Animal.Image.Name;
         }
 
         /// <summary>
@@ -164,10 +167,10 @@ namespace Assignment7.UI.Wpf.Windows
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Jpeg files (*.jpg)|*.jpg";
             if (openFileDialog.ShowDialog() == true)
-            { 
+            {
                 string filePath = FileManager.CopyFile(openFileDialog.FileName, ImagesPath);
                 string extension = System.IO.Path.GetExtension(filePath);
-                string newFileName = $"{Animal.Id}{extension}";
+                string newFileName = $"{Animal.AnimalId}{extension}";
 
                 Animal.Image.Path = ImagesPath;
                 Animal.Image.Name = newFileName;
@@ -177,6 +180,8 @@ namespace Assignment7.UI.Wpf.Windows
 
                 var viewModel = (AnimalWindowViewModel)DataContext;
                 viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath,$"{Animal.Image.Name}")}";
+
+                lblAnimalImageId.Content = Animal.Image.Name;
             }
         }
     }

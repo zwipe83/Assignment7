@@ -22,8 +22,9 @@ namespace Assignment7
     {
         #region Fields
 
+
         private readonly WorldPosition homePosition = new WorldPosition(1460179, 7522646);
-        private WorldPosition currentPosition = new WorldPosition();
+        private WorldPosition currentPosition = new WorldPosition(1460179, 7522646);
 
         /// <summary>
         /// 
@@ -59,7 +60,6 @@ namespace Assignment7
             CreateMapAsync();
         }
         #endregion
-
         #region Private Methods
 
         /// <summary>
@@ -96,8 +96,6 @@ namespace Assignment7
 
                 currentPosition.X = e.MapInfo.WorldPosition.X;
                 currentPosition.Y = e.MapInfo.WorldPosition.Y;
-                //MessageBox.Show($"{e.MapInfo.WorldPosition}");
-                //return;
 
                 layer?.Features.Clear();
 

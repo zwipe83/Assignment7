@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="Sightings History" Height="450" Width="800">
+        Title="Sightings History" Height="450" Width="1280">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,100,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
+                <GridView x:Name="GridViewControl"/>
             </ListView.View>
         </ListView>
-        <ComboBox HorizontalAlignment="Left" Margin="65,31,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" />
-        <DatePicker HorizontalAlignment="Left" Margin="229,30,0,0" VerticalAlignment="Top" Name="dateFrom"/>
-        <DatePicker HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Name="dateTo"/>
+        <ComboBox HorizontalAlignment="Left" Margin="65,31,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged"/>
+        <DatePicker HorizontalAlignment="Left" Margin="229,30,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged"/>
+        <DatePicker HorizontalAlignment="Left" Margin="349,30,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged"/>
         <Button Content="Print" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint"/>
 
     </Grid>

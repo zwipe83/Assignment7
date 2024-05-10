@@ -173,6 +173,21 @@ namespace Assignment7.Classes
             Image = image;
             Count = count;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objToCopyFrom"></param>
+        public Sighting(Sighting objToCopyFrom)
+        {
+            Id = new SightingId(objToCopyFrom.Id); // Create a new instance of SightingId
+            Animal = new Animal(objToCopyFrom.Animal); // Create a new instance of Animal
+            Location = new Location(objToCopyFrom.Location); // Create a new instance of Location
+            Date = new Date(objToCopyFrom.Date); // Create a new instance of Date
+            Time = new Time(objToCopyFrom.Time); // Create a new instance of Time
+            Image = new File(objToCopyFrom.Image); // Create a new instance of File
+            Count = objToCopyFrom.Count;
+        }
         #endregion
     }
 }

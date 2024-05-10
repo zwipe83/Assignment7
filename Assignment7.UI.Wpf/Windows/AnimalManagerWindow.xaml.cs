@@ -92,7 +92,7 @@ namespace Assignment7.UI.Wpf.Windows
 
             if (window.DialogResult.HasValue && window.DialogResult.Value)
             {
-                SelectedAnimal.Id = window.Animal.Id;
+                SelectedAnimal.AnimalId = window.Animal.AnimalId;
                 SelectedAnimal.Name = window.Animal.Name;
                 SelectedAnimal.Description = window.Animal.Description;
                 SelectedAnimal.Image = window.Animal.Image;

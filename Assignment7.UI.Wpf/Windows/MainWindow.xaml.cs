@@ -82,6 +82,7 @@ public partial class MainWindow : Window
         dataStore = new DataStore();
 
         DataStore.ReadFromJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
+        DataStore.ReadFromJsonFile(new File(DataStorePath, "Sightings.json"), sightingManager.ListOfSightings);
     }
     #endregion
     #region Private Methods
@@ -93,7 +94,9 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void btnHistory_Click(object sender, RoutedEventArgs e)
     {
-        HistoryWindow window = new HistoryWindow();
+        AnimalManager animalManagerCopy = animalManager.DeepCopy();
+        SightingManager sightingManagerCopy = new SightingManager(SightingManager);
+        HistoryWindow window = new HistoryWindow(sightingManagerCopy, animalManagerCopy);
         window.ShowDialog();
     }
 
@@ -128,13 +131,14 @@ public partial class MainWindow : Window
     private void btnAddSighting_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = animalManager.DeepCopy();
-        SightingWindow window = new SightingWindow(new Sighting(), animalManagerCopy);
+        SightingWindow window = new SightingWindow(new Sighting(), animalManagerCopy, false);
         
         window.ShowDialog();
 
         if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
             SightingManager.AddSighting(window.Sighting);
+            DataStore.SaveToJsonFile(new File(DataStorePath, "Sightings.json"), sightingManager.ListOfSightings);
         }
         else
         {

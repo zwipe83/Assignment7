@@ -27,7 +27,7 @@ namespace Assignment7.Classes
         public Guid Id
         {
             get => _id;
-            protected set
+            set
             {
                 _id = value;
             }

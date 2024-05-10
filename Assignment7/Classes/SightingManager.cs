@@ -1,12 +1,12 @@
-﻿
-using System.Collections.ObjectModel;
-
-/// <summary>
+﻿/// <summary>
 /// Filename: SightingManager.cs
 /// Created on: 2024-05-05 00:00:00
 /// Author: Samuel Jeffman
 /// </summary>
 /// 
+
+using System.Collections.ObjectModel;
+
 namespace Assignment7.Classes
 {
     public class SightingManager
@@ -22,6 +22,11 @@ namespace Assignment7.Classes
         public SightingManager() 
         { 
             ListOfSightings = new ObservableCollection<Sighting>();
+        }
+
+        public SightingManager(SightingManager sightingManager)
+        {
+            ListOfSightings = new ObservableCollection<Sighting>(sightingManager.ListOfSightings);
         }
 
         public void AddSighting(Sighting sighting)

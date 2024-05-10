@@ -41,6 +41,9 @@ namespace Assignment7.Classes
             set => _name = value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string FilePath
         { 
             get => System.IO.Path.Combine(Path, Name);
@@ -64,6 +67,12 @@ namespace Assignment7.Classes
         {
             Path = path;
             Name = name;
+        }
+
+        public File(File objToCopyFrom)
+        {
+            Path = objToCopyFrom.Path;
+            Name = objToCopyFrom.Name;
         }
         #endregion
     }

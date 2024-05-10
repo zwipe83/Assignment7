@@ -24,7 +24,7 @@ namespace Assignment7.Classes
         public Guid Id
         {
             get => _id;
-            protected set
+            set
             {
                 _id = value;
             }
@@ -46,6 +46,15 @@ namespace Assignment7.Classes
         public SightingId(Guid id)
         {
             Id = id;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objToCopyFrom"></param>
+        public SightingId(SightingId objToCopyFrom)
+        {
+            Id= objToCopyFrom.Id;
         }
         #endregion
         #region Public Methods

@@ -26,5 +26,10 @@ namespace Assignment7.Classes
         {
             WorldPosition = worldPosition;
         }
+
+        public Location(Location objToCopyFrom)
+        {
+            WorldPosition = objToCopyFrom.WorldPosition;
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace Assignment7.Classes
                 Animal animalCopy = new Animal();
 
                 animalCopy.Name = animal.Name;
-                animalCopy.Id = animal.Id;
+                animalCopy.AnimalId = animal.AnimalId;
                 animalCopy.Image = animal.Image;
                 animalCopy.Description = animal.Description;
                 animalCopy.AnimalType = animal.AnimalType;
@@ -116,7 +116,7 @@ namespace Assignment7.Classes
         /// <exception cref="System.NotImplementedException"></exception>
         public Animal GetAnimal(AnimalId animalId)
         {
-            return ListOfAnimals.FirstOrDefault(animal => animal.Id == animalId);
+            return ListOfAnimals.FirstOrDefault(animal => animal.AnimalId == animalId);
         }
         #endregion
     }

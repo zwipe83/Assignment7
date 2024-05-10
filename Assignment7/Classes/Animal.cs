@@ -6,14 +6,30 @@
 /// 
 
 using Assignment7.Enums;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Assignment7.Classes
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Animal
+    public class Animal : INotifyPropertyChanged
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         #region Fields
 
         /// <summary>
@@ -34,7 +50,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        private AnimalId _id;
+        private AnimalId _animalId;
 
         /// <summary>
         /// 
@@ -58,7 +74,11 @@ namespace Assignment7.Classes
         public string Name
         {
             get => _name;
-            set => _name = value;
+            set
+            {  
+                _name = value; 
+                NotifyPropertyChanged(); 
+            }
         }
 
         /// <summary>
@@ -73,10 +93,10 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public AnimalId Id
+        public AnimalId AnimalId
         {
-            get => _id; 
-            set => _id = value;
+            get => _animalId; 
+            set => _animalId = value;
         }
 
         /// <summary>
@@ -145,7 +165,7 @@ namespace Assignment7.Classes
         /// <param name="animalId"></param>
         public Animal(AnimalId animalId, AnimalType animalType, string name, string description, File image)
         {
-            Id = animalId;
+            AnimalId = animalId;
             AnimalType = animalType;
             Name = name;
             Description = description;
@@ -158,7 +178,7 @@ namespace Assignment7.Classes
         /// <param name="objToCopyFrom"></param>
         public Animal(Animal objToCopyFrom)
         {
-            Id = objToCopyFrom.Id;
+            AnimalId = objToCopyFrom.AnimalId;
             AnimalType = objToCopyFrom.AnimalType;
             Name = objToCopyFrom.Name;
             Description = objToCopyFrom.Description;

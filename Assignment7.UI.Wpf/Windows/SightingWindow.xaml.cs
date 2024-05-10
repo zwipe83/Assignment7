@@ -37,7 +37,16 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         private AnimalManager _animalManager;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private Sighting _sighting;
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _editSighting = false;
         #endregion
         #region Properties
 
@@ -67,6 +76,15 @@ namespace Assignment7.UI.Wpf.Windows
             get => _sighting;
             set => _sighting = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EditSighting
+        {
+            get => _editSighting;
+            set => _editSighting = value;
+        }
         #endregion
         #region Constructors
 
@@ -82,17 +100,18 @@ namespace Assignment7.UI.Wpf.Windows
         /// 
         /// </summary>
         /// <param name="sighting"></param>
-        public SightingWindow(Sighting sighting) : this(sighting, new AnimalManager())
+        public SightingWindow(Sighting sighting) : this(sighting, new AnimalManager(), false)
         {
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public SightingWindow(Sighting sighting, AnimalManager animalManager)
+        public SightingWindow(Sighting sighting, AnimalManager animalManager, bool editSighting)
         {
             InitializeComponent();
 
+            EditSighting = editSighting;
             AnimalManager = animalManager;
             Sighting = sighting;
             MapManager = new MapManager();
@@ -115,6 +134,26 @@ namespace Assignment7.UI.Wpf.Windows
 
             txtCount.Minimum = 1;
             txtCount.Value = 1;
+
+            if(EditSighting)
+            {
+                //TODO: Get Animal name and map it to the combobox
+
+                int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
+                                              .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
+
+                if (animalIndex != -1)
+                {
+                    cmbAnimal.SelectedIndex = animalIndex;
+                }
+                else
+                {
+                    cmbAnimal.SelectedIndex = 0;
+                }
+
+                txtCount.Value = Sighting.Count;
+                dateWhen.Value = ((DateTime)Sighting.Date.D).Date.Add((Sighting.Time.T));
+            }
         }
 
         /// <summary>
@@ -142,13 +181,14 @@ namespace Assignment7.UI.Wpf.Windows
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
-            Sighting.Date = new Date((DateTime)dateWhen.Value);
-            DateTime now = DateTime.Now;
-            TimeSpan ts = (DateTime)dateWhen.Value - now;
-            Sighting.Time = new Time(ts); //TODO: This is not a correct implementation.
-            Sighting.Location = new Classes.Location(MapManager.Map.CurrentPosition);
-            Sighting.Count = (int)txtCount.Value;
+            if (!EditSighting) //TODO: Handle edit case
+            {
+                Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
+                Sighting.Date = new Date(((DateTime)dateWhen.Value).Date);
+                Sighting.Time = new Time(((DateTime)dateWhen.Value).TimeOfDay); //TODO: This is not a correct implementation.
+                Sighting.Location = new Classes.Location(MapManager.Map.CurrentPosition);
+                Sighting.Count = (int)txtCount.Value;
+            }
 
             DialogResult = true;
             this.Close();
