@@ -34,9 +34,13 @@ namespace Assignment7.Classes
             ListOfSightings.Add(sighting);
         }
 
-        public void ChangeSighting()
+        public void ChangeSighting(Sighting sighting)
         {
-            throw new System.NotImplementedException();
+            int index = ListOfSightings.IndexOf(sighting);
+            if (index != -1)
+            {
+                ListOfSightings[index] = sighting;
+            }
         }
 
         public void DeleteSighting()

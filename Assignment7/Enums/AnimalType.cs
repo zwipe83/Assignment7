@@ -19,6 +19,7 @@ namespace Assignment7.Enums
         Amphibian,
         Reptile,
         Bird,
-        Unknown
+        Unknown,
+        All = 99
     }
 }

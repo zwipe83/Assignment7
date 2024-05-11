@@ -18,6 +18,7 @@ namespace Assignment7.Classes
         {
             PrintFromCurrentSightingsList(from, DateTime.Now);
         }
+
         public void PrintFromCurrentSightingsList(DateTime From, DateTime to)
         {
             throw new System.NotImplementedException();

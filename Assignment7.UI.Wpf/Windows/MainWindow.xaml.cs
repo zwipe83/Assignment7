@@ -155,5 +155,31 @@ public partial class MainWindow : Window
     {
         Application.Current.Shutdown();
     }
+
+    private void NewCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+    private void OpenCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+    private void SaveAsCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+    private void PrintCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+    private void AboutCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void menuBtnAbout_Click(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
     #endregion
 }

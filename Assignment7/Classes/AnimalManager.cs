@@ -52,11 +52,14 @@ namespace Assignment7.Classes
         #endregion
         #region Public Methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public AnimalManager DeepCopy()
         {
             AnimalManager copy = new AnimalManager();
 
-            // Copy the ListOfAnimals
             copy.ListOfAnimals = new ObservableCollection<Animal>();
             foreach (Animal animal in this.ListOfAnimals)
             {
@@ -73,7 +76,6 @@ namespace Assignment7.Classes
 
             return copy;
         }
-
 
         /// <summary>
         /// 

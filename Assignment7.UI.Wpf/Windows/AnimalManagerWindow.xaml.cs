@@ -159,7 +159,6 @@ namespace Assignment7.UI.Wpf.Windows
             column3.Width = 150;
             GridViewControl.Columns.Add(column3);
         }
-        #endregion
 
         /// <summary>
         /// 
@@ -174,7 +173,6 @@ namespace Assignment7.UI.Wpf.Windows
                 
                 SelectedAnimal = selectedAnimal;
             }
-
         }
 
         /// <summary>
@@ -186,5 +184,6 @@ namespace Assignment7.UI.Wpf.Windows
         {
             AnimalManager.DeleteAnimal(SelectedAnimal);
         }
+        #endregion
     }
 }

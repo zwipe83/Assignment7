@@ -15,10 +15,34 @@
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>
         </ListView>
-        <ComboBox HorizontalAlignment="Left" Margin="65,31,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged"/>
-        <DatePicker HorizontalAlignment="Left" Margin="229,30,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged"/>
-        <DatePicker HorizontalAlignment="Left" Margin="349,30,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged"/>
-        <Button Content="Print" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="24" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged" FontSize="14">
+            <ComboBox.Effect>
+                <DropShadowEffect/>
+            </ComboBox.Effect>
+        </ComboBox>
+        <DatePicker HorizontalAlignment="Left" Margin="204,38,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged" Height="24" FontSize="14">
+            <DatePicker.Effect>
+                <DropShadowEffect/>
+            </DatePicker.Effect>
+        </DatePicker>
+        <DatePicker HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged" Height="24" FontSize="14">
+            <DatePicker.Effect>
+                <DropShadowEffect/>
+            </DatePicker.Effect>
+        </DatePicker>
+        <Button Content="Print selection" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint" Height="36" Width="156" FontSize="14">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="204,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="355,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.262,0.211"/>
 
     </Grid>
 </Window>

@@ -137,7 +137,7 @@ namespace Assignment7.UI.Wpf.Windows
 
             if(EditSighting)
             {
-                //TODO: Get Animal name and map it to the combobox
+                //FIXED: Get Animal name and map it to the combobox
 
                 int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
                                               .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
@@ -148,7 +148,7 @@ namespace Assignment7.UI.Wpf.Windows
                 }
                 else
                 {
-                    cmbAnimal.SelectedIndex = 0;
+                    cmbAnimal.SelectedIndex = 0; //TODO: Maybe exception?
                 }
 
                 txtCount.Value = Sighting.Count;
@@ -177,22 +177,34 @@ namespace Assignment7.UI.Wpf.Windows
             MapManager.MapControl.MapControlObj.Map = MapManager.Map.MapObj;
             contentMap.Content = MapManager.MapControl.MapControlObj;
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (!EditSighting) //TODO: Handle edit case
-            {
-                Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
-                Sighting.Date = new Date(((DateTime)dateWhen.Value).Date);
-                Sighting.Time = new Time(((DateTime)dateWhen.Value).TimeOfDay); //TODO: This is not a correct implementation.
-                Sighting.Location = new Classes.Location(MapManager.Map.CurrentPosition);
-                Sighting.Count = (int)txtCount.Value;
-            }
+            Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
+            Sighting.Date = new Date(((DateTime)dateWhen.Value).Date);
+            Sighting.Time = new Time(((DateTime)dateWhen.Value).TimeOfDay); //FIXED: This is not a correct implementation.
+            Sighting.Location = new Classes.Location(MapManager.Map.CurrentPosition);
+            Sighting.Count = (int)txtCount.Value;
 
             DialogResult = true;
             this.Close();
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
     }
 }

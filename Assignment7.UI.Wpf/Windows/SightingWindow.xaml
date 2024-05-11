@@ -6,13 +6,51 @@
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="SightingWindow" Height="450" Width="800">
+        Title="SightingWindow" Height="475" Width="820">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="76,52,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="22" IsEditable="True" IsTextSearchEnabled="True"/>
-        <Label Content="Count" HorizontalAlignment="Left" Margin="532,50,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="42"/>
-        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" Grid.ColumnSpan="2"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="734,53,0,0" VerticalAlignment="Top" Name="btnSave" Height="20" Width="29" Click="btnSave_Click"/>
-        <xceed:DateTimeUpDown HorizontalAlignment="Left" Margin="242,51,0,0" VerticalAlignment="Top" Name="dateWhen" Width="263" Height="24" Format="FullDateTime" />
-        <xceed:IntegerUpDown HorizontalAlignment="Left" Margin="579,54,0,0" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="18" />
+        <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="24" IsEditable="True" IsTextSearchEnabled="True">
+            <ComboBox.Effect>
+                <DropShadowEffect/>
+            </ComboBox.Effect>
+        </ComboBox>
+        <Label Content="How many were there?" HorizontalAlignment="Left" Margin="440,8,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="154" FontSize="14" />
+        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" Grid.ColumnSpan="2" FontSize="14">
+            <ContentControl.Effect>
+                <DropShadowEffect/>
+            </ContentControl.Effect>
+        </ContentControl>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="660,32,0,0" VerticalAlignment="Top" Name="btnSave" Height="36" Width="56" Click="btnSave_Click" FontSize="14">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <xceed:DateTimeUpDown HorizontalAlignment="Left" Margin="147,33,0,0" VerticalAlignment="Top" Name="dateWhen" Width="263" Height="24" Format="FullDateTime" FontSize="14">
+            <xceed:DateTimeUpDown.Effect>
+                <DropShadowEffect/>
+            </xceed:DateTimeUpDown.Effect>
+        </xceed:DateTimeUpDown>
+        <xceed:IntegerUpDown HorizontalAlignment="Left" Margin="440,32,0,0" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="24" FontSize="14">
+            <xceed:IntegerUpDown.Effect>
+                <DropShadowEffect/>
+            </xceed:IntegerUpDown.Effect>
+        </xceed:IntegerUpDown>
+        <Label Content="Select Animal" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Name="lblSelectAnimal" FontSize="14"/>
+        <Label Content="When did you see it?" HorizontalAlignment="Left" Margin="147,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="14"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="722,32,0,0" VerticalAlignment="Top" Height="36" Width="56" Click="btnCancel_Click" FontSize="14">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14"/>
     </Grid>
 </Window>

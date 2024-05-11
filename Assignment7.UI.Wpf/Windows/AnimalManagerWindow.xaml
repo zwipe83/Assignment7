@@ -5,18 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="AnimalManagerWindow" Height="450" Width="800">
+        Title="Manage Animal" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,0,0" Name="lstAnimals" MouseUp="lstAnimals_MouseUp">
+        <ListView Margin="0,0,0,96" Name="lstAnimals" MouseUp="lstAnimals_MouseUp">
             <ListView.View>
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>
         </ListView>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top" Name="btnAddAnimal" Click="btnAddAnimal_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="106,36,0,0" VerticalAlignment="Top" Name="btnEditAnimal" Click="btnEditAnimal_Click"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="169,36,0,0" VerticalAlignment="Top" Name="btnDeleteAnimal" Click="btnDeleteAnimal_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="689,60,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="627,60,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="17,358,0,0" VerticalAlignment="Top" Name="btnAddAnimal" Click="btnAddAnimal_Click" Height="36" Width="56">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="80,358,0,0" VerticalAlignment="Top" Name="btnEditAnimal" Click="btnEditAnimal_Click" Height="36" Width="56" IsEnabled="{Binding SelectedItems.Count, ElementName=lstAnimals}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="143,358,0,0" VerticalAlignment="Top" Name="btnDeleteAnimal" Click="btnDeleteAnimal_Click" Height="36" Width="56" IsEnabled="{Binding SelectedItems.Count, ElementName=lstAnimals}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="695,358,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click" Height="36" Width="56">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="632,358,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

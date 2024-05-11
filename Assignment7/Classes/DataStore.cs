@@ -16,7 +16,7 @@ namespace Assignment7.Classes
         /// Save to datastore
         /// </summary>
         /// <param name="file"></param>
-        /// <param name="taskList"></param>
+        /// <param name="collection"></param>
         public void SaveToJsonFile<T>(File file, ObservableCollection<T> collection)
         {
             Directory.CreateDirectory(file.Path);
@@ -29,7 +29,7 @@ namespace Assignment7.Classes
         /// Read from datastore
         /// </summary>
         /// <param name="file"></param>
-        /// <param name="taskList"></param>
+        /// <param name="collection"></param>
         public void ReadFromJsonFile<T>(File file, ObservableCollection<T> collection)
         {
             string fullPath = Path.Combine(file.Path, file.Name);
@@ -37,7 +37,7 @@ namespace Assignment7.Classes
             {
                 string json = System.IO.File.ReadAllText(fullPath);
 
-                if(json.Length <= 0)
+                if (json.Length <= 0)
                 {
                     return;
                 }

@@ -160,8 +160,12 @@ namespace Assignment7.UI.Wpf.Windows
             DialogResult = true;
             this.Close();
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -184,5 +188,6 @@ namespace Assignment7.UI.Wpf.Windows
                 lblAnimalImageId.Content = Animal.Image.Name;
             }
         }
+        #endregion
     }
 }
