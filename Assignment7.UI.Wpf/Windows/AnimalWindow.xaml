@@ -5,20 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="Add/Edit Animal" Height="450" Width="800">
+        Title="Add/Edit Animal" Height="450" Width="800" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="55,46,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="286,44,0,0" VerticalAlignment="Top" Name="lblName"/>
-        <TextBox HorizontalAlignment="Left" Margin="353,48,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName" />
-        <Button Content="..." HorizontalAlignment="Left" Margin="659,47,0,0" VerticalAlignment="Top" Width="20" Name="btnSelectImage" Click="btnSelectImage_Click"/>
-        <Label Content="Select Image" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top" Name="lblSelectImage"/>
-        <Border BorderThickness="4" HorizontalAlignment="Center" Width="800" Margin="0,108,0,0">
-            <Image HorizontalAlignment="Left" Height="237" Margin="498,6,0,0" VerticalAlignment="Top" Width="266" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
-        </Border>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="659,83,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="709,83,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click"/>
-        <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="38,122,327,53"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Name="lblAnimalId"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="514,355,0,0" VerticalAlignment="Top" Name="lblAnimalImageId"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" FontSize="14" Height="30">
+            <ComboBox.Effect>
+                <DropShadowEffect/>
+            </ComboBox.Effect>
+        </ComboBox>
+        <Label Content="What is the species called?" HorizontalAlignment="Left" Margin="158,44,0,0" VerticalAlignment="Top" Name="lblName" FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="158,72,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="120" Name="txtName" FontSize="14" Height="30" TextAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <Button Content="..." HorizontalAlignment="Left" Margin="554,68,0,0" VerticalAlignment="Top" Width="36" Name="btnSelectImage" Click="btnSelectImage_Click" Height="36">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Select Image" HorizontalAlignment="Left" Margin="460,74,0,0" VerticalAlignment="Top" Name="lblSelectImage" FontSize="14"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="634,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="704,14,0,0" VerticalAlignment="Top" Name="btnCancel" Click="btnCancel_Click" Height="36" Width="56">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="10,165,355,10" Background="LightSlateGray"/>
+        <Label Content="Animal Id:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="lblAnimalId"/>
+        <TextBox HorizontalAlignment="Left" Margin="78,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310" IsEnabled="false" Name="txtAnimalId" FontSize="14" Background="LightSlateGray"/>
+        <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Describe the animal" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Image HorizontalAlignment="Left" Height="230" Margin="460,165,0,0" VerticalAlignment="Top" Width="310" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
     </Grid>
 </Window>

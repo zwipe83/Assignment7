@@ -117,11 +117,10 @@ namespace Assignment7.UI.Wpf.Windows
                 txtDescription.Text = Animal.Description;
 
                 var viewModel = (AnimalWindowViewModel)DataContext;
-                viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath, $"{Animal.Image.Name}")}";
+                viewModel.ImagePath = @$"{System.IO.Path.Combine(System.IO.Path.Combine(AppDirectory, Animal.Image.Path), $"{Animal.Image.Name}")}";
             }
 
-            lblAnimalId.Content = Animal.AnimalId;
-            lblAnimalImageId.Content = Animal.Image.Name;
+            txtAnimalId.Text = Animal.AnimalId.ToString();
         }
 
         /// <summary>
@@ -172,22 +171,28 @@ namespace Assignment7.UI.Wpf.Windows
             openFileDialog.Filter = "Jpeg files (*.jpg)|*.jpg";
             if (openFileDialog.ShowDialog() == true)
             {
-                string filePath = FileManager.CopyFile(openFileDialog.FileName, ImagesPath);
-                string extension = System.IO.Path.GetExtension(filePath);
+                string appPath = AppDirectory;
+                Animal.Image.Path = "Images";
+
+                string filePath = FileManager.CopyFile(openFileDialog.FileName, System.IO.Path.Combine(appPath, Animal.Image.Path));
+                string extension = FileManager.GetExtension(filePath);
                 string newFileName = $"{Animal.AnimalId}{extension}";
 
-                Animal.Image.Path = ImagesPath;
                 Animal.Image.Name = newFileName;
 
                 FileManager.RenameFile(filePath, $"{Animal.Image.Name}");
 
 
                 var viewModel = (AnimalWindowViewModel)DataContext;
-                viewModel.ImagePath = @$"{System.IO.Path.Combine(ImagesPath,$"{Animal.Image.Name}")}";
-
-                lblAnimalImageId.Content = Animal.Image.Name;
+                viewModel.ImagePath = @$"{System.IO.Path.Combine(System.IO.Path.Combine(appPath, Animal.Image.Path), $"{Animal.Image.Name}")}";
             }
         }
         #endregion
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

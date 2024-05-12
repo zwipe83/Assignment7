@@ -185,5 +185,17 @@ namespace Assignment7.UI.Wpf.Windows
             AnimalManager.DeleteAnimal(SelectedAnimal);
         }
         #endregion
+
+        private void lstAnimals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            lstAnimals_MouseUp(sender, e);
+            btnEditAnimal_Click(sender, e);
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

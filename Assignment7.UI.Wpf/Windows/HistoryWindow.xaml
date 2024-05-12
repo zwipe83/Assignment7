@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="Sightings History" Height="450" Width="1280">
+        Title="Sightings History" Height="450" Width="1280" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick">
+        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="LightSlateGray">
             <ListView.View>
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>
@@ -43,6 +43,16 @@
         <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="From" HorizontalAlignment="Left" Margin="204,14,0,0" VerticalAlignment="Top"/>
         <Label Content="To" HorizontalAlignment="Left" Margin="355,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.262,0.211"/>
+        <Button Content="Close" HorizontalAlignment="Left" Margin="1165,38,0,0" VerticalAlignment="Top" Height="36" Width="56" Name="btnClose" Click="btnClose_Click">
+        <Button.Effect>
+            <DropShadowEffect/>
+        </Button.Effect>
+        <Button.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

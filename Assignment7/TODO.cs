@@ -9,9 +9,13 @@
 //TODO: Add possibility to add image to sighting
 //TODO: Maybe combine Date and Time classes to one, DateTime?
 
-//TODO: History.SightingWindow doesnt load stored WorldPosition.
+//FIXED: History.SightingWindow doesnt load stored WorldPosition.
 //TODO: Add possibilty to remove Sighting from History
-//TODO: Prettify AnimalWindow
+//FIXED: Prettify AnimalWindow
 //TODO: Implement printing functions
 //TODO: Implement menu functions
 //TODO: Add description field to Sighting.
+
+//TODO: Add method to clear unlinked images
+//TODO: If you change for example animal in a sighting in history view, the change isnt persisted
+//TODO: Cant do both drag window and map operation in sightingwindow at the same time.

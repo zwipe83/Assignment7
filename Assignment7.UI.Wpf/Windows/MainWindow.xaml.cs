@@ -40,22 +40,14 @@ public partial class MainWindow : Window
     /// <summary>
     /// 
     /// </summary>
-    private static readonly string _imagesPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Images"); //Path to app folder Images folder
+    private static readonly string _datastorePath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "DataStore");
 
     /// <summary>
     /// 
     /// </summary>
-    private static readonly string _datastorePath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "DataStore");
+    private static readonly string _appDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
     #endregion
     #region Properties
-    public static string ImagesPath
-    {
-        get => _imagesPath;
-    }
-    public static string DataStorePath
-    {
-        get => _datastorePath;
-    }
     public DataStore DataStore
     {
         get => dataStore;
@@ -67,6 +59,14 @@ public partial class MainWindow : Window
     public SightingManager SightingManager
     {
         get => sightingManager;
+    }
+    public static string DataStorePath
+    {
+        get => _datastorePath;
+    }
+    public static string AppDirectory
+    {
+        get => _appDirectory;
     }
     #endregion
     #region Constructors
@@ -182,4 +182,10 @@ public partial class MainWindow : Window
         throw new NotImplementedException();
     }
     #endregion
+
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ChangedButton == MouseButton.Left)
+            DragMove();
+    }
 }

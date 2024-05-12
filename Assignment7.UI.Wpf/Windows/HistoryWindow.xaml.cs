@@ -101,7 +101,7 @@ namespace Assignment7.UI.Wpf.Windows
             cmbAnimalType.Items.Clear();
             string[] descriptions = GetDescriptions<AnimalType>();
             cmbAnimalType.ItemsSource = descriptions;
-            cmbAnimalType.SelectedIndex = (int)AnimalType.Mammal;
+            cmbAnimalType.SelectedIndex = (int)AnimalType.All;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Assignment7.UI.Wpf.Windows
         {
             //TODO: Make this more pretty
             // Sort the ListOfSightings based on date and time
-            var sortedSightings = SightingManager.ListOfSightings.OrderBy(s => s.Date.D).ThenBy(s => s.Time.T).ThenBy(s => s.Animal.Name).ThenBy(s => s.Count);
+            var sortedSightings = SightingManager.ListOfSightings.OrderByDescending(s => s.Date.D).ThenByDescending(s => s.Time.T).ThenBy(s => s.Animal.Name).ThenBy(s => s.Count);
 
             lstSightings.ItemsSource = sortedSightings;
 
@@ -159,6 +159,8 @@ namespace Assignment7.UI.Wpf.Windows
 
             view.Filter = item =>
                 {
+                    if ((AnimalType)cmbAnimalType.SelectedIndex == AnimalType.All)
+                        return true;
                     Sighting sighting = item as Sighting;
                     return sighting.Animal.AnimalType == (AnimalType)cmbAnimalType.SelectedIndex;
                 };
@@ -255,5 +257,16 @@ namespace Assignment7.UI.Wpf.Windows
             }
         }
         #endregion
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment7.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Assignment7
         /// <summary>
         /// 
         /// </summary>
-        private Map _map = new();
+        private Map _map;
 
         /// <summary>
         /// 
@@ -38,5 +39,14 @@ namespace Assignment7
             protected set => _mapControl = value; 
         } 
         #endregion
+
+        public MapManager() : this(new WorldPosition(1460179, 7522646))
+        { 
+        }
+
+        public MapManager(WorldPosition worldPosition)
+        {
+            _map = new Map(worldPosition);
+        }
     }
 }

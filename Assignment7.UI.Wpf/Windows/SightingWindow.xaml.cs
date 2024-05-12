@@ -111,10 +111,14 @@ namespace Assignment7.UI.Wpf.Windows
         {
             InitializeComponent();
 
-            EditSighting = editSighting;
             AnimalManager = animalManager;
             Sighting = sighting;
-            MapManager = new MapManager();
+
+            EditSighting = editSighting;
+            if (EditSighting)
+                MapManager = new MapManager(Sighting.Location.WorldPosition);
+            else
+                MapManager = new MapManager();
 
             InitGUI();
         }
@@ -206,5 +210,11 @@ namespace Assignment7.UI.Wpf.Windows
             this.Close();
         }
         #endregion
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

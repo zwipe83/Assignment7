@@ -23,8 +23,8 @@ namespace Assignment7
         #region Fields
 
 
-        private readonly WorldPosition homePosition = new WorldPosition(1460179, 7522646);
-        private WorldPosition currentPosition = new WorldPosition(1460179, 7522646);
+        private WorldPosition _homePosition;
+        private WorldPosition _currentPosition = new WorldPosition(1460179, 7522646);
 
         /// <summary>
         /// 
@@ -47,7 +47,17 @@ namespace Assignment7
         /// </summary>
         public WorldPosition CurrentPosition
         {
-            get => currentPosition;
+            get => _currentPosition;
+            set => _currentPosition = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public WorldPosition HomePosition
+        {
+            get => _homePosition;
+            set => _homePosition = value;
         }
         #endregion
         #region Constructors
@@ -55,8 +65,17 @@ namespace Assignment7
         /// <summary>
         /// 
         /// </summary>
-        public Map()
+        public Map() : this(new WorldPosition(1460179, 7522646))
         {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Map(WorldPosition worldPosition)
+        {
+            HomePosition = worldPosition;
+            CurrentPosition = worldPosition;
             CreateMapAsync();
         }
         #endregion
@@ -85,17 +104,17 @@ namespace Assignment7
             // Add a point to the layer using the Info position
             layer?.Features.Add(new GeometryFeature
             {
-                Geometry = new NetTopologySuite.Geometries.Point(homePosition.X, homePosition.Y)
+                Geometry = new NetTopologySuite.Geometries.Point(HomePosition.X, HomePosition.Y)
             });
 
-            MapObj.Home = n => n.CenterOn(homePosition.X, homePosition.Y);
+            MapObj.Home = n => n.CenterOn(HomePosition.X, HomePosition.Y);
 
             MapObj.Info += (s, e) =>
             {
                 if (e.MapInfo?.WorldPosition == null) return;
 
-                currentPosition.X = e.MapInfo.WorldPosition.X;
-                currentPosition.Y = e.MapInfo.WorldPosition.Y;
+                _currentPosition.X = e.MapInfo.WorldPosition.X;
+                _currentPosition.Y = e.MapInfo.WorldPosition.Y;
 
                 layer?.Features.Clear();
 

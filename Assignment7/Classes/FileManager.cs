@@ -33,11 +33,12 @@ namespace Assignment7.Classes
 
         public string CopyFile(string sourceFilePath, string destinationFolderPath)
         {
-            string fileName = Path.GetFileName(sourceFilePath);
+            string fileName = Path.GetFileName(sourceFilePath); 
+
             string destinationFilePath = Path.Combine(destinationFolderPath, fileName);
 
             // Create the destination folder if it doesn't exist
-            Directory.CreateDirectory(destinationFolderPath);
+            var di = Directory.CreateDirectory(destinationFolderPath);
 
             System.IO.File.Copy(sourceFilePath, destinationFilePath, true);
 
@@ -58,8 +59,12 @@ namespace Assignment7.Classes
             string newFilePath = Path.Combine(directoryPath, newFileName);
 
             // Rename the file
-            System.IO.File.Move(filePath, newFilePath, true);
+            System.IO.File.Move(filePath, newFilePath, true); //TODO: Handle exception if file is open by another process
         }
 
+        public string GetExtension(string filePath)
+        {
+            return System.IO.Path.GetExtension(filePath) ?? string.Empty;
+        }
     }
 }

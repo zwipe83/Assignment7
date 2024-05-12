@@ -12,7 +12,7 @@ namespace Assignment7.Enums
     /// </summary>
     public enum AnimalType
     {
-        //TODO: Add Any/Unknown/Other?
+        //FIXED: Add Any/Unknown/Other?
         Mammal,
         Invertebrate,
         Fish,
@@ -20,6 +20,6 @@ namespace Assignment7.Enums
         Reptile,
         Bird,
         Unknown,
-        All = 99
+        All
     }
 }

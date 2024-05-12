@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf"
         mc:Ignorable="d"
-        Title="WildSighting by Samuel Jeffman" Height="600" Width="800" Background="LightSteelBlue">
+        Title="WildSights by Samuel Jeffman" Height="600" Width="800" Background="LightSteelBlue" MouseDown="Window_MouseDown" WindowStyle="None">
     <Window.CommandBindings>
         <CommandBinding Command="New" Executed="NewCommandBinding_Executed"/>
         <CommandBinding Command="Open" Executed="OpenCommandBinding_Executed"/>
@@ -20,7 +20,7 @@
     </Window.InputBindings>
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top" Height="19" Margin="0,0,0,0">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" Name="menuBtnNew" Command="New" InputGestureText="Ctrl+N"/>
                     <Separator />
@@ -35,9 +35,9 @@
                     <MenuItem Header="_About" Name="menuBtnAbout" Click="menuBtnAbout_Click"/>
                 </MenuItem>
             </Menu>
-            <TextBox AcceptsReturn="True" />
+            <StackPanel></StackPanel>
         </DockPanel>
-        <Label Content="WildSighting" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <Label Content="WildSights" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Button Content="Add Sighting" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddSighting" Click="btnAddSighting_Click">
             <Button.Effect>
                 <DropShadowEffect/>
