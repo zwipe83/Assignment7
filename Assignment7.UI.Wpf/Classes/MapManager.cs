@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assignment7
+namespace Assignment7.UI.Wpf.Classes
 {
     public class MapManager
     {

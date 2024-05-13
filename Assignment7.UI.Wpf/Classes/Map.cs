@@ -16,7 +16,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Assignment7.Structs;
 
-namespace Assignment7
+namespace Assignment7.UI.Wpf.Classes
 {
     public class Map
     {

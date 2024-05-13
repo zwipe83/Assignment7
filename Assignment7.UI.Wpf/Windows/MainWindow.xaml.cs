@@ -95,9 +95,18 @@ public partial class MainWindow : Window
     private void btnHistory_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = animalManager.DeepCopy();
-        SightingManager sightingManagerCopy = new SightingManager(SightingManager);
+        SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working?
         HistoryWindow window = new HistoryWindow(sightingManagerCopy, animalManagerCopy);
         window.ShowDialog();
+
+        if (window.DialogResult.HasValue && window.DialogResult.Value)
+        {
+            DataStore.SaveToJsonFile(new File(DataStorePath, "Sightings.json"), window.SightingManager.ListOfSightings);
+        }
+        else
+        {
+            //Do nothing
+        }
     }
 
     /// <summary>
@@ -114,7 +123,7 @@ public partial class MainWindow : Window
 
         if(window.DialogResult.HasValue && window.DialogResult.Value)
         {
-            animalManager = window.AnimalManager; //TODO: Deep copy?
+            animalManager = window.AnimalManager.DeepCopy(); //FIXED: Deep copy?
             DataStore.SaveToJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
         }
         else

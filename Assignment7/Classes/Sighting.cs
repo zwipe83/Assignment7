@@ -27,12 +27,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        private Date _date;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Time _time;
+        private CustomDateTime _when;
 
         /// <summary>
         /// 
@@ -81,20 +76,10 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Date Date
+        public CustomDateTime When
         {
-            get => _date;
-            set => _date = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Time Time
-        {
-            get => _time;
-            set => _time = value;
-
+            get => _when;
+            set => _when = value;
         }
 
         /// <summary>
@@ -139,37 +124,30 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location) : this(sightingId, animal, location, new Date())
+        public Sighting(SightingId sightingId, Animal animal, Location location) : this(sightingId, animal, location, new CustomDateTime())
         {
         }
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, Date date) : this(sightingId, animal, location, date, new Time())
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime) : this(sightingId, animal, location, dateTime, new File())
         {
         }
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, Date date, Time time) : this(sightingId, animal, location, date, time, new File())
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, 1)
         {
         }
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, Date date, Time time, File image) : this(sightingId, animal, location, date, time, image, 1)
-        {
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, Date date, Time time, File image, int count) 
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, int count) 
         {
             Id = sightingId;
             Animal = animal;
             Location = location;
-            Date = date;
-            Time = time;
+            When = dateTime;
             Image = image;
             Count = count;
         }
@@ -183,10 +161,15 @@ namespace Assignment7.Classes
             Id = new SightingId(objToCopyFrom.Id); // Create a new instance of SightingId
             Animal = new Animal(objToCopyFrom.Animal); // Create a new instance of Animal
             Location = new Location(objToCopyFrom.Location); // Create a new instance of Location
-            Date = new Date(objToCopyFrom.Date); // Create a new instance of Date
-            Time = new Time(objToCopyFrom.Time); // Create a new instance of Time
+            When = new CustomDateTime(objToCopyFrom.When); // Create a new instance of Date
             Image = new File(objToCopyFrom.Image); // Create a new instance of File
             Count = objToCopyFrom.Count;
+        }
+        #endregion
+        #region Public Methods
+        public override string ToString()
+        {
+            return $"{When} {Animal.Name} {Count} {Location}";
         }
         #endregion
     }

@@ -31,5 +31,16 @@ namespace Assignment7.Classes
         {
             WorldPosition = objToCopyFrom.WorldPosition;
         }
+        #region Public Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{WorldPosition.X:N2} {WorldPosition.Y:N2}";
+        }
+        #endregion
     }
 }

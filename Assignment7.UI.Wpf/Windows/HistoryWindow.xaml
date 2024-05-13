@@ -30,7 +30,7 @@
                 <DropShadowEffect/>
             </DatePicker.Effect>
         </DatePicker>
-        <Button Content="Print selection" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint" Height="36" Width="156" FontSize="14">
+        <Button Content="Print selection" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint" Height="36" Width="156" FontSize="14" Click="btnPrint_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

@@ -29,6 +29,16 @@ namespace Assignment7.Classes
             ListOfSightings = new ObservableCollection<Sighting>(sightingManager.ListOfSightings);
         }
 
+        public SightingManager DeepCopy()
+        {
+            SightingManager copy = new SightingManager();
+
+            // Copy the values of all properties and fields to the new instance
+            copy.ListOfSightings = new ObservableCollection<Sighting>(ListOfSightings);
+
+            return copy;
+        }
+
         public void AddSighting(Sighting sighting)
         {
             ListOfSightings.Add(sighting);

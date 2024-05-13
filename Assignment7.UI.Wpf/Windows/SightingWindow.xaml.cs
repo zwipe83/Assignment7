@@ -17,6 +17,7 @@ using Assignment7.Classes;
 using Assignment7.Enums;
 using Assignment7.Structs;
 using Xceed.Wpf.Toolkit;
+using Assignment7.UI.Wpf.Classes;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -156,7 +157,7 @@ namespace Assignment7.UI.Wpf.Windows
                 }
 
                 txtCount.Value = Sighting.Count;
-                dateWhen.Value = ((DateTime)Sighting.Date.D).Date.Add((Sighting.Time.T));
+                dateWhen.Value = ((DateTime)Sighting.When.DateTime);
             }
         }
 
@@ -190,9 +191,8 @@ namespace Assignment7.UI.Wpf.Windows
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
-            Sighting.Date = new Date(((DateTime)dateWhen.Value).Date);
-            Sighting.Time = new Time(((DateTime)dateWhen.Value).TimeOfDay); //FIXED: This is not a correct implementation.
-            Sighting.Location = new Classes.Location(MapManager.Map.CurrentPosition);
+            Sighting.When = new CustomDateTime((DateTime)dateWhen.Value);
+            Sighting.Location = new Assignment7.Classes.Location(MapManager.Map.CurrentPosition);
             Sighting.Count = (int)txtCount.Value;
 
             DialogResult = true;

@@ -13,7 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit.Core.Converters;
 using static Assignment7.Helpers.EnumHelper;
+using Assignment7.UI.Wpf.Classes;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -23,6 +25,11 @@ namespace Assignment7.UI.Wpf.Windows
     public partial class HistoryWindow : Window
     {
         #region Fields
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private PrintManager _printManager;
 
         /// <summary>
         /// 
@@ -65,6 +72,14 @@ namespace Assignment7.UI.Wpf.Windows
             get => _selectedSighting;
             set => _selectedSighting = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PrintManager PrintManager
+        {
+            get => _printManager;
+        }
         #endregion
         #region Constructors
 
@@ -77,6 +92,7 @@ namespace Assignment7.UI.Wpf.Windows
 
             _sightingManager = sightingManager;
             _animalManager = animalManager;
+            _printManager = new PrintManager();
 
             InitGUI();
         }
@@ -111,19 +127,19 @@ namespace Assignment7.UI.Wpf.Windows
         {
             //TODO: Make this more pretty
             // Sort the ListOfSightings based on date and time
-            var sortedSightings = SightingManager.ListOfSightings.OrderByDescending(s => s.Date.D).ThenByDescending(s => s.Time.T).ThenBy(s => s.Animal.Name).ThenBy(s => s.Count);
+            var sortedSightings = SightingManager.ListOfSightings.OrderByDescending(s => s.When.DateTime.Date).ThenByDescending(s => s.When.DateTime.TimeOfDay).ThenBy(s => s.Animal.Name).ThenBy(s => s.Count);
 
             lstSightings.ItemsSource = sortedSightings;
 
             GridViewColumn column0 = new GridViewColumn();
             column0.Header = "Date";
-            column0.DisplayMemberBinding = new Binding("Date.D") { StringFormat = "yyyy-MM-dd" };
+            column0.DisplayMemberBinding = new Binding("When.DateTime") { StringFormat = "yyyy-MM-dd" };
             column0.Width = 150;
             GridViewControl.Columns.Add(column0);
 
             GridViewColumn column00 = new GridViewColumn();
             column00.Header = "Time";
-            column00.DisplayMemberBinding = new Binding("Time.T") { StringFormat = "hh\\:mm" };
+            column00.DisplayMemberBinding = new Binding("When.DateTime") { StringFormat = "HH\\:mm" };
             column00.Width = 150;
             GridViewControl.Columns.Add(column00);
 
@@ -169,7 +185,7 @@ namespace Assignment7.UI.Wpf.Windows
         /// <summary>
         /// 
         /// </summary>
-        private void FilterListOnDateRange()
+        private CollectionView FilterListOnDateRange()
         {
             // Get the selected "From" and "To" dates
             DateTime fromDate = dateFrom.SelectedDate ?? DateTime.MinValue;
@@ -179,15 +195,17 @@ namespace Assignment7.UI.Wpf.Windows
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstSightings.ItemsSource);
 
             if (view == null)
-                return;
+                return null;
 
             view.Filter = item =>
             {
                 Sighting sighting = item as Sighting;
-                DateTime sightingDate = sighting.Date.D;
+                DateTime sightingDate = sighting.When.DateTime.Date;
 
                 return sightingDate >= fromDate && sightingDate <= toDate;
             };
+
+            return view;
         }
 
         /// <summary>
@@ -244,8 +262,7 @@ namespace Assignment7.UI.Wpf.Windows
 
             if (window.DialogResult.HasValue && window.DialogResult.Value)
             {
-                SelectedSighting.Date.D = window.Sighting.Date.D;
-                SelectedSighting.Time.T = window.Sighting.Time.T;
+                SelectedSighting.When.DateTime = window.Sighting.When.DateTime;
                 SelectedSighting.Count = window.Sighting.Count;
                 SelectedSighting.Animal = window.Sighting.Animal;
                 SightingManager.ChangeSighting(window.Sighting);
@@ -260,13 +277,40 @@ namespace Assignment7.UI.Wpf.Windows
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            // Show a confirmation dialog box
+            MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            // Check the user's response
+            if (result == MessageBoxResult.Yes)
+            {
+                DialogResult = true;
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            var filteredView = FilterListOnDateRange();
+
+            FlowDocument doc = new FlowDocument();
+            foreach (var item in filteredView)
+            {
+                // Add your items to the document
+                doc.Blocks.Add(new Paragraph(new Run(item.ToString())));
+            }
+
+
+            PrintManager.PrintFromCurrentSightingsList(doc);
         }
     }
 }
