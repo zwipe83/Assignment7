@@ -1,6 +1,5 @@
 ﻿
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 /// <summary>
 /// Filename: AnimalManager.cs
@@ -11,6 +10,9 @@ using System.Collections.Specialized;
 
 namespace Assignment7.Classes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AnimalManager
     {
         #region Fields
@@ -119,6 +121,22 @@ namespace Assignment7.Classes
         public Animal GetAnimal(AnimalId animalId)
         {
             return ListOfAnimals.FirstOrDefault(animal => animal.AnimalId == animalId);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<AnimalId> GetAnimalIds()
+        {
+            List<AnimalId> animalIds = new List<AnimalId>();
+
+            foreach (Animal animal in ListOfAnimals)
+            {
+                animalIds.Add(animal.AnimalId);
+            }
+
+            return animalIds;
         }
         #endregion
     }

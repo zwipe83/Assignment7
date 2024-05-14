@@ -13,11 +13,21 @@ namespace Assignment7.UI.Wpf.Classes
 {
     public class PrintManager
     {
+        #region Public Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void PrintFromJsonFile()
         {
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doc"></param>
         public void PrintFromCurrentSightingsList(FlowDocument doc)
         {
             PrintDialog printDialog = new PrintDialog();
@@ -26,5 +36,6 @@ namespace Assignment7.UI.Wpf.Classes
                 printDialog.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "Filtered Collection");
             }
         }
+        #endregion
     }
 }

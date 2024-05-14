@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment7.Classes
+﻿namespace Assignment7.Classes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CustomDateTime
     {
         #region Fields
@@ -55,7 +51,7 @@ namespace Assignment7.Classes
             DateTime = objToCopyFrom.DateTime;
         }
         #endregion
-        #region Public Methods
+        #region Overridden Methods
 
         /// <summary>
         /// 
@@ -63,7 +59,7 @@ namespace Assignment7.Classes
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{DateTime.Date.ToString("yyyy-MM-dd")} {DateTime.TimeOfDay.ToString("hh\\:mm")}";
+            return $"{DateTime.Date:yyyy-MM-dd} {DateTime.TimeOfDay:hh\\:mm}";
         }
         #endregion
     }

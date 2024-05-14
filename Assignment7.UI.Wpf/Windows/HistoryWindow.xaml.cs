@@ -1,21 +1,12 @@
 ﻿using Assignment7.Classes;
 using Assignment7.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assignment7.UI.Wpf.Classes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit.Core.Converters;
 using static Assignment7.Helpers.EnumHelper;
-using Assignment7.UI.Wpf.Classes;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -265,7 +256,7 @@ namespace Assignment7.UI.Wpf.Windows
                 SelectedSighting.When.DateTime = window.Sighting.When.DateTime;
                 SelectedSighting.Count = window.Sighting.Count;
                 SelectedSighting.Animal = window.Sighting.Animal;
-                SightingManager.ChangeSighting(window.Sighting);
+                SightingManager.EditSighting(window.Sighting);
                 lstSightings.Items.Refresh();
             }
             else
@@ -273,8 +264,12 @@ namespace Assignment7.UI.Wpf.Windows
                 //Do nothing...
             }
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             // Show a confirmation dialog box
@@ -292,12 +287,22 @@ namespace Assignment7.UI.Wpf.Windows
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
             var filteredView = FilterListOnDateRange();
@@ -308,9 +313,9 @@ namespace Assignment7.UI.Wpf.Windows
                 // Add your items to the document
                 doc.Blocks.Add(new Paragraph(new Run(item.ToString())));
             }
-
-
             PrintManager.PrintFromCurrentSightingsList(doc);
         }
+        #endregion
+
     }
 }

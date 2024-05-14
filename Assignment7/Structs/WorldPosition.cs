@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment7.Structs
+﻿namespace Assignment7.Structs
 {
     public struct WorldPosition
     {
@@ -47,7 +41,7 @@ namespace Assignment7.Structs
         }
         public WorldPosition(double x, double y)
         {
-            X = x; 
+            X = x;
             Y = y;
         }
         #endregion

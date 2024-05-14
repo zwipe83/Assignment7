@@ -1,16 +1,7 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using Assignment7.Classes;
 using Assignment7.UI.Wpf.Windows;
-using Assignment7.Classes;
-using System.IO.Packaging;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Assignment7.UI.Wpf;
 
@@ -35,6 +26,11 @@ public partial class MainWindow : Window
     /// <summary>
     /// 
     /// </summary>
+    private FileManager fileManager;
+
+    /// <summary>
+    /// 
+    /// </summary>
     private DataStore dataStore;
 
     /// <summary>
@@ -48,28 +44,57 @@ public partial class MainWindow : Window
     private static readonly string _appDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
     #endregion
     #region Properties
+
+    /// <summary>
+    /// 
+    /// </summary>
     public DataStore DataStore
     {
         get => dataStore;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public AnimalManager AnimalManager
     {
         get => animalManager;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public FileManager FileManager
+    {
+        get => fileManager;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public SightingManager SightingManager
     {
         get => sightingManager;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static string DataStorePath
     {
         get => _datastorePath;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static string AppDirectory
     {
         get => _appDirectory;
     }
     #endregion
     #region Constructors
+
     /// <summary>
     /// 
     /// </summary>
@@ -79,6 +104,7 @@ public partial class MainWindow : Window
 
         sightingManager = new SightingManager();
         animalManager = new AnimalManager();
+        fileManager = new FileManager();
         dataStore = new DataStore();
 
         DataStore.ReadFromJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
@@ -121,7 +147,7 @@ public partial class MainWindow : Window
         AnimalManagerWindow window = new AnimalManagerWindow(animalManagerCopy);
         window.ShowDialog();
 
-        if(window.DialogResult.HasValue && window.DialogResult.Value)
+        if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
             animalManager = window.AnimalManager.DeepCopy(); //FIXED: Deep copy?
             DataStore.SaveToJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
@@ -141,7 +167,7 @@ public partial class MainWindow : Window
     {
         AnimalManager animalManagerCopy = animalManager.DeepCopy();
         SightingWindow window = new SightingWindow(new Sighting(), animalManagerCopy, false);
-        
+
         window.ShowDialog();
 
         if (window.DialogResult.HasValue && window.DialogResult.Value)
@@ -190,11 +216,50 @@ public partial class MainWindow : Window
     {
         throw new NotImplementedException();
     }
-    #endregion
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ChangedButton == MouseButton.Left)
             DragMove();
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void menuBtnClearImages_Click(object sender, RoutedEventArgs e)
+    {
+        List<AnimalId> animalIds = AnimalManager.GetAnimalIds();
+
+        if (animalIds == null)
+            return;
+
+        List<string> orphanedImages = FileManager.FindOrphanedImages(animalIds);
+
+        if (orphanedImages.Count <= 0)
+        {
+            MessageBox.Show("No unused files were found in Images folder. All seems OK!", "Info");
+            return;
+        }
+
+        // Show a confirmation dialog box
+        MessageBoxResult result = MessageBox.Show("Unused files were found in Images folder, are your sure you want to delete them?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+        // Check the user's response
+        if (result == MessageBoxResult.Yes)
+        {
+            FileManager.DeleteFiles(orphanedImages, "Images");
+        }
+        else
+        {
+            //Nothing...
+        }
+    }
+    #endregion
 }

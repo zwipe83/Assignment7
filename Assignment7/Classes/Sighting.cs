@@ -112,7 +112,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId) : this(sightingId, new Animal()) 
+        public Sighting(SightingId sightingId) : this(sightingId, new Animal())
         {
         }
         /// <summary>
@@ -142,7 +142,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, int count) 
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, int count)
         {
             Id = sightingId;
             Animal = animal;
@@ -166,7 +166,12 @@ namespace Assignment7.Classes
             Count = objToCopyFrom.Count;
         }
         #endregion
-        #region Public Methods
+        #region Overridden Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{When} {Animal.Name} {Count} {Location}";

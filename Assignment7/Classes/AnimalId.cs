@@ -51,15 +51,16 @@ namespace Assignment7.Classes
             Id = id;
         }
         #endregion
-        #region Public Methods
+        #region Overridden Methods
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString() 
-        { 
-            return Id.ToString();
+        public override string ToString()
+        {
+            string s = Id.ToString();
+            return s;
         }
         #endregion
     }

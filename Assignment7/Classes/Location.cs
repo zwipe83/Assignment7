@@ -10,28 +10,52 @@ namespace Assignment7.Classes
 {
     public class Location
     {
-        private WorldPosition _worldPosition;
+        #region Fields
 
-        public WorldPosition WorldPosition 
-        { 
+        /// <summary>
+        /// 
+        /// </summary>
+        private WorldPosition _worldPosition;
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public WorldPosition WorldPosition
+        {
             get => _worldPosition;
             set => _worldPosition = value;
         }
+        #endregion
+        #region Constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Location() : this(new WorldPosition())
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="worldPosition"></param>
         public Location(WorldPosition worldPosition)
         {
             WorldPosition = worldPosition;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objToCopyFrom"></param>
         public Location(Location objToCopyFrom)
         {
             WorldPosition = objToCopyFrom.WorldPosition;
         }
-        #region Public Methods
+        #endregion
+        #region Overridden Methods
 
         /// <summary>
         /// 

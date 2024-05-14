@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assignment7.Classes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Assignment7.Classes;
-using Assignment7.Enums;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -68,12 +58,12 @@ namespace Assignment7.UI.Wpf.Windows
             AnimalWindow window = new AnimalWindow();
             window.ShowDialog();
 
-            if(window.DialogResult.HasValue && window.DialogResult.Value)
+            if (window.DialogResult.HasValue && window.DialogResult.Value)
             {
                 AnimalManager.AddAnimal(window.Animal);
             }
-            else 
-            { 
+            else
+            {
                 //Do nothing...
             }
         }
@@ -170,7 +160,7 @@ namespace Assignment7.UI.Wpf.Windows
             if (lstAnimals.SelectedItem != null)
             {
                 Animal selectedAnimal = (Animal)lstAnimals.SelectedItem;
-                
+
                 SelectedAnimal = selectedAnimal;
             }
         }
@@ -184,18 +174,28 @@ namespace Assignment7.UI.Wpf.Windows
         {
             AnimalManager.DeleteAnimal(SelectedAnimal);
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstAnimals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             lstAnimals_MouseUp(sender, e);
             btnEditAnimal_Click(sender, e);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+        #endregion
     }
 }

@@ -75,9 +75,9 @@ namespace Assignment7.Classes
         {
             get => _name;
             set
-            {  
-                _name = value; 
-                NotifyPropertyChanged(); 
+            {
+                _name = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -95,7 +95,7 @@ namespace Assignment7.Classes
         /// </summary>
         public AnimalId AnimalId
         {
-            get => _animalId; 
+            get => _animalId;
             set => _animalId = value;
         }
 
@@ -104,7 +104,7 @@ namespace Assignment7.Classes
         /// </summary>
         public File Image
         {
-            get => _image ?? new File(); 
+            get => _image ?? new File();
             set => _image = value;
         }
         #endregion

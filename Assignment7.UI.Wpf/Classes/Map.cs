@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Assignment7.Structs;
+using Mapsui;
 using Mapsui.Layers;
+using Mapsui.Nts;
 using Mapsui.Styles;
 using Mapsui.Tiling;
-using Mapsui;
-using Mapsui.UI.Wpf;
-using Mapsui.Nts;
-using NetTopologySuite.Geometries;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
-using Assignment7.Structs;
 
 namespace Assignment7.UI.Wpf.Classes
 {
@@ -38,7 +27,7 @@ namespace Assignment7.UI.Wpf.Classes
         /// </summary>
         public Mapsui.Map MapObj
         {
-            get => _map; 
+            get => _map;
             protected set => _map = value;
         }
 

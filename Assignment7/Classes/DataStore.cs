@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json;
-using System.Collections.ObjectModel;
 
 namespace Assignment7.Classes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataStore
     {
         //TODO: Add some form of version handler
+        #region Public Methods
 
         /// <summary>
         /// Save to datastore
@@ -49,5 +48,6 @@ namespace Assignment7.Classes
                 }
             }
         }
+        #endregion
     }
 }

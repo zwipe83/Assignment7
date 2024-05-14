@@ -1,8 +1,4 @@
 ﻿using Assignment7.Structs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Assignment7.UI.Wpf.Classes
 {
@@ -25,28 +21,37 @@ namespace Assignment7.UI.Wpf.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Map Map 
-        { 
+        public Map Map
+        {
             get => _map;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public MapControl MapControl 
-        { 
-            get => _mapControl; 
-            protected set => _mapControl = value; 
-        } 
+        public MapControl MapControl
+        {
+            get => _mapControl;
+            protected set => _mapControl = value;
+        }
         #endregion
+        #region Constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MapManager() : this(new WorldPosition(1460179, 7522646))
-        { 
+        {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="worldPosition"></param>
         public MapManager(WorldPosition worldPosition)
         {
             _map = new Map(worldPosition);
         }
+        #endregion
     }
 }

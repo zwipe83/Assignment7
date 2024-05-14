@@ -54,10 +54,10 @@ namespace Assignment7.Classes
         /// <param name="objToCopyFrom"></param>
         public SightingId(SightingId objToCopyFrom)
         {
-            Id= objToCopyFrom.Id;
+            Id = objToCopyFrom.Id;
         }
         #endregion
-        #region Public Methods
+        #region Overridden Methods
 
         /// <summary>
         /// 

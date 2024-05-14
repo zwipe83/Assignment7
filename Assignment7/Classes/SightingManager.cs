@@ -11,24 +11,49 @@ namespace Assignment7.Classes
 {
     public class SightingManager
     {
-        private ObservableCollection<Sighting> _listOfSightings;
+        #region Fields
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private ObservableCollection<Sighting> _listOfSightings;
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<Sighting> ListOfSightings
         {
             get => _listOfSightings;
             private set => _listOfSightings = value;
         }
+        #endregion
+        #region Constructors
 
-        public SightingManager() 
-        { 
+        /// <summary>
+        /// 
+        /// </summary>
+        public SightingManager()
+        {
             ListOfSightings = new ObservableCollection<Sighting>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sightingManager"></param>
         public SightingManager(SightingManager sightingManager)
         {
             ListOfSightings = new ObservableCollection<Sighting>(sightingManager.ListOfSightings);
         }
+        #endregion
+        #region Public Methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public SightingManager DeepCopy()
         {
             SightingManager copy = new SightingManager();
@@ -39,12 +64,20 @@ namespace Assignment7.Classes
             return copy;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sighting"></param>
         public void AddSighting(Sighting sighting)
         {
             ListOfSightings.Add(sighting);
         }
 
-        public void ChangeSighting(Sighting sighting)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sighting"></param>
+        public void EditSighting(Sighting sighting)
         {
             int index = ListOfSightings.IndexOf(sighting);
             if (index != -1)
@@ -53,14 +86,23 @@ namespace Assignment7.Classes
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void DeleteSighting()
         {
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void FindSighting()
         {
             throw new System.NotImplementedException();
         }
+        #endregion
     }
 }

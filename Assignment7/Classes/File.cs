@@ -7,6 +7,9 @@
 
 namespace Assignment7.Classes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class File
     {
         #region Fields
@@ -45,7 +48,7 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         public string FilePath
-        { 
+        {
             get => System.IO.Path.Combine(Path, Name);
         }
         #endregion
@@ -69,6 +72,10 @@ namespace Assignment7.Classes
             Name = name;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objToCopyFrom"></param>
         public File(File objToCopyFrom)
         {
             Path = objToCopyFrom.Path;

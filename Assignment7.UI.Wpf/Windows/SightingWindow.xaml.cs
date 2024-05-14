@@ -1,23 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Linq;
-using Assignment7;
-using Assignment7.Classes;
-using Assignment7.Enums;
-using Assignment7.Structs;
-using Xceed.Wpf.Toolkit;
+﻿using Assignment7.Classes;
 using Assignment7.UI.Wpf.Classes;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -140,7 +124,7 @@ namespace Assignment7.UI.Wpf.Windows
             txtCount.Minimum = 1;
             txtCount.Value = 1;
 
-            if(EditSighting)
+            if (EditSighting)
             {
                 //FIXED: Get Animal name and map it to the combobox
 
@@ -209,12 +193,17 @@ namespace Assignment7.UI.Wpf.Windows
         {
             this.Close();
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+        #endregion
     }
 }

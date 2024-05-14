@@ -16,9 +16,12 @@
 //TODO: Implement menu functions
 //TODO: Add description field to Sighting.
 
-//TODO: Add method to clear unlinked images
+//FIXED: Add method to clear unlinked images
 //TODO: If you change for example animal in a sighting in history view, the change isnt persisted
 //TODO: Cant do both drag window and map operation in sightingwindow at the same time.
 
 //TODO: Maybe add possibility to rotate images?
 //TODO: Add about window
+
+//TODO: Implement all methods
+//TODO: Make FileManager static?

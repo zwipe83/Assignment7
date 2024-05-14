@@ -7,33 +7,21 @@
 
 namespace Assignment7.Classes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FileManager
     {
-        private File _file;
-
-        public void SaveSightingsToJsonFile()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void ReadSightingsFromJsonFile()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void ReadAnimalsFromJsonFile()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SaveAnimalsToJsonFile()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        #region Public Methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceFilePath"></param>
+        /// <param name="destinationFolderPath"></param>
+        /// <returns></returns>
         public string CopyFile(string sourceFilePath, string destinationFolderPath)
         {
-            string fileName = Path.GetFileName(sourceFilePath); 
+            string fileName = Path.GetFileName(sourceFilePath);
 
             string destinationFilePath = Path.Combine(destinationFolderPath, fileName);
 
@@ -45,11 +33,43 @@ namespace Assignment7.Classes
             return destinationFilePath;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void DeleteFile()
         {
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileNames"></param>
+        public void DeleteFiles(List<string> fileNames, string directoryName)
+        {
+            string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName); // Provide the directory path where the files are located
+
+            foreach (string fileName in fileNames)
+            {
+                string filePath = Path.Combine(directoryPath, fileName);
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+                else
+                {
+                    //Nothing.
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="newFileName"></param>
         public void RenameFile(string filePath, string newFileName)
         {
             // Get the directory path of the file
@@ -62,9 +82,65 @@ namespace Assignment7.Classes
             System.IO.File.Move(filePath, newFilePath, true); //TODO: Handle exception if file is open by another process
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public string GetExtension(string filePath)
         {
             return System.IO.Path.GetExtension(filePath) ?? string.Empty;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="animalIds"></param>
+        /// <returns></returns>
+        public List<string> FindOrphanedImages(List<AnimalId> animalIds)
+        {
+            string[] images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Images"));
+
+            List<string> orphanedImages = new List<string>();
+
+            foreach (var item in images)
+            {
+                string name = item.Split('.')[0];
+                foreach (var item1 in animalIds)
+                {
+                    string id = item1.Id.ToString();
+                    if (name == id)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (!orphanedImages.Any(a => a == item))
+                            orphanedImages.Add(item);
+                    }
+                }
+            }
+
+            return orphanedImages;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="directoryPath"></param>
+        /// <returns></returns>
+        public string[] GetFilesInDirectory(string directoryPath)
+        {
+            string[] filePaths = Directory.GetFiles(directoryPath);
+            string[] fileNames = new string[filePaths.Length];
+
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                fileNames[i] = Path.GetFileName(filePaths[i]);
+            }
+
+            return fileNames;
+        }
+        #endregion
     }
 }

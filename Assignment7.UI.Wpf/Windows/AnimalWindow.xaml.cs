@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Assignment7.UI;
+﻿using Assignment7.Classes;
 using Assignment7.Enums;
-using static Assignment7.Helpers.EnumHelper;
-using Assignment7.Classes;
-using Microsoft.Win32;
-using static Assignment7.UI.Wpf.MainWindow;
 using Assignment7.UI.Wpf.ViewModels;
+using Microsoft.Win32;
+using System.Windows;
+using System.Windows.Input;
+using static Assignment7.Helpers.EnumHelper;
+using static Assignment7.UI.Wpf.MainWindow;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -110,7 +98,7 @@ namespace Assignment7.UI.Wpf.Windows
         {
             InitComboBox();
 
-            if(EditAnimal)
+            if (EditAnimal)
             {
                 cmbAnimalType.SelectedIndex = (int)Animal.AnimalType;
                 txtName.Text = Animal.Name;
@@ -155,7 +143,7 @@ namespace Assignment7.UI.Wpf.Windows
             Animal.AnimalType = (AnimalType)cmbAnimalType.SelectedIndex;
             Animal.Name = txtName.Text;
             Animal.Description = txtDescription.Text;
-                        
+
             DialogResult = true;
             this.Close();
         }
@@ -187,12 +175,18 @@ namespace Assignment7.UI.Wpf.Windows
                 viewModel.ImagePath = @$"{System.IO.Path.Combine(System.IO.Path.Combine(appPath, Animal.Image.Path), $"{Animal.Image.Name}")}";
             }
         }
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+        #endregion
+
     }
 }

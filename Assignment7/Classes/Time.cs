@@ -9,26 +9,6 @@ namespace Assignment7.Classes
 {
     public class Time
     {
-        private TimeSpan _time;
-
-        public TimeSpan T
-        {
-            get => _time; 
-            set => _time = value;
-        }
-
-        public Time() : this(new TimeSpan())
-        { 
-        }
-
-        public Time(TimeSpan time)
-        {
-            _time = time;
-        }
-
-        public Time(Time objToCopyFrom)
-        {
-            T = objToCopyFrom.T;
-        }
+        //TODO: Remove
     }
 }
