@@ -117,6 +117,8 @@ namespace Assignment7.UI.Wpf.Windows
         private void InitListView()
         {
             //TODO: Make this more pretty
+            GridViewControl.Columns.Clear();
+
             // Sort the ListOfSightings based on date and time
             var sortedSightings = SightingManager.ListOfSightings.OrderByDescending(s => s.When.DateTime.Date).ThenByDescending(s => s.When.DateTime.TimeOfDay).ThenBy(s => s.Animal.Name).ThenBy(s => s.Count);
 
@@ -317,5 +319,20 @@ namespace Assignment7.UI.Wpf.Windows
         }
         #endregion
 
+        private void btnDeleteSighting_Click(object sender, RoutedEventArgs e)
+        {
+            SightingManager.DeleteSighting(SelectedSighting);
+            InitListView();
+        }
+
+        private void lstSightings_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (lstSightings.SelectedItem != null)
+            {
+                Sighting selectedSighting = (Sighting)lstSightings.SelectedItem;
+
+                SelectedSighting = selectedSighting;
+            }
+        }
     }
 }

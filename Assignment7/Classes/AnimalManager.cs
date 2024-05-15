@@ -82,16 +82,23 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <param name="animal"></param>
         public void AddAnimal(Animal animal)
         {
-            ListOfAnimals.Add(animal);
+            if (animal is not null)
+            {
+                ListOfAnimals.Add(animal);
+            }
+            else
+            {
+                //TODO: Exception?
+            }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <param name="animal"></param>
         public void ChangeAnimal(Animal animal)
         {
             int index = ListOfAnimals.IndexOf(animal);
@@ -104,7 +111,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <param name="animal"></param>
         public void DeleteAnimal(Animal animal)
         {
             int index = ListOfAnimals.IndexOf(animal);
@@ -112,15 +119,6 @@ namespace Assignment7.Classes
             {
                 ListOfAnimals.Remove(animal);
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Animal GetAnimal(AnimalId animalId)
-        {
-            return ListOfAnimals.FirstOrDefault(animal => animal.AnimalId == animalId);
         }
 
         /// <summary>

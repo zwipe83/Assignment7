@@ -18,7 +18,7 @@
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
-        <Button Content="..." HorizontalAlignment="Left" Margin="554,68,0,0" VerticalAlignment="Top" Width="36" Name="btnSelectImage" Click="btnSelectImage_Click" Height="36">
+        <Button Content="..." HorizontalAlignment="Left" Margin="465,68,0,0" VerticalAlignment="Top" Width="36" Name="btnSelectImage" Click="btnSelectImage_Click" Height="36">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -28,7 +28,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Label Content="Select Image" HorizontalAlignment="Left" Margin="460,74,0,0" VerticalAlignment="Top" Name="lblSelectImage" FontSize="14"/>
+        <Label Content="Select Image" HorizontalAlignment="Left" Margin="371,74,0,0" VerticalAlignment="Top" Name="lblSelectImage" FontSize="14"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="634,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56">
             <Button.Effect>
                 <DropShadowEffect/>
@@ -55,5 +55,45 @@
         <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Describe the animal" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="230" Margin="460,165,0,0" VerticalAlignment="Top" Width="310" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
+        <Button Content="Rotate 90" HorizontalAlignment="Left" Margin="634,84,0,0" VerticalAlignment="Top" Name="btnRotate90" Click="btnRotate90_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Rotate 180" HorizontalAlignment="Left" Margin="694,84,0,0" VerticalAlignment="Top" x:Name="btnRotate180" Click="btnRotate180_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Rotate -90" HorizontalAlignment="Left" Margin="517,84,0,0" VerticalAlignment="Top" x:Name="btnRotateNeg90" Click="btnRotateNeg90_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Rotate 0" HorizontalAlignment="Left" Margin="581,84,0,0" VerticalAlignment="Top" x:Name="btnRotateZero" Click="btnRotateZero_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

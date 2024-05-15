@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="LightSlateGray">
+        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="LightSlateGray" MouseUp="lstSightings_MouseUp">
             <ListView.View>
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>
@@ -52,6 +52,16 @@
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
         </Button.Resources>
+        </Button>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="900,38,0,0" VerticalAlignment="Top" Height="36" Width="56" x:Name="btnDeleteSighting" Click="btnDeleteSighting_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
 
     </Grid>

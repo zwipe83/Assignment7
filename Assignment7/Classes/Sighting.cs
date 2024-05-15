@@ -115,30 +115,35 @@ namespace Assignment7.Classes
         public Sighting(SightingId sightingId) : this(sightingId, new Animal())
         {
         }
+
         /// <summary>
         /// 
         /// </summary>
         public Sighting(SightingId sightingId, Animal animal) : this(sightingId, animal, new Location())
         {
         }
+
         /// <summary>
         /// 
         /// </summary>
         public Sighting(SightingId sightingId, Animal animal, Location location) : this(sightingId, animal, location, new CustomDateTime())
         {
         }
+
         /// <summary>
         /// 
         /// </summary>
         public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime) : this(sightingId, animal, location, dateTime, new File())
         {
         }
+
         /// <summary>
         /// 
         /// </summary>
         public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, 1)
         {
         }
+
         /// <summary>
         /// 
         /// </summary>

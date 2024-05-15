@@ -127,6 +127,7 @@ public partial class MainWindow : Window
 
         if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
+            sightingManager = window.SightingManager.DeepCopy();
             DataStore.SaveToJsonFile(new File(DataStorePath, "Sightings.json"), window.SightingManager.ListOfSightings);
         }
         else
@@ -214,7 +215,8 @@ public partial class MainWindow : Window
 
     private void menuBtnAbout_Click(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        AboutWindow window = new AboutWindow();
+        window.ShowDialog();
     }
 
     /// <summary>
@@ -240,7 +242,7 @@ public partial class MainWindow : Window
         if (animalIds == null)
             return;
 
-        List<string> orphanedImages = FileManager.FindOrphanedImages(animalIds);
+        List<string> orphanedImages = FileManager.FindOrphanedFiles(animalIds, "Images");
 
         if (orphanedImages.Count <= 0)
         {

@@ -58,7 +58,6 @@ namespace Assignment7.Classes
         {
             SightingManager copy = new SightingManager();
 
-            // Copy the values of all properties and fields to the new instance
             copy.ListOfSightings = new ObservableCollection<Sighting>(ListOfSightings);
 
             return copy;
@@ -89,10 +88,14 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void DeleteSighting()
+        /// <param name="sighting"></param>
+        public void DeleteSighting(Sighting sighting)
         {
-            throw new System.NotImplementedException();
+            int index = ListOfSightings.IndexOf(sighting);
+            if (index != -1)
+            {
+                ListOfSightings.Remove(sighting);
+            }
         }
 
         /// <summary>

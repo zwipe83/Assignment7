@@ -36,10 +36,13 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void DeleteFile()
+        /// <param name="filePath"></param>
+        public void DeleteFile(string filePath)
         {
-            throw new System.NotImplementedException();
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
         }
 
         /// <summary>
@@ -72,14 +75,21 @@ namespace Assignment7.Classes
         /// <param name="newFileName"></param>
         public void RenameFile(string filePath, string newFileName)
         {
-            // Get the directory path of the file
-            string directoryPath = Path.GetDirectoryName(filePath);
+            try
+            {
+                // Get the directory path of the file
+                string directoryPath = Path.GetDirectoryName(filePath);
 
-            // Create the new file path by combining the directory path and the new file name
-            string newFilePath = Path.Combine(directoryPath, newFileName);
+                // Create the new file path by combining the directory path and the new file name
+                string newFilePath = Path.Combine(directoryPath, newFileName);
 
-            // Rename the file
-            System.IO.File.Move(filePath, newFilePath, true); //TODO: Handle exception if file is open by another process
+                // Rename the file
+                System.IO.File.Move(filePath, newFilePath, true); //FIXED: Handle exception if file is open by another process
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         /// <summary>
@@ -97,9 +107,9 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="animalIds"></param>
         /// <returns></returns>
-        public List<string> FindOrphanedImages(List<AnimalId> animalIds)
+        public List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory)
         {
-            string[] images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Images"));
+            string[] images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, searchDirectory));
 
             List<string> orphanedImages = new List<string>();
 

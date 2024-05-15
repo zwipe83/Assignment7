@@ -13,7 +13,7 @@ namespace Assignment7.UI.Wpf.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string imagePath = "Images/MyPicture.jpg";
+        private string imagePath = string.Empty;
         public string ImagePath
         {
             get { return imagePath; }

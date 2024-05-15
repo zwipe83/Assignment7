@@ -43,14 +43,6 @@ namespace Assignment7.Classes
             get => _name;
             set => _name = value;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string FilePath
-        {
-            get => System.IO.Path.Combine(Path, Name);
-        }
         #endregion
         #region Constructors
 
