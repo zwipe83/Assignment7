@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="SightingWindow" Height="475" Width="820" WindowStyle="None" Background="SlateGray">
+        Title="SightingWindow" Height="460" Width="820" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown" ResizeMode="NoResize">
     <Grid>
         <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="24" IsEditable="True" IsTextSearchEnabled="True">
             <ComboBox.Effect>

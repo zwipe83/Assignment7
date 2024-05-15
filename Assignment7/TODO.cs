@@ -18,7 +18,7 @@
 
 //FIXED: Add method to clear unlinked images
 //TODO: If you change for example animal in a sighting in history view, the change isnt persisted
-//TODO: Cant do both drag window and map operation in sightingwindow at the same time.
+//FIXED: Cant do both drag window and map operation in sightingwindow at the same time.
 
 //TODO: Maybe add possibility to rotate images?
 //TODO: Add about window

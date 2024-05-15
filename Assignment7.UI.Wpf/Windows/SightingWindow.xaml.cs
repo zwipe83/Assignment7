@@ -1,6 +1,7 @@
 ﻿using Assignment7.Classes;
 using Assignment7.UI.Wpf.Classes;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Assignment7.UI.Wpf.Windows
@@ -201,8 +202,11 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            var dummy = e.OriginalSource.GetType();
+            if (e.ChangedButton == MouseButton.Left && e.OriginalSource.GetType() == typeof(Border))
+            {
                 DragMove();
+            }
         }
         #endregion
     }
