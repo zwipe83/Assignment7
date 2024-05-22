@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="WildSights by Samuel Jeffman" Height="600" Width="800" Background="LightSteelBlue" MouseDown="Window_MouseDown" WindowStyle="None">
     <Window.CommandBindings>
-        <CommandBinding Command="New" Executed="NewCommandBinding_Executed"/>
-        <CommandBinding Command="Open" Executed="OpenCommandBinding_Executed"/>
-        <CommandBinding Command="Save" Executed="SaveAsCommandBinding_Executed"/>
-        <CommandBinding Command="Print" Executed="PrintCommandBinding_Executed"/>
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Key="N" Modifiers="Control" Command="New"/>
@@ -22,17 +18,10 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="19" Margin="0,0,0,0">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" Name="menuBtnNew" Command="New" InputGestureText="Ctrl+N"/>
-                    <Separator />
-                    <MenuItem Header="_Open" Name="menuBtnOpen" Command="Open" InputGestureText="Ctrl+O"/>
-                    <MenuItem Header="_Save" Name="menuBtnSave" Command="Save" InputGestureText="Ctrl+S"/>
-                    <Separator />
-                    <MenuItem Header="_Print" Name="menuBtnPrint" Command="Print" InputGestureText="Ctrl+P"/>
-                    <Separator/>
                     <MenuItem Header="_Exit" Name="menuBtnExit" Click="menuBtnExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Tools">
-                    <MenuItem Header="_Clear images" Name="menuBtnClearImages" Click="menuBtnClearImages_Click"/>
+                    <MenuItem Header="_Clear orphaned images" Name="menuBtnClearImages" Click="menuBtnClearImages_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem Header="_About" Name="menuBtnAbout" Click="menuBtnAbout_Click"/>

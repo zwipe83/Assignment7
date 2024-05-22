@@ -3,7 +3,6 @@ using System.Runtime.CompilerServices;
 
 namespace Assignment7.UI.Wpf.ViewModels
 {
-    //TODO: Remove?
     public class AnimalWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -10,7 +10,7 @@ namespace Assignment7.Classes
     /// <summary>
     /// 
     /// </summary>
-    public class FileManager
+    public static class FileManager
     {
         #region Public Methods
         /// <summary>
@@ -19,7 +19,7 @@ namespace Assignment7.Classes
         /// <param name="sourceFilePath"></param>
         /// <param name="destinationFolderPath"></param>
         /// <returns></returns>
-        public string CopyFile(string sourceFilePath, string destinationFolderPath)
+        public static string CopyFile(string sourceFilePath, string destinationFolderPath)
         {
             string fileName = Path.GetFileName(sourceFilePath);
 
@@ -37,7 +37,7 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         /// <param name="filePath"></param>
-        public void DeleteFile(string filePath)
+        public static void DeleteFile(string filePath)
         {
             if (System.IO.File.Exists(filePath))
             {
@@ -49,7 +49,7 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         /// <param name="fileNames"></param>
-        public void DeleteFiles(List<string> fileNames, string directoryName)
+        public static void DeleteFiles(List<string> fileNames, string directoryName)
         {
             string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName); // Provide the directory path where the files are located
 
@@ -73,7 +73,7 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="newFileName"></param>
-        public void RenameFile(string filePath, string newFileName)
+        public static void RenameFile(string filePath, string newFileName)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public string GetExtension(string filePath)
+        public static string GetExtension(string filePath)
         {
             return System.IO.Path.GetExtension(filePath) ?? string.Empty;
         }
@@ -107,7 +107,7 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="animalIds"></param>
         /// <returns></returns>
-        public List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory)
+        public static List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory) //TODO: This isn't working, fix. Removes images it shouldnt
         {
             string[] images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, searchDirectory));
 
@@ -139,7 +139,7 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="directoryPath"></param>
         /// <returns></returns>
-        public string[] GetFilesInDirectory(string directoryPath)
+        public static string[] GetFilesInDirectory(string directoryPath)
         {
             string[] filePaths = Directory.GetFiles(directoryPath);
             string[] fileNames = new string[filePaths.Length];

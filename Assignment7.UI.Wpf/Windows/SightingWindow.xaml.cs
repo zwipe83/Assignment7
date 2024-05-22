@@ -120,30 +120,56 @@ namespace Assignment7.UI.Wpf.Windows
 
             InitComboBox();
 
-            dateWhen.Value = DateTime.Now;
+            InitDateObject();
 
-            txtCount.Minimum = 1;
-            txtCount.Value = 1;
+            InitTextObject();
 
             if (EditSighting)
             {
-                //FIXED: Get Animal name and map it to the combobox
-
-                int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
-                                              .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
-
-                if (animalIndex != -1)
-                {
-                    cmbAnimal.SelectedIndex = animalIndex;
-                }
-                else
-                {
-                    cmbAnimal.SelectedIndex = 0; //TODO: Maybe exception?
-                }
-
-                txtCount.Value = Sighting.Count;
-                dateWhen.Value = ((DateTime)Sighting.When.DateTime);
+                LoadSighting();
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadSighting()
+        {
+
+            //FIXED: Get Animal name and map it to the combobox
+
+            int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
+                                          .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
+
+            if (animalIndex != -1)
+            {
+                cmbAnimal.SelectedIndex = animalIndex;
+            }
+            else
+            {
+                cmbAnimal.SelectedIndex = 0; //TODO: Maybe exception?
+            }
+
+            txtCount.Value = Sighting.Count;
+            dateWhen.Value = ((DateTime)Sighting.When.DateTime);
+            txtDescription.Text = Sighting.Description.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitTextObject()
+        {
+            txtCount.Minimum = 1;
+            txtCount.Value = 1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitDateObject()
+        {
+            dateWhen.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -179,10 +205,10 @@ namespace Assignment7.UI.Wpf.Windows
             Sighting.When = new CustomDateTime((DateTime)dateWhen.Value);
             Sighting.Location = new Assignment7.Classes.Location(MapManager.Map.CurrentPosition);
             Sighting.Count = (int)txtCount.Value;
+            Sighting.Description.Desc = txtDescription.Text;
 
             DialogResult = true;
             this.Close();
-
         }
 
         /// <summary>

@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment7", "Assignment7\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment7.UI.Wpf", "Assignment7.UI.Wpf\Assignment7.UI.Wpf.csproj", "{9028F804-30B0-4AB0-BDA8-E10027259906}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment7.UI.Forms", "Assignment7.UI.Forms\Assignment7.UI.Forms.csproj", "{AFE3E404-79C0-49ED-8F00-F5B22920D551}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment7.UI.Maui", "Assignment7.UI.Maui\Assignment7.UI.Maui.csproj", "{06F34C36-43C5-4969-8240-08CE925BF71C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment7.UI.Maui", "Assignment7.UI.Maui\Assignment7.UI.Maui.csproj", "{06F34C36-43C5-4969-8240-08CE925BF71C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{9028F804-30B0-4AB0-BDA8-E10027259906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9028F804-30B0-4AB0-BDA8-E10027259906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9028F804-30B0-4AB0-BDA8-E10027259906}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFE3E404-79C0-49ED-8F00-F5B22920D551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFE3E404-79C0-49ED-8F00-F5B22920D551}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFE3E404-79C0-49ED-8F00-F5B22920D551}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFE3E404-79C0-49ED-8F00-F5B22920D551}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06F34C36-43C5-4969-8240-08CE925BF71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06F34C36-43C5-4969-8240-08CE925BF71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06F34C36-43C5-4969-8240-08CE925BF71C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

@@ -55,16 +55,23 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
-            AnimalWindow window = new AnimalWindow();
-            window.ShowDialog();
+            try
+            {
+                AnimalWindow window = new AnimalWindow();
+                window.ShowDialog();
 
-            if (window.DialogResult.HasValue && window.DialogResult.Value)
-            {
-                AnimalManager.AddAnimal(window.Animal);
+                if (window.DialogResult.HasValue && window.DialogResult.Value)
+                {
+                    AnimalManager.AddAnimal(window.Animal);
+                }
+                else
+                {
+                    //Do nothing...
+                }
             }
-            else
+            catch(Exception ex)
             {
-                //Do nothing...
+                MessageBox.Show(ex.Message);
             }
         }
 

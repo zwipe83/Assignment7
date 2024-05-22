@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="SightingWindow" Height="460" Width="820" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown" ResizeMode="NoResize">
+        Title="SightingWindow" Height="600" Width="820" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown" ResizeMode="NoResize">
     <Grid>
         <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="24" IsEditable="True" IsTextSearchEnabled="True">
             <ComboBox.Effect>
@@ -14,7 +14,7 @@
             </ComboBox.Effect>
         </ComboBox>
         <Label Content="How many were there?" HorizontalAlignment="Left" Margin="440,8,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="154" FontSize="14" />
-        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" Grid.ColumnSpan="2" FontSize="14">
+        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" FontSize="14">
             <ContentControl.Effect>
                 <DropShadowEffect/>
             </ContentControl.Effect>
@@ -51,6 +51,8 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14"/>
+        <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" Name="txtDescription" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="116"/>
+        <Label Content="Describe your encounter" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" x:Name="lblDescription" FontSize="14"/>
     </Grid>
 </Window>

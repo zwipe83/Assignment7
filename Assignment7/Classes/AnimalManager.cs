@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 
 /// <summary>
 /// Filename: AnimalManager.cs
@@ -85,13 +86,20 @@ namespace Assignment7.Classes
         /// <param name="animal"></param>
         public void AddAnimal(Animal animal)
         {
-            if (animal is not null)
+            try
             {
-                ListOfAnimals.Add(animal);
+                if (animal is not null)
+                {
+                    ListOfAnimals.Add(animal);
+                }
+                else
+                {
+                    throw new ArgumentNullException("Can't add null object to list of animals");
+                }
             }
-            else
-            {
-                //TODO: Exception?
+            catch
+            { 
+                throw;
             }
         }
 

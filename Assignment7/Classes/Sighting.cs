@@ -43,6 +43,11 @@ namespace Assignment7.Classes
         /// 
         /// </summary>
         private File _image;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Description _description;
         #endregion
         #region Properties
 
@@ -99,6 +104,12 @@ namespace Assignment7.Classes
             get => _image;
             set => _image = value;
         }
+
+        public Description Description
+        {
+            get => _description;
+            set => _description = value;
+        }
         #endregion
         #region Constructors
 
@@ -140,14 +151,21 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, 1)
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, new Description())
         {
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, int count)
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, Description description) : this(sightingId, animal, location, dateTime, image, description, 1)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image, Description description, int count)
         {
             Id = sightingId;
             Animal = animal;
@@ -155,6 +173,7 @@ namespace Assignment7.Classes
             When = dateTime;
             Image = image;
             Count = count;
+            Description = description;
         }
 
         /// <summary>
@@ -169,6 +188,7 @@ namespace Assignment7.Classes
             When = new CustomDateTime(objToCopyFrom.When); // Create a new instance of Date
             Image = new File(objToCopyFrom.Image); // Create a new instance of File
             Count = objToCopyFrom.Count;
+            Description = objToCopyFrom.Description;
         }
         #endregion
         #region Overridden Methods

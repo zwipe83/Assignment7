@@ -2,6 +2,7 @@
 using Assignment7.UI.Wpf.Windows;
 using System.Windows;
 using System.Windows.Input;
+using static Assignment7.Classes.FileManager;
 
 namespace Assignment7.UI.Wpf;
 
@@ -26,11 +27,6 @@ public partial class MainWindow : Window
     /// <summary>
     /// 
     /// </summary>
-    private FileManager fileManager;
-
-    /// <summary>
-    /// 
-    /// </summary>
     private DataStore dataStore;
 
     /// <summary>
@@ -42,6 +38,16 @@ public partial class MainWindow : Window
     /// 
     /// </summary>
     private static readonly string _appDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private static readonly string sightingsFileName = "Sightings.json";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private static readonly string animalsFileName = "Animals.json";
     #endregion
     #region Properties
 
@@ -59,14 +65,6 @@ public partial class MainWindow : Window
     public AnimalManager AnimalManager
     {
         get => animalManager;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public FileManager FileManager
-    {
-        get => fileManager;
     }
 
     /// <summary>
@@ -104,14 +102,30 @@ public partial class MainWindow : Window
 
         sightingManager = new SightingManager();
         animalManager = new AnimalManager();
-        fileManager = new FileManager();
         dataStore = new DataStore();
 
-        DataStore.ReadFromJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
-        DataStore.ReadFromJsonFile(new File(DataStorePath, "Sightings.json"), sightingManager.ListOfSightings);
+        ReadAnimals();
+        ReadSightings();
     }
+
     #endregion
     #region Private Methods
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ReadSightings()
+    {
+        DataStore.ReadFromJsonFile(new File(DataStorePath, sightingsFileName), sightingManager.ListOfSightings);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ReadAnimals()
+    {
+        DataStore.ReadFromJsonFile(new File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
+    }
 
     /// <summary>
     /// 
@@ -120,7 +134,7 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void btnHistory_Click(object sender, RoutedEventArgs e)
     {
-        AnimalManager animalManagerCopy = animalManager.DeepCopy();
+        AnimalManager animalManagerCopy = AnimalManager.DeepCopy();
         SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working?
         HistoryWindow window = new HistoryWindow(sightingManagerCopy, animalManagerCopy);
         window.ShowDialog();
@@ -128,12 +142,28 @@ public partial class MainWindow : Window
         if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
             sightingManager = window.SightingManager.DeepCopy();
-            DataStore.SaveToJsonFile(new File(DataStorePath, "Sightings.json"), window.SightingManager.ListOfSightings);
+            SaveSightings(window);
         }
         else
         {
             //Do nothing
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="window"></param>
+    private void SaveSightings(HistoryWindow window)
+    {
+        DataStore.SaveToJsonFile(new File(DataStorePath, sightingsFileName), window.SightingManager.ListOfSightings);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    private void SaveSightings()
+    {
+        DataStore.SaveToJsonFile(new File(DataStorePath, sightingsFileName), SightingManager.ListOfSightings);
     }
 
     /// <summary>
@@ -151,12 +181,20 @@ public partial class MainWindow : Window
         if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
             animalManager = window.AnimalManager.DeepCopy(); //FIXED: Deep copy?
-            DataStore.SaveToJsonFile(new File(DataStorePath, "Animals.json"), animalManager.ListOfAnimals);
+            SaveAnimals();
         }
         else
         {
             //Do nothing
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void SaveAnimals()
+    {
+        DataStore.SaveToJsonFile(new File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
     }
 
     /// <summary>
@@ -174,7 +212,7 @@ public partial class MainWindow : Window
         if (window.DialogResult.HasValue && window.DialogResult.Value)
         {
             SightingManager.AddSighting(window.Sighting);
-            DataStore.SaveToJsonFile(new File(DataStorePath, "Sightings.json"), sightingManager.ListOfSightings);
+            SaveSightings();
         }
         else
         {
@@ -192,27 +230,11 @@ public partial class MainWindow : Window
         Application.Current.Shutdown();
     }
 
-    private void NewCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-    private void OpenCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-    private void SaveAsCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-    private void PrintCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-    private void AboutCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void menuBtnAbout_Click(object sender, RoutedEventArgs e)
     {
         AboutWindow window = new AboutWindow();
@@ -227,7 +249,9 @@ public partial class MainWindow : Window
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ChangedButton == MouseButton.Left)
+        { 
             DragMove();
+        }
     }
 
     /// <summary>

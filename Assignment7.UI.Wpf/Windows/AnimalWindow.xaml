@@ -54,7 +54,7 @@
         <TextBox HorizontalAlignment="Left" Margin="78,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310" IsEnabled="false" Name="txtAnimalId" FontSize="14" Background="LightSlateGray"/>
         <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Describe the animal" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Image HorizontalAlignment="Left" Height="230" Margin="460,165,0,0" VerticalAlignment="Top" Width="310" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="230" Margin="465,172,0,0" Width="310" Name="imgAnimal" Stretch="UniformToFill" Source="{Binding ImagePath}"/>
         <Button Content="Rotate 90" HorizontalAlignment="Left" Margin="634,84,0,0" VerticalAlignment="Top" Name="btnRotate90" Click="btnRotate90_Click">
             <Button.Effect>
                 <DropShadowEffect/>

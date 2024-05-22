@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static Assignment7.Helpers.EnumHelper;
 using static Assignment7.UI.Wpf.MainWindow;
+using static Assignment7.Classes.FileManager;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -27,11 +28,6 @@ namespace Assignment7.UI.Wpf.Windows
         /// <summary>
         /// 
         /// </summary>
-        private FileManager _fileManager;
-
-        /// <summary>
-        /// 
-        /// </summary>
         private bool _editAnimal;
         #endregion
         #region Properties
@@ -43,15 +39,6 @@ namespace Assignment7.UI.Wpf.Windows
         {
             get => _animal;
             protected set => _animal = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public FileManager FileManager
-        {
-            get => _fileManager;
-            protected set => _fileManager = value;
         }
 
         /// <summary>
@@ -84,8 +71,6 @@ namespace Assignment7.UI.Wpf.Windows
 
             DataContext = new AnimalWindowViewModel();
 
-            FileManager = new FileManager();
-
             Animal = animal;
             EditAnimal = editAnimal;
 
@@ -103,15 +88,31 @@ namespace Assignment7.UI.Wpf.Windows
 
             if (EditAnimal)
             {
-                cmbAnimalType.SelectedIndex = (int)Animal.AnimalType;
-                txtName.Text = Animal.Name;
-                txtDescription.Text = Animal.Description;
-
-                var viewModel = (AnimalWindowViewModel)DataContext;
-                viewModel.ImagePath = @$"{System.IO.Path.Combine(System.IO.Path.Combine(AppDirectory, Animal.Image.Path), $"{Animal.Image.Name}")}";
+                LoadAnimal();
             }
 
+            InitAnimalId();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitAnimalId()
+        {
             txtAnimalId.Text = Animal.AnimalId.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadAnimal()
+        {
+            cmbAnimalType.SelectedIndex = (int)Animal.AnimalType;
+            txtName.Text = Animal.Name;
+            txtDescription.Text = Animal.Description;
+
+            var viewModel = (AnimalWindowViewModel)DataContext;
+            viewModel.ImagePath = @$"{System.IO.Path.Combine(System.IO.Path.Combine(AppDirectory, Animal.Image.Path), $"{Animal.Image.Name}")}";
         }
 
         /// <summary>

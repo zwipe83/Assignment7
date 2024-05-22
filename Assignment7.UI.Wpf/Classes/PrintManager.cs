@@ -14,16 +14,6 @@ namespace Assignment7.UI.Wpf.Classes
     public class PrintManager
     {
         #region Public Methods
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void PrintFromJsonFile()
-        {
-            throw new System.NotImplementedException(); //TODO: Implement this
-        }
-
         /// <summary>
         /// 
         /// </summary>

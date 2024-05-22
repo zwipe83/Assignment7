@@ -36,6 +36,11 @@ namespace Assignment7.UI.Wpf.Windows
         /// 
         /// </summary>
         private Sighting _selectedSighting;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _changeDetected = false;
         #endregion
         #region Properties
 
@@ -70,6 +75,12 @@ namespace Assignment7.UI.Wpf.Windows
         public PrintManager PrintManager
         {
             get => _printManager;
+        }
+
+        public bool ChangeDetected
+        {
+            get => _changeDetected;
+            set => _changeDetected = value;
         }
         #endregion
         #region Constructors
@@ -238,7 +249,6 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void lstSightings_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
             if (lstSightings.SelectedItem != null)
             {
                 Sighting selectedSighting = (Sighting)lstSightings.SelectedItem;
@@ -255,8 +265,11 @@ namespace Assignment7.UI.Wpf.Windows
 
             if (window.DialogResult.HasValue && window.DialogResult.Value)
             {
+                ChangeDetected = true;
                 SelectedSighting.When.DateTime = window.Sighting.When.DateTime;
                 SelectedSighting.Count = window.Sighting.Count;
+                SelectedSighting.Description = window.Sighting.Description;
+                SelectedSighting.Location = window.Sighting.Location;
                 SelectedSighting.Animal = window.Sighting.Animal;
                 SightingManager.EditSighting(window.Sighting);
                 lstSightings.Items.Refresh();
@@ -274,14 +287,21 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e"></param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            // Show a confirmation dialog box
-            MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            // Check the user's response
-            if (result == MessageBoxResult.Yes)
+            if (ChangeDetected)
             {
-                DialogResult = true;
-                this.Close();
+                // Show a confirmation dialog box
+                MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                // Check the user's response
+                if (result == MessageBoxResult.Yes)
+                {
+                    DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             else
             {
