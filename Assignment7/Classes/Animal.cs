@@ -14,22 +14,8 @@ namespace Assignment7.Classes
     /// <summary>
     /// 
     /// </summary>
-    public class Animal : INotifyPropertyChanged
+    public class Animal
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="propertyName"></param>
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         #region Fields
 
         /// <summary>
@@ -74,11 +60,7 @@ namespace Assignment7.Classes
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                NotifyPropertyChanged();
-            }
+            set => _name = value;
         }
 
         /// <summary>

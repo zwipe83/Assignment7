@@ -66,13 +66,7 @@ namespace Assignment7.Classes
             copy.ListOfAnimals = new ObservableCollection<Animal>();
             foreach (Animal animal in this.ListOfAnimals)
             {
-                Animal animalCopy = new Animal();
-
-                animalCopy.Name = animal.Name;
-                animalCopy.AnimalId = animal.AnimalId;
-                animalCopy.Image = animal.Image;
-                animalCopy.Description = animal.Description;
-                animalCopy.AnimalType = animal.AnimalType;
+                Animal animalCopy = new Animal(animal.AnimalId, animal.AnimalType, animal.Name, animal.Description, animal.Image);
 
                 copy.ListOfAnimals.Add(animalCopy);
             }

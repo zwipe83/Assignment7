@@ -151,7 +151,7 @@ namespace Assignment7.Classes
         /// <summary>
         /// 
         /// </summary>
-        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, new Description())
+        public Sighting(SightingId sightingId, Animal animal, Location location, CustomDateTime dateTime, File image) : this(sightingId, animal, location, dateTime, image, new Description(string.Empty))
         {
         }
 
@@ -188,7 +188,7 @@ namespace Assignment7.Classes
             When = new CustomDateTime(objToCopyFrom.When); // Create a new instance of Date
             Image = new File(objToCopyFrom.Image); // Create a new instance of File
             Count = objToCopyFrom.Count;
-            Description = objToCopyFrom.Description;
+            Description = new Description(objToCopyFrom.Description);
         }
         #endregion
         #region Overridden Methods

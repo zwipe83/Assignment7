@@ -271,6 +271,7 @@ namespace Assignment7.UI.Wpf.Windows
                 SelectedSighting.Description = window.Sighting.Description;
                 SelectedSighting.Location = window.Sighting.Location;
                 SelectedSighting.Animal = window.Sighting.Animal;
+
                 SightingManager.EditSighting(window.Sighting);
                 lstSightings.Items.Refresh();
             }

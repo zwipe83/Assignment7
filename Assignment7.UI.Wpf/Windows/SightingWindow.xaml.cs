@@ -135,24 +135,29 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         private void LoadSighting()
         {
-
             //FIXED: Get Animal name and map it to the combobox
-
-            int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
-                                          .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
-
-            if (animalIndex != -1)
+            try
             {
-                cmbAnimal.SelectedIndex = animalIndex;
-            }
-            else
-            {
-                cmbAnimal.SelectedIndex = 0; //TODO: Maybe exception?
-            }
+                int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
+                                              .FirstOrDefault(item => item.Animal.Name == Sighting.Animal.Name)?.Index ?? -1;
 
-            txtCount.Value = Sighting.Count;
-            dateWhen.Value = ((DateTime)Sighting.When.DateTime);
-            txtDescription.Text = Sighting.Description.ToString();
+                if (animalIndex != -1)
+                {
+                    cmbAnimal.SelectedIndex = animalIndex;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Animal name in the sighting does not exist in the list of animals. Maybe the animal name was changed after sighting was added? You can update and save a new animal name.");
+                }
+
+                txtCount.Value = Sighting.Count;
+                dateWhen.Value = ((DateTime)Sighting.When.DateTime);
+                txtDescription.Text = Sighting.Description.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -205,7 +210,7 @@ namespace Assignment7.UI.Wpf.Windows
             Sighting.When = new CustomDateTime((DateTime)dateWhen.Value);
             Sighting.Location = new Assignment7.Classes.Location(MapManager.Map.CurrentPosition);
             Sighting.Count = (int)txtCount.Value;
-            Sighting.Description.Desc = txtDescription.Text;
+            Sighting.Description = new Description(txtDescription.Text);
 
             DialogResult = true;
             this.Close();

@@ -4,8 +4,8 @@
 //FIXED: Add an Image class? Not needed
 //FIXED: If I change an animal name, the observablecollection name isn't updated. "By design".
 //TODO: Set max limit to observablecollections?
-//TODO: Add method to update properties in Sightings collection if some of the underlying properties have changed. For example Animal.Name
-//TODO: Go over access modifiers
+//FIXED: Add method to update properties in Sightings collection if some of the underlying properties have changed. For example Animal.Name. Not needed.
+//FIXED: Go over access modifiers
 //FIXED: Add possibility to add image to sighting? Not now...
 //FIXED: Maybe combine Date and Time classes to one, When?
 
@@ -23,9 +23,11 @@
 //FIXED: Maybe add possibility to rotate images?
 //FIXED: Add about window
 
-//TODO: Implement all methods.
-//TODO: Remove redundant methods/classes
+//FIXED: Implement all methods.
+//FIXED: Remove redundant methods/classes
 //FIXED: Make FileManager static?
-//TODO: When closing history dont ask for saving, if nothing has been changed
+//FICED: When closing history dont ask for saving, if nothing has been changed
 
 //FIXED: References to datastore files maybe should be consts?
+
+//TODO: Add comments

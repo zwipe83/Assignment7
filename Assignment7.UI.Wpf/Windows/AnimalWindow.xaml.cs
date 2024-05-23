@@ -92,6 +92,9 @@ namespace Assignment7.UI.Wpf.Windows
             }
 
             InitAnimalId();
+
+            txtName.Focus();
+            txtName.Select(0, txtName.Text.Length);
         }
 
         /// <summary>

@@ -27,10 +27,7 @@ namespace Assignment7.Classes
         public Guid Id
         {
             get => _id;
-            set
-            {
-                _id = value;
-            }
+            protected set => _id = value;
         }
         #endregion
         #region Constructors

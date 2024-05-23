@@ -51,11 +51,12 @@ namespace Assignment7.Classes
         /// <param name="fileNames"></param>
         public static void DeleteFiles(List<string> fileNames, string directoryName)
         {
-            string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName); // Provide the directory path where the files are located
+            string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName); 
 
             foreach (string fileName in fileNames)
             {
                 string filePath = Path.Combine(directoryPath, fileName);
+
 
                 if (System.IO.File.Exists(filePath))
                 {
@@ -107,31 +108,23 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="animalIds"></param>
         /// <returns></returns>
-        public static List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory) //TODO: This isn't working, fix. Removes images it shouldnt
+        public static List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory)
         {
-            string[] images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, searchDirectory));
+            List<string> images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, searchDirectory));
 
-            List<string> orphanedImages = new List<string>();
+            List<string> ids = [.. animalIds.Select(id => id.ToString())];
 
-            foreach (var item in images)
-            {
-                string name = item.Split('.')[0];
-                foreach (var item1 in animalIds)
-                {
-                    string id = item1.Id.ToString();
-                    if (name == id)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        if (!orphanedImages.Any(a => a == item))
-                            orphanedImages.Add(item);
-                    }
-                }
-            }
+            // Strip extensions from list1
+            List<string> imagesWithoutExtensions = images.Select(Path.GetFileNameWithoutExtension).ToList();
 
-            return orphanedImages;
+            var uniqueInList1 = images.Where(file => !ids.Contains(Path.GetFileNameWithoutExtension(file))).ToList();
+
+            var uniqueInList2 = ids.Where(file => !imagesWithoutExtensions.Contains(file)).ToList();
+
+            // Combine both results
+            var orphanedFiles = uniqueInList1.Concat(uniqueInList2).ToList();
+
+            return orphanedFiles;
         }
 
         /// <summary>
@@ -139,14 +132,14 @@ namespace Assignment7.Classes
         /// </summary>
         /// <param name="directoryPath"></param>
         /// <returns></returns>
-        public static string[] GetFilesInDirectory(string directoryPath)
+        public static List<string> GetFilesInDirectory(string directoryPath)
         {
             string[] filePaths = Directory.GetFiles(directoryPath);
-            string[] fileNames = new string[filePaths.Length];
+            List<string> fileNames = new List<string>(filePaths.Length);
 
             for (int i = 0; i < filePaths.Length; i++)
             {
-                fileNames[i] = Path.GetFileName(filePaths[i]);
+                fileNames.Add(Path.GetFileName(filePaths[i]));
             }
 
             return fileNames;
