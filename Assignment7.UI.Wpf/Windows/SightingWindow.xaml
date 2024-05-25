@@ -63,7 +63,7 @@
                 </Button.Resources>
             </Button>
             <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14" Grid.Row="1"/>
-            <TextBox HorizontalAlignment="Left" Margin="10,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" Name="txtDescription" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="116" Grid.Row="0">
+            <TextBox HorizontalAlignment="Left" Margin="10,96,0,0" TextWrapping="Wrap" Text="Add description" VerticalAlignment="Top" Width="550" Name="txtDescription" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="116" Grid.Row="0">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>

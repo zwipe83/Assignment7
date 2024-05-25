@@ -41,7 +41,7 @@
                 </Button.Resources>
             </Button>
             <Label Content="Select Image" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Name="lblSelectImage" FontSize="14"  Grid.Column="1"/>
-            <Button Content="Save" HorizontalAlignment="Left" Margin="634,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56">
+            <Button Content="Save" HorizontalAlignment="Left" Margin="230,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56" Grid.Column="1" Grid.Row="0">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
@@ -65,7 +65,8 @@
             </Button>
             <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="10,10,10,10" Background="Gray"
                     Grid.Column="0"
-                    Grid.Row="1"/>
+                    Grid.Row="1"
+                      Text="Add description"/>
             <Label Content="Animal Id:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="lblAnimalId"  Grid.Column="0" Grid.Row="0"/>
             <TextBox HorizontalAlignment="Left" Margin="78,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310" IsEnabled="false" Name="txtAnimalId" FontSize="14" Background="LightSlateGray" Grid.Column="0" Grid.Row="0"/>
             <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14" Grid.Column="0" Grid.Row="0"/>

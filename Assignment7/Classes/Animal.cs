@@ -8,6 +8,8 @@
 using Assignment7.Enums;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Security.Cryptography;
 
 namespace Assignment7.Classes
 {
@@ -167,5 +169,13 @@ namespace Assignment7.Classes
             Image = objToCopyFrom.Image;
         }
         #endregion
+
+        // Deserialization constructor
+        public Animal(SerializationInfo info, StreamingContext context)
+        {
+            // Retrieve the serialized value of the "_id" field from the SerializationInfo object
+            //_id = (Guid)info.GetValue("_id", typeof(Guid));
+        }
+
     }
 }

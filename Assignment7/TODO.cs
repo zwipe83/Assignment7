@@ -34,4 +34,6 @@
 
 //TODO: Add help doc
 //TODO: Add icon
-//TODO: Change font
+//FIXED: Change font
+
+//TODO: Fix print. It looks terrible

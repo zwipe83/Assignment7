@@ -21,13 +21,13 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="250"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Border CornerRadius="20">
-                <DockPanel Height="25" VerticalAlignment="Top" Grid.Row="0" Width="120">
-                    <Menu DockPanel.Dock="Top" Height="19" Margin="0,0,0,0">
+                <DockPanel Height="25" VerticalAlignment="Top" Grid.Row="0" Width="140">
+                    <Menu DockPanel.Dock="Left" Height="25" Margin="0,2,0,0" FontSize="16">
                         <MenuItem Header="_File">
                             <MenuItem Header="_Exit" Name="menuBtnExit" Click="menuBtnExit_Click"/>
                         </MenuItem>
@@ -40,7 +40,7 @@
                     </Menu>
                 </DockPanel>
             </Border>
-            <Label Content="WildSights" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="48" Grid.Row="1"/>
+            <Label Content="WildSights" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" FontSize="72" Grid.Row="1" FontFamily="Segoe UI Variable Display Semibold" Foreground="#FF481919"/>
             <Button Content="Add Sighting" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="20" Name="btnAddSighting" Click="btnAddSighting_Click" Grid.Row="2">
                 <Button.Effect>
                     <DropShadowEffect/>

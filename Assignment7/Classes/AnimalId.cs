@@ -1,4 +1,7 @@
-﻿/// <summary>
+﻿
+using System.Runtime.Serialization;
+
+/// <summary>
 /// Filename: AnimalId.cs
 /// Created on: 2024-05-05 00:00:00
 /// Author: Samuel Jeffman
@@ -27,7 +30,7 @@ namespace Assignment7.Classes
         public Guid Id
         {
             get => _id;
-            protected set => _id = value;
+            set => _id = value;
         }
         #endregion
         #region Constructors
@@ -48,6 +51,14 @@ namespace Assignment7.Classes
             Id = id;
         }
         #endregion
+
+        // Deserialization constructor
+        public AnimalId(SerializationInfo info, StreamingContext context)
+        {
+            // Retrieve the serialized value of the "_id" field from the SerializationInfo object
+            _id = (Guid)info.GetValue("_id", typeof(Guid));
+        }
+
         #region Overridden Methods
 
         /// <summary>
