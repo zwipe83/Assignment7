@@ -136,6 +136,13 @@ public partial class MainWindow : Window
     {
         AnimalManager animalManagerCopy = AnimalManager.DeepCopy();
         SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working?
+
+        if (sightingManagerCopy.ListOfSightings.Count == 0)
+        {
+            MessageBox.Show(@"You should add a sighting first! Click on 'Add Sighting'.", "Info");
+            return;
+        }
+
         HistoryWindow window = new HistoryWindow(sightingManagerCopy, animalManagerCopy);
         window.ShowDialog();
 
@@ -205,6 +212,13 @@ public partial class MainWindow : Window
     private void btnAddSighting_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = animalManager.DeepCopy();
+
+        if(animalManager.ListOfAnimals.Count == 0)
+        {
+            MessageBox.Show(@"You should add an animal first! Click on 'Manage Animals'.", "Info");
+            return;
+        }
+
         SightingWindow window = new SightingWindow(new Sighting(), animalManagerCopy, false);
 
         window.ShowDialog();

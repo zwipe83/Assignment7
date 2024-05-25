@@ -344,6 +344,7 @@ namespace Assignment7.UI.Wpf.Windows
         {
             SightingManager.DeleteSighting(SelectedSighting);
             InitListView();
+            ChangeDetected = true;
         }
 
         private void lstSightings_MouseUp(object sender, MouseButtonEventArgs e)

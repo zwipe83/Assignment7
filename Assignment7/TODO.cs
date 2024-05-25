@@ -26,8 +26,12 @@
 //FIXED: Implement all methods.
 //FIXED: Remove redundant methods/classes
 //FIXED: Make FileManager static?
-//FICED: When closing history dont ask for saving, if nothing has been changed
+//FIXED: When closing history dont ask for saving, if nothing has been changed
 
 //FIXED: References to datastore files maybe should be consts?
 
 //TODO: Add comments
+
+//TODO: Add help doc
+//TODO: Add icon
+//TODO: Change font

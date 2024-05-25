@@ -5,64 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="Sightings History" Height="450" Width="1280" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <ListView Margin="0,96,0,0" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="LightSlateGray" MouseUp="lstSightings_MouseUp">
-            <ListView.View>
-                <GridView x:Name="GridViewControl"/>
-            </ListView.View>
-        </ListView>
-        <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="24" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged" FontSize="14">
-            <ComboBox.Effect>
-                <DropShadowEffect/>
-            </ComboBox.Effect>
-        </ComboBox>
-        <DatePicker HorizontalAlignment="Left" Margin="204,38,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged" Height="24" FontSize="14">
-            <DatePicker.Effect>
-                <DropShadowEffect/>
-            </DatePicker.Effect>
-        </DatePicker>
-        <DatePicker HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged" Height="24" FontSize="14">
-            <DatePicker.Effect>
-                <DropShadowEffect/>
-            </DatePicker.Effect>
-        </DatePicker>
-        <Button Content="Print selection" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint" Height="36" Width="156" FontSize="14" Click="btnPrint_Click">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="From" HorizontalAlignment="Left" Margin="204,14,0,0" VerticalAlignment="Top"/>
-        <Label Content="To" HorizontalAlignment="Left" Margin="355,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.262,0.211"/>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="1165,38,0,0" VerticalAlignment="Top" Height="36" Width="56" Name="btnClose" Click="btnClose_Click">
-        <Button.Effect>
-            <DropShadowEffect/>
-        </Button.Effect>
-        <Button.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Button.Resources>
-        </Button>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="900,38,0,0" VerticalAlignment="Top" Height="36" Width="56" x:Name="btnDeleteSighting" Click="btnDeleteSighting_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
+        Title="Sightings History" Height="450" Width="1280" WindowStyle="None" Background="Transparent" MouseDown="Window_MouseDown"
+        AllowsTransparency="True">
+    <Border Background="Gray"
+            CornerRadius="20"
+            BorderThickness="1"
+            BorderBrush="Black">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListView Margin="10,10,10,10" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="Gray" MouseUp="lstSightings_MouseUp" Grid.Row="1">
+                <ListView.View>
+                    <GridView x:Name="GridViewControl"/>
+                </ListView.View>
+            </ListView>
+            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="24" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged" FontSize="14" Grid.Row="0">
+                <ComboBox.Effect>
+                    <DropShadowEffect/>
+                </ComboBox.Effect>
+            </ComboBox>
+            <DatePicker HorizontalAlignment="Left" Margin="204,38,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0">
+                <DatePicker.Effect>
+                    <DropShadowEffect/>
+                </DatePicker.Effect>
+            </DatePicker>
+            <DatePicker HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0">
+                <DatePicker.Effect>
+                    <DropShadowEffect/>
+                </DatePicker.Effect>
+            </DatePicker>
+            <Button Content="Print selection" HorizontalAlignment="Left" Margin="511,32,0,0" VerticalAlignment="Top" Name="btnPrint" Height="36" Width="156" FontSize="14" Click="btnPrint_Click" Grid.Row="0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Label Content="Select animal type" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" FontSize="14" Grid.Row="0"/>
+            <Label Content="From" HorizontalAlignment="Left" Margin="204,14,0,0" VerticalAlignment="Top" Grid.Row="0"/>
+            <Label Content="To" HorizontalAlignment="Left" Margin="355,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.262,0.211" Grid.Row="0"/>
+            <Button Content="Close" HorizontalAlignment="Left" Margin="1165,32,0,0" VerticalAlignment="Top" Height="36" Width="56" Name="btnClose" Click="btnClose_Click" Grid.Row="0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="Delete" HorizontalAlignment="Left" Margin="896,32,0,0" VerticalAlignment="Top" Height="36" Width="56" x:Name="btnDeleteSighting" Click="btnDeleteSighting_Click" Grid.Row="0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

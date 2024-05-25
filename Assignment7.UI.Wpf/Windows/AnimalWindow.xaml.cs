@@ -200,14 +200,13 @@ namespace Assignment7.UI.Wpf.Windows
         private void RotateImage(int degrees)
         {
             var viewModel = (AnimalWindowViewModel)DataContext;
-            // Rotate the image
+
             BitmapImage bitmapImage = new BitmapImage(new Uri(viewModel.ImagePath));
             Image image = new Image();
             image.Source = bitmapImage;
             image.RenderTransformOrigin = new Point(0.5, 0.5);
-            image.RenderTransform = new RotateTransform(degrees); // Specify the rotation angle here
+            image.RenderTransform = new RotateTransform(degrees);
 
-            // Add the rotated image to your UI
             imgAnimal.Source = image.Source;
             imgAnimal.RenderTransformOrigin = image.RenderTransformOrigin;
             imgAnimal.RenderTransform = image.RenderTransform;

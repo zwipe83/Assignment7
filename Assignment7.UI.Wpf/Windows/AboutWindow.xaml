@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         mc:Ignorable="d"
-        Title="About WildSights" Height="300" Width="300" Background="SlateGray" ResizeMode="NoResize" MouseDown="Window_MouseDown" WindowStyle="None">
-    <Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="77,32,0,0" VerticalAlignment="Top" Name="lblHeader"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="77,52,0,0" VerticalAlignment="Top" Name="lblProductName"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="77,72,0,0" VerticalAlignment="Top" Name="lblVersion"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="77,91,0,0" VerticalAlignment="Top" Name="lblCopyright"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="77,111,0,0" VerticalAlignment="Top" Name="lblCompanyName"/>
-        <TextBox HorizontalAlignment="Left" Margin="77,149,0,49" Name="txtBoxDescription" Width="153" IsEnabled="False" Height="82" TextWrapping="Wrap"/>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="228,252,0,0" VerticalAlignment="Top" Click="btnClose_Click" Name="btnClose"/>
-
-    </Grid>
+        Title="About WildSights" Height="300" Width="300" Background="Transparent" ResizeMode="NoResize" MouseDown="Window_MouseDown" WindowStyle="None" AllowsTransparency="True">
+    <Border Background="Gray"
+            CornerRadius="20"
+            BorderThickness="1"
+            BorderBrush="Black">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="77,32,0,0" VerticalAlignment="Top" Name="lblHeader" Grid.Row="0"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="77,52,0,0" VerticalAlignment="Top" Name="lblProductName" Grid.Row="0"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="77,72,0,0" VerticalAlignment="Top" Name="lblVersion" Grid.Row="0"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="77,91,0,0" VerticalAlignment="Top" Name="lblCopyright" Grid.Row="0"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="77,111,0,0" VerticalAlignment="Top" Name="lblCompanyName" Grid.Row="0"/>
+            <TextBox HorizontalAlignment="Left" Margin="77,149,0,49" Name="txtBoxDescription" Width="153" IsEnabled="False" Height="82" TextWrapping="Wrap" Grid.Row="0"/>
+            <Button Content="Close" HorizontalAlignment="Left" Margin="228,252,0,0" VerticalAlignment="Top" Click="btnClose_Click" Name="btnClose" Grid.Row="0"/>
+        </Grid>
+    </Border>
 </Window>

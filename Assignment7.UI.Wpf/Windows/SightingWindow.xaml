@@ -6,53 +6,69 @@
         xmlns:local="clr-namespace:Assignment7.UI.Wpf.Windows"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="SightingWindow" Height="600" Width="820" WindowStyle="None" Background="SlateGray" MouseDown="Window_MouseDown" ResizeMode="NoResize">
-    <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="24" IsEditable="True" IsTextSearchEnabled="True">
-            <ComboBox.Effect>
+        Title="SightingWindow" Height="600" Width="820" WindowStyle="None" Background="Transparent" MouseDown="Window_MouseDown" ResizeMode="NoResize" AllowsTransparency="True">
+    <Border BorderThickness="1"
+            BorderBrush="Black"
+            CornerRadius="20"
+            Background="Gray">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="225"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimal" Height="24" IsEditable="True" IsTextSearchEnabled="True" Grid.Row="0">
+                <ComboBox.Effect>
+                    <DropShadowEffect/>
+                </ComboBox.Effect>
+            </ComboBox>
+            <Label Content="How many were there?" HorizontalAlignment="Left" Margin="440,8,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="154" FontSize="14"  Grid.Row="0"/>
+            <ContentControl Content="ContentControl" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" Height="328" Width="798" Name="contentMap" FontSize="14" Grid.Row="1">
+                <ContentControl.Effect>
+                    <DropShadowEffect/>
+                </ContentControl.Effect>
+            </ContentControl>
+            <Button Content="Save" HorizontalAlignment="Left" Margin="660,32,0,0" VerticalAlignment="Top" Name="btnSave" Height="36" Width="56" Click="btnSave_Click" FontSize="14"  Grid.Row="0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <xceed:DateTimeUpDown HorizontalAlignment="Left" Margin="147,33,0,0" VerticalAlignment="Top" Name="dateWhen" Width="263" Height="24" Format="FullDateTime" FontSize="14" Grid.Row="0">
+                <xceed:DateTimeUpDown.Effect>
+                    <DropShadowEffect/>
+                </xceed:DateTimeUpDown.Effect>
+            </xceed:DateTimeUpDown>
+            <xceed:IntegerUpDown HorizontalAlignment="Left" Margin="440,32,0,0" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="24" FontSize="14" Grid.Row="0">
+                <xceed:IntegerUpDown.Effect>
+                    <DropShadowEffect/>
+                </xceed:IntegerUpDown.Effect>
+            </xceed:IntegerUpDown>
+            <Label Content="Select Animal" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Name="lblSelectAnimal" FontSize="14" Grid.Row="0"/>
+            <Label Content="When did you see it?" HorizontalAlignment="Left" Margin="147,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="14" Grid.Row="0"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="722,32,0,0" VerticalAlignment="Top" Height="36" Width="56" Click="btnCancel_Click" FontSize="14" Grid.Row="0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14" Grid.Row="1"/>
+            <TextBox HorizontalAlignment="Left" Margin="10,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" Name="txtDescription" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="116" Grid.Row="0">
+            <TextBox.Effect>
                 <DropShadowEffect/>
-            </ComboBox.Effect>
-        </ComboBox>
-        <Label Content="How many were there?" HorizontalAlignment="Left" Margin="440,8,0,0" VerticalAlignment="Top" Name="lblCount" Height="26" Width="154" FontSize="14" />
-        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Height="314" Width="780" Name="contentMap" FontSize="14">
-            <ContentControl.Effect>
-                <DropShadowEffect/>
-            </ContentControl.Effect>
-        </ContentControl>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="660,32,0,0" VerticalAlignment="Top" Name="btnSave" Height="36" Width="56" Click="btnSave_Click" FontSize="14">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <xceed:DateTimeUpDown HorizontalAlignment="Left" Margin="147,33,0,0" VerticalAlignment="Top" Name="dateWhen" Width="263" Height="24" Format="FullDateTime" FontSize="14">
-            <xceed:DateTimeUpDown.Effect>
-                <DropShadowEffect/>
-            </xceed:DateTimeUpDown.Effect>
-        </xceed:DateTimeUpDown>
-        <xceed:IntegerUpDown HorizontalAlignment="Left" Margin="440,32,0,0" Text="" VerticalAlignment="Top" Width="120" Name="txtCount" Height="24" FontSize="14">
-            <xceed:IntegerUpDown.Effect>
-                <DropShadowEffect/>
-            </xceed:IntegerUpDown.Effect>
-        </xceed:IntegerUpDown>
-        <Label Content="Select Animal" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Name="lblSelectAnimal" FontSize="14"/>
-        <Label Content="When did you see it?" HorizontalAlignment="Left" Margin="147,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="14"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="722,32,0,0" VerticalAlignment="Top" Height="36" Width="56" Click="btnCancel_Click" FontSize="14">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Label Content="Where did you see it?" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Name="lblLocation" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" Name="txtDescription" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="116"/>
-        <Label Content="Describe your encounter" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" x:Name="lblDescription" FontSize="14"/>
-    </Grid>
+            </TextBox.Effect>
+            </TextBox>
+            <Label Content="Describe your encounter" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" x:Name="lblDescription" FontSize="14" Grid.Row="0"/>
+        </Grid>
+    </Border>
 </Window>
