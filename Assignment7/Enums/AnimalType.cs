@@ -8,7 +8,7 @@
 namespace Assignment7.Enums
 {
     /// <summary>
-    /// 
+    /// Represents the types of animals.
     /// </summary>
     public enum AnimalType
     {

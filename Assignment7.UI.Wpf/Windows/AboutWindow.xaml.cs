@@ -9,6 +9,10 @@ namespace Assignment7.UI.Wpf.Windows
     public partial class AboutWindow : Window
     {
         #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AboutWindow"/> class.
+        /// </summary>
         public AboutWindow()
         {
             InitializeComponent();
@@ -21,14 +25,15 @@ namespace Assignment7.UI.Wpf.Windows
             this.txtBoxDescription.Text = "WildSights lets you manage animal encounters in the wild.";
         }
         #endregion
+
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Handles the MouseDown event of the Window control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseButtonEventArgs"/> instance containing the event data.</param>
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
@@ -37,10 +42,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the Click event of the btnClose control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

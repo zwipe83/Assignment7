@@ -7,23 +7,31 @@ using Mapsui.Tiling;
 
 namespace Assignment7.UI.Wpf.Classes
 {
+    /// <summary>
+    /// Represents a map in the application.
+    /// </summary>
     public class Map
     {
         #region Fields
-
-
+        /// <summary>
+        /// The home position on the map.
+        /// </summary>
         private WorldPosition _homePosition;
+
+        /// <summary>
+        /// The current position on the map.
+        /// </summary>
         private WorldPosition _currentPosition = new WorldPosition(1460179, 7522646);
 
         /// <summary>
-        /// 
+        /// The Mapsui map object.
         /// </summary>
         private Mapsui.Map _map;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets the Mapsui map object.
         /// </summary>
         public Mapsui.Map MapObj
         {
@@ -32,7 +40,7 @@ namespace Assignment7.UI.Wpf.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the current position on the map.
         /// </summary>
         public WorldPosition CurrentPosition
         {
@@ -41,7 +49,7 @@ namespace Assignment7.UI.Wpf.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the home position on the map.
         /// </summary>
         public WorldPosition HomePosition
         {
@@ -52,15 +60,16 @@ namespace Assignment7.UI.Wpf.Classes
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Map class with the default home position.
         /// </summary>
         public Map() : this(new WorldPosition(1460179, 7522646))
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Map class with the specified home position.
         /// </summary>
+        /// <param name="worldPosition">The home position on the map.</param>
         public Map(WorldPosition worldPosition)
         {
             HomePosition = worldPosition;
@@ -71,15 +80,14 @@ namespace Assignment7.UI.Wpf.Classes
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Creates the Mapsui map asynchronously.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The created Mapsui map.</returns>
         internal Task<Mapsui.Map> CreateMapAsync()
         {
             MapObj = new Mapsui.Map();
 
             MapObj.Layers.Add(OpenStreetMap.CreateTileLayer());
-
 
             var layer = new GenericCollectionLayer<List<IFeature>>
             {
@@ -90,7 +98,7 @@ namespace Assignment7.UI.Wpf.Classes
 
             layer?.Features.Clear();
 
-            // Add a point to the layer using the Info position
+            // Add a point to the layer using the home position
             layer?.Features.Add(new GeometryFeature
             {
                 Geometry = new NetTopologySuite.Geometries.Point(HomePosition.X, HomePosition.Y)

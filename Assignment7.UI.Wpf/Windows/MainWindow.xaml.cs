@@ -2,7 +2,6 @@
 using Assignment7.UI.Wpf.Windows;
 using System.Windows;
 using System.Windows.Input;
-using static Assignment7.Classes.FileManager;
 
 namespace Assignment7.UI.Wpf;
 
@@ -14,45 +13,44 @@ public partial class MainWindow : Window
     #region Fields
 
     /// <summary>
-    /// 
+    /// The manager for handling sightings.
     /// </summary>
-
     private SightingManager sightingManager;
 
     /// <summary>
-    /// 
+    /// The manager for handling animals.
     /// </summary>
     private AnimalManager animalManager;
 
     /// <summary>
-    /// 
+    /// The data store for storing data.
     /// </summary>
     private DataStore dataStore;
 
     /// <summary>
-    /// 
+    /// The path to the data store.
     /// </summary>
     private static readonly string _datastorePath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "DataStore");
 
     /// <summary>
-    /// 
+    /// The base directory of the application.
     /// </summary>
     private static readonly string _appDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
 
     /// <summary>
-    /// 
+    /// The file name for storing sightings.
     /// </summary>
     private static readonly string sightingsFileName = "Sightings.json";
 
     /// <summary>
-    /// 
+    /// The file name for storing animals.
     /// </summary>
     private static readonly string animalsFileName = "Animals.json";
     #endregion
     #region Properties
 
     /// <summary>
-    /// 
+    /// Gets the data store.
     /// </summary>
     public DataStore DataStore
     {
@@ -60,7 +58,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Gets the animal manager.
     /// </summary>
     public AnimalManager AnimalManager
     {
@@ -68,7 +66,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Gets the sighting manager.
     /// </summary>
     public SightingManager SightingManager
     {
@@ -76,7 +74,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Gets the path to the data store.
     /// </summary>
     public static string DataStorePath
     {
@@ -84,7 +82,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Gets the base directory of the application.
     /// </summary>
     public static string AppDirectory
     {
@@ -94,7 +92,7 @@ public partial class MainWindow : Window
     #region Constructors
 
     /// <summary>
-    /// 
+    /// Initializes a new instance of the <see cref="MainWindow"/> class.
     /// </summary>
     public MainWindow()
     {
@@ -112,7 +110,7 @@ public partial class MainWindow : Window
     #region Private Methods
 
     /// <summary>
-    /// 
+    /// Reads the sightings from the data store.
     /// </summary>
     private void ReadSightings()
     {
@@ -120,7 +118,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Reads the animals from the data store.
     /// </summary>
     private void ReadAnimals()
     {
@@ -128,14 +126,14 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the history button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void btnHistory_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = AnimalManager.DeepCopy();
-        SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working?
+        SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working? Seems to be...
 
         if (sightingManagerCopy.ListOfSightings.Count == 0)
         {
@@ -158,15 +156,16 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Saves the sightings to the data store.
     /// </summary>
-    /// <param name="window"></param>
+    /// <param name="window">The history window.</param>
     private void SaveSightings(HistoryWindow window)
     {
         DataStore.SaveToJsonFile(new File(DataStorePath, sightingsFileName), window.SightingManager.ListOfSightings);
     }
+
     /// <summary>
-    /// 
+    /// Saves the sightings to the data store.
     /// </summary>
     private void SaveSightings()
     {
@@ -174,10 +173,10 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the manage animals button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void btnManageAnimals_Click(object sender, RoutedEventArgs e)
     {
         //AnimalManager animalManagerCopy = new AnimalManager(animalManager);
@@ -197,7 +196,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Saves the animals to the data store.
     /// </summary>
     private void SaveAnimals()
     {
@@ -205,15 +204,15 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the add sighting button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void btnAddSighting_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = animalManager.DeepCopy();
 
-        if(animalManager.ListOfAnimals.Count == 0)
+        if (animalManager.ListOfAnimals.Count == 0)
         {
             MessageBox.Show(@"You should add an animal first! Click on 'Manage Animals'.", "Info");
             return;
@@ -235,20 +234,20 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the exit menu button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void menuBtnExit_Click(object sender, RoutedEventArgs e)
     {
         Application.Current.Shutdown();
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the about menu button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void menuBtnAbout_Click(object sender, RoutedEventArgs e)
     {
         AboutWindow window = new AboutWindow();
@@ -256,23 +255,23 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// 
+    /// Handles the mouse down event of the window.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ChangedButton == MouseButton.Left)
-        { 
+        {
             DragMove();
         }
     }
 
     /// <summary>
-    /// 
+    /// Handles the click event of the clear images menu button.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
     private void menuBtnClearImages_Click(object sender, RoutedEventArgs e)
     {
         List<AnimalId> animalIds = AnimalManager.GetAnimalIds();

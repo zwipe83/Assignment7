@@ -11,21 +11,21 @@ using System.Runtime.Serialization;
 namespace Assignment7.Classes
 {
     /// <summary>
-    /// 
+    /// Represents an identifier for an animal.
     /// </summary>
     public class AnimalId
     {
         #region Fields
 
         /// <summary>
-        /// 
+        /// The unique identifier for the animal.
         /// </summary>
         private Guid _id;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the unique identifier for the animal.
         /// </summary>
         public Guid Id
         {
@@ -36,16 +36,16 @@ namespace Assignment7.Classes
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the AnimalId class with a new unique identifier.
         /// </summary>
         public AnimalId() : this(Guid.NewGuid())
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the AnimalId class with the specified unique identifier.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The unique identifier for the animal.</param>
         public AnimalId(Guid id)
         {
             Id = id;
@@ -62,9 +62,9 @@ namespace Assignment7.Classes
         #region Overridden Methods
 
         /// <summary>
-        /// 
+        /// Returns a string representation of the AnimalId object.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string representation of the AnimalId object.</returns>
         public override string ToString()
         {
             string s = Id.ToString();

@@ -8,24 +8,23 @@
 namespace Assignment7.Classes
 {
     /// <summary>
-    /// 
+    /// Provides file management operations such as copying, deleting, renaming, and retrieving file information.
     /// </summary>
     public static class FileManager
     {
         #region Public Methods
         /// <summary>
-        /// 
+        /// Copies a file from the source file path to the destination folder path.
         /// </summary>
-        /// <param name="sourceFilePath"></param>
-        /// <param name="destinationFolderPath"></param>
-        /// <returns></returns>
+        /// <param name="sourceFilePath">The path of the source file.</param>
+        /// <param name="destinationFolderPath">The path of the destination folder.</param>
+        /// <returns>The path of the copied file in the destination folder.</returns>
         public static string CopyFile(string sourceFilePath, string destinationFolderPath)
         {
             string fileName = Path.GetFileName(sourceFilePath);
 
             string destinationFilePath = Path.Combine(destinationFolderPath, fileName);
 
-            // Create the destination folder if it doesn't exist
             var di = Directory.CreateDirectory(destinationFolderPath);
 
             System.IO.File.Copy(sourceFilePath, destinationFilePath, true);
@@ -34,9 +33,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Deletes a file at the specified file path.
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="filePath">The path of the file to delete.</param>
         public static void DeleteFile(string filePath)
         {
             if (System.IO.File.Exists(filePath))
@@ -46,12 +45,13 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Deletes multiple files with the specified file names in the specified directory.
         /// </summary>
-        /// <param name="fileNames"></param>
+        /// <param name="fileNames">The names of the files to delete.</param>
+        /// <param name="directoryName">The name of the directory containing the files.</param>
         public static void DeleteFiles(List<string> fileNames, string directoryName)
         {
-            string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName); 
+            string directoryPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, directoryName);
 
             foreach (string fileName in fileNames)
             {
@@ -64,16 +64,16 @@ namespace Assignment7.Classes
                 }
                 else
                 {
-                    //Nothing.
+                    // File does not exist, do nothing.
                 }
             }
         }
 
         /// <summary>
-        /// 
+        /// Renames a file at the specified file path with the new file name.
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="newFileName"></param>
+        /// <param name="filePath">The path of the file to rename.</param>
+        /// <param name="newFileName">The new name for the file.</param>
         public static void RenameFile(string filePath, string newFileName)
         {
             try
@@ -94,20 +94,21 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets the extension of a file at the specified file path.
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
+        /// <param name="filePath">The path of the file.</param>
+        /// <returns>The extension of the file, or an empty string if the file has no extension.</returns>
         public static string GetExtension(string filePath)
         {
             return System.IO.Path.GetExtension(filePath) ?? string.Empty;
         }
 
         /// <summary>
-        /// 
+        /// Finds orphaned files in the specified search directory that do not have corresponding animal IDs.
         /// </summary>
-        /// <param name="animalIds"></param>
-        /// <returns></returns>
+        /// <param name="animalIds">The list of animal IDs.</param>
+        /// <param name="searchDirectory">The directory to search for orphaned files.</param>
+        /// <returns>The list of orphaned file names.</returns>
         public static List<string> FindOrphanedFiles(List<AnimalId> animalIds, string searchDirectory)
         {
             List<string> images = GetFilesInDirectory(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, searchDirectory));
@@ -128,10 +129,10 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets the names of all files in the specified directory.
         /// </summary>
-        /// <param name="directoryPath"></param>
-        /// <returns></returns>
+        /// <param name="directoryPath">The path of the directory.</param>
+        /// <returns>The list of file names in the directory.</returns>
         public static List<string> GetFilesInDirectory(string directoryPath)
         {
             string[] filePaths = Directory.GetFiles(directoryPath);

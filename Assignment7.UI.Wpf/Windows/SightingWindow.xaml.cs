@@ -14,30 +14,30 @@ namespace Assignment7.UI.Wpf.Windows
         #region Fields
 
         /// <summary>
-        /// 
+        /// The map manager for handling map-related operations.
         /// </summary>
         private MapManager _mapManager;
 
         /// <summary>
-        /// 
+        /// The animal manager for handling animal-related operations.
         /// </summary>
         private AnimalManager _animalManager;
 
         /// <summary>
-        /// 
+        /// The sighting object.
         /// </summary>
         private Sighting _sighting;
 
 
         /// <summary>
-        /// 
+        /// Indicates whether the sighting is being edited.
         /// </summary>
         private bool _editSighting = false;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets the map manager.
         /// </summary>
         public MapManager MapManager
         {
@@ -46,7 +46,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets the animal manager.
         /// </summary>
         public AnimalManager AnimalManager
         {
@@ -55,7 +55,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the sighting object.
         /// </summary>
         public Sighting Sighting
         {
@@ -64,7 +64,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the sighting is being edited.
         /// </summary>
         public bool EditSighting
         {
@@ -75,7 +75,7 @@ namespace Assignment7.UI.Wpf.Windows
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SightingWindow"/> class.
         /// </summary>
         public SightingWindow() : this(new Sighting())
         {
@@ -83,16 +83,19 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SightingWindow"/> class.
         /// </summary>
-        /// <param name="sighting"></param>
+        /// <param name="sighting">The sighting object.</param>
         public SightingWindow(Sighting sighting) : this(sighting, new AnimalManager(), false)
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SightingWindow"/> class.
         /// </summary>
+        /// <param name="sighting">The sighting object.</param>
+        /// <param name="animalManager">The animal manager.</param>
+        /// <param name="editSighting">Indicates whether the sighting is being edited.</param>
         public SightingWindow(Sighting sighting, AnimalManager animalManager, bool editSighting)
         {
             InitializeComponent();
@@ -112,7 +115,7 @@ namespace Assignment7.UI.Wpf.Windows
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Initializes the GUI elements.
         /// </summary>
         private void InitGUI()
         {
@@ -131,11 +134,11 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Loads the sighting data into the GUI elements.
         /// </summary>
         private void LoadSighting()
         {
-            //FIXED: Get Animal name and map it to the combobox
+            // Get the index of the animal in the list of animals and map it to the combobox
             try
             {
                 int animalIndex = AnimalManager.ListOfAnimals.Select((animal, index) => new { Animal = animal, Index = index })
@@ -161,7 +164,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the text object.
         /// </summary>
         private void InitTextObject()
         {
@@ -170,7 +173,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the date object.
         /// </summary>
         private void InitDateObject()
         {
@@ -178,7 +181,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the combobox.
         /// </summary>
         private void InitComboBox()
         {
@@ -190,7 +193,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the map.
         /// </summary>
         private void InitMap()
         {
@@ -200,10 +203,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the save button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Sighting.Animal = (Animal)cmbAnimal.SelectedItem;
@@ -217,20 +220,20 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the cancel button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
         /// <summary>
-        /// 
+        /// Handles the mouse down event of the window.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var dummy = e.OriginalSource.GetType();

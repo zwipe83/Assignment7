@@ -3,7 +3,7 @@
 //FIXED: Add images to listview? Maybe not. No
 //FIXED: Add an Image class? Not needed
 //FIXED: If I change an animal name, the observablecollection name isn't updated. "By design".
-//TODO: Set max limit to observablecollections?
+//FIXED: Set max limit to observablecollections? Not doing this
 //FIXED: Add method to update properties in Sightings collection if some of the underlying properties have changed. For example Animal.Name. Not needed.
 //FIXED: Go over access modifiers
 //FIXED: Add possibility to add image to sighting? Not now...
@@ -30,10 +30,10 @@
 
 //FIXED: References to datastore files maybe should be consts?
 
-//TODO: Add comments
+//FIXED: Add comments
 
 //TODO: Add help doc
-//TODO: Add icon
+//FIXED: Add icon
 //FIXED: Change font
 
-//TODO: Fix print. It looks terrible
+//FIXED: Fix print. It looks terrible

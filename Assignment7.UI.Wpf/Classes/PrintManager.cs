@@ -11,13 +11,16 @@ using System.Windows.Documents;
 
 namespace Assignment7.UI.Wpf.Classes
 {
+    /// <summary>
+    /// Represents a manager for printing documents in the WPF application.
+    /// </summary>
     public class PrintManager
     {
         #region Public Methods
         /// <summary>
-        /// 
+        /// Prints the specified FlowDocument from the current sightings list.
         /// </summary>
-        /// <param name="doc"></param>
+        /// <param name="doc">The FlowDocument to be printed.</param>
         public void PrintFromCurrentSightingsList(FlowDocument doc)
         {
             PrintDialog printDialog = new PrintDialog();

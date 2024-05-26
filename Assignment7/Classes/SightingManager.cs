@@ -9,19 +9,22 @@ using System.Collections.ObjectModel;
 
 namespace Assignment7.Classes
 {
+    /// <summary>
+    /// Represents a manager for handling sightings.
+    /// </summary>
     public class SightingManager
     {
         #region Fields
 
         /// <summary>
-        /// 
+        /// The list of sightings.
         /// </summary>
         private ObservableCollection<Sighting> _listOfSightings;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the list of sightings.
         /// </summary>
         public ObservableCollection<Sighting> ListOfSightings
         {
@@ -32,7 +35,7 @@ namespace Assignment7.Classes
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SightingManager"/> class.
         /// </summary>
         public SightingManager()
         {
@@ -40,9 +43,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SightingManager"/> class with a deep copy of another <see cref="SightingManager"/> object.
         /// </summary>
-        /// <param name="sightingManager"></param>
+        /// <param name="sightingManager">The <see cref="SightingManager"/> object to copy.</param>
         public SightingManager(SightingManager sightingManager)
         {
             ListOfSightings = new ObservableCollection<Sighting>(sightingManager.ListOfSightings);
@@ -51,9 +54,9 @@ namespace Assignment7.Classes
         #region Public Methods
 
         /// <summary>
-        /// 
+        /// Creates a deep copy of the <see cref="SightingManager"/> object.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A new instance of the <see cref="SightingManager"/> class that is a deep copy of this instance.</returns>
         public SightingManager DeepCopy()
         {
             SightingManager copy = new SightingManager();
@@ -64,18 +67,18 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Adds a sighting to the list of sightings.
         /// </summary>
-        /// <param name="sighting"></param>
+        /// <param name="sighting">The sighting to add.</param>
         public void AddSighting(Sighting sighting)
         {
             ListOfSightings.Add(sighting);
         }
 
         /// <summary>
-        /// 
+        /// Edits a sighting in the list of sightings.
         /// </summary>
-        /// <param name="sighting"></param>
+        /// <param name="sighting">The sighting to edit.</param>
         public void EditSighting(Sighting sighting)
         {
             int index = ListOfSightings.IndexOf(sighting);
@@ -86,9 +89,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Deletes a sighting from the list of sightings.
         /// </summary>
-        /// <param name="sighting"></param>
+        /// <param name="sighting">The sighting to delete.</param>
         public void DeleteSighting(Sighting sighting)
         {
             int index = ListOfSightings.IndexOf(sighting);
@@ -99,9 +102,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Finds a sighting.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotImplementedException">Thrown when the method is not implemented.</exception>
         public void FindSighting()
         {
             throw new System.NotImplementedException();

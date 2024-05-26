@@ -1,6 +1,5 @@
 ﻿
 using System.Collections.ObjectModel;
-using System.Linq.Expressions;
 
 /// <summary>
 /// Filename: AnimalManager.cs
@@ -12,21 +11,21 @@ using System.Linq.Expressions;
 namespace Assignment7.Classes
 {
     /// <summary>
-    /// 
+    /// Represents a manager for managing a collection of animals.
     /// </summary>
     public class AnimalManager
     {
         #region Fields
 
         /// <summary>
-        /// 
+        /// The list of animals.
         /// </summary>
         private ObservableCollection<Animal> _listOfAnimals;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the list of animals.
         /// </summary>
         public ObservableCollection<Animal> ListOfAnimals
         {
@@ -37,7 +36,7 @@ namespace Assignment7.Classes
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the AnimalManager class.
         /// </summary>
         public AnimalManager()
         {
@@ -45,9 +44,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the AnimalManager class by copying from another AnimalManager object.
         /// </summary>
-        /// <param name="objToCopyFrom"></param>
+        /// <param name="objToCopyFrom">The AnimalManager object to copy from.</param>
         public AnimalManager(AnimalManager objToCopyFrom)
         {
             ListOfAnimals = objToCopyFrom.ListOfAnimals;
@@ -56,9 +55,9 @@ namespace Assignment7.Classes
         #region Public Methods
 
         /// <summary>
-        /// 
+        /// Creates a deep copy of the AnimalManager object.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A new instance of the AnimalManager class that is a deep copy of this instance.</returns>
         public AnimalManager DeepCopy()
         {
             AnimalManager copy = new AnimalManager();
@@ -75,9 +74,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Adds an animal to the list of animals.
         /// </summary>
-        /// <param name="animal"></param>
+        /// <param name="animal">The animal to add.</param>
         public void AddAnimal(Animal animal)
         {
             try
@@ -92,15 +91,15 @@ namespace Assignment7.Classes
                 }
             }
             catch
-            { 
+            {
                 throw;
             }
         }
 
         /// <summary>
-        /// 
+        /// Changes an existing animal in the list of animals.
         /// </summary>
-        /// <param name="animal"></param>
+        /// <param name="animal">The animal to change.</param>
         public void ChangeAnimal(Animal animal)
         {
             int index = ListOfAnimals.IndexOf(animal);
@@ -111,9 +110,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Deletes an animal from the list of animals.
         /// </summary>
-        /// <param name="animal"></param>
+        /// <param name="animal">The animal to delete.</param>
         public void DeleteAnimal(Animal animal)
         {
             int index = ListOfAnimals.IndexOf(animal);
@@ -124,9 +123,9 @@ namespace Assignment7.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of animal IDs from the list of animals.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of animal IDs.</returns>
         public List<AnimalId> GetAnimalIds()
         {
             List<AnimalId> animalIds = new List<AnimalId>();

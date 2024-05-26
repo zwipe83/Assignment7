@@ -8,5 +8,4 @@ namespace Assignment7.UI.Wpf
     public partial class App : Application
     {
     }
-
 }

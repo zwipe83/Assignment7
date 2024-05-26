@@ -12,13 +12,21 @@ namespace Assignment7.UI.Wpf.Windows
     public partial class AnimalManagerWindow : Window
     {
         #region Fields
+
+        /// <summary>
+        /// The animal manager instance.
+        /// </summary>
         private AnimalManager _animalManager;
+
+        /// <summary>
+        /// The currently selected animal.
+        /// </summary>
         private Animal _selectedAnimal;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets the animal manager instance.
         /// </summary>
         public AnimalManager AnimalManager
         {
@@ -26,6 +34,9 @@ namespace Assignment7.UI.Wpf.Windows
             private protected set => _animalManager = value;
         }
 
+        /// <summary>
+        /// Gets or sets the currently selected animal.
+        /// </summary>
         private Animal SelectedAnimal
         {
             get => _selectedAnimal;
@@ -35,8 +46,9 @@ namespace Assignment7.UI.Wpf.Windows
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="AnimalManagerWindow"/> class.
         /// </summary>
+        /// <param name="animalManager">The animal manager instance.</param>
         public AnimalManagerWindow(AnimalManager animalManager)
         {
             InitializeComponent();
@@ -49,10 +61,10 @@ namespace Assignment7.UI.Wpf.Windows
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Handles the click event of the "Add Animal" button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The button that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -66,20 +78,20 @@ namespace Assignment7.UI.Wpf.Windows
                 }
                 else
                 {
-                    //Do nothing...
+                    // Do nothing...
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the "Edit Animal" button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The button that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnEditAnimal_Click(object sender, RoutedEventArgs e)
         {
             Animal animalCopy = new Animal(SelectedAnimal);
@@ -99,15 +111,15 @@ namespace Assignment7.UI.Wpf.Windows
             }
             else
             {
-                //Do nothing...
+                // Do nothing...
             }
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the "Cancel" button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The button that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
@@ -115,10 +127,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the "Save" button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The button that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
@@ -126,7 +138,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// Init GUI
+        /// Initializes the GUI.
         /// </summary>
         private void InitGUI()
         {
@@ -134,22 +146,24 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// Init listview
+        /// Initializes the list view.
         /// </summary>
         private void InitListView()
         {
-            //TODO: Make this more pretty
             lstAnimals.ItemsSource = AnimalManager.ListOfAnimals;
+
             GridViewColumn column = new GridViewColumn();
             column.Header = "Name";
             column.DisplayMemberBinding = new Binding("Name");
             column.Width = 150;
             GridViewControl.Columns.Add(column);
+
             GridViewColumn column2 = new GridViewColumn();
             column2.Header = "Type";
             column2.DisplayMemberBinding = new Binding("AnimalType");
             column2.Width = 150;
             GridViewControl.Columns.Add(column2);
+
             GridViewColumn column3 = new GridViewColumn();
             column3.Header = "Description";
             column3.DisplayMemberBinding = new Binding("Description");
@@ -158,10 +172,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the mouse up event of the list view.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The list view that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void lstAnimals_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (lstAnimals.SelectedItem != null)
@@ -173,20 +187,20 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the "Delete Animal" button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The button that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnDeleteAnimal_Click(object sender, RoutedEventArgs e)
         {
             AnimalManager.DeleteAnimal(SelectedAnimal);
         }
 
         /// <summary>
-        /// 
+        /// Handles the mouse double click event of the list view.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The list view that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void lstAnimals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             lstAnimals_MouseUp(sender, e);
@@ -194,10 +208,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the mouse down event of the window.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The window that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

@@ -11,41 +11,41 @@ using static Assignment7.Helpers.EnumHelper;
 namespace Assignment7.UI.Wpf.Windows
 {
     /// <summary>
-    /// Interaction logic for SightingsWindow.xaml
+    /// Interaction logic for HistoryWindow.xaml
     /// </summary>
     public partial class HistoryWindow : Window
     {
         #region Fields
 
         /// <summary>
-        /// 
+        /// The print manager for printing functionality.
         /// </summary>
         private PrintManager _printManager;
 
         /// <summary>
-        /// 
+        /// The sighting manager for managing sightings.
         /// </summary>
         private SightingManager _sightingManager;
 
         /// <summary>
-        /// 
+        /// The animal manager for managing animals.
         /// </summary>
         private AnimalManager _animalManager;
 
         /// <summary>
-        /// 
+        /// The currently selected sighting.
         /// </summary>
         private Sighting _selectedSighting;
 
         /// <summary>
-        /// 
+        /// Indicates whether a change has been detected.
         /// </summary>
         private bool _changeDetected = false;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets the animal manager.
         /// </summary>
         public AnimalManager AnimalManager
         {
@@ -53,7 +53,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets the sighting manager.
         /// </summary>
         public SightingManager SightingManager
         {
@@ -61,7 +61,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the selected sighting.
         /// </summary>
         public Sighting SelectedSighting
         {
@@ -70,13 +70,16 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets the print manager.
         /// </summary>
         public PrintManager PrintManager
         {
             get => _printManager;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether a change has been detected.
+        /// </summary>
         public bool ChangeDetected
         {
             get => _changeDetected;
@@ -86,8 +89,10 @@ namespace Assignment7.UI.Wpf.Windows
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="HistoryWindow"/> class.
         /// </summary>
+        /// <param name="sightingManager">The sighting manager.</param>
+        /// <param name="animalManager">The animal manager.</param>
         public HistoryWindow(SightingManager sightingManager, AnimalManager animalManager)
         {
             InitializeComponent();
@@ -102,7 +107,7 @@ namespace Assignment7.UI.Wpf.Windows
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Initializes the GUI.
         /// </summary>
         private void InitGUI()
         {
@@ -112,7 +117,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the animal type combo box.
         /// </summary>
         private void InitComboBox()
         {
@@ -123,11 +128,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// Init listview
+        /// Initializes the list view.
         /// </summary>
         private void InitListView()
         {
-            //TODO: Make this more pretty
             GridViewControl.Columns.Clear();
 
             // Sort the ListOfSightings based on date and time
@@ -167,7 +171,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Filters the list view based on the selected animal type.
         /// </summary>
         private void FilterListOnAnimalType()
         {
@@ -187,8 +191,9 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Filters the list view based on the selected date range.
         /// </summary>
+        /// <returns>The filtered collection view.</returns>
         private CollectionView FilterListOnDateRange()
         {
             // Get the selected "From" and "To" dates
@@ -213,40 +218,40 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the SelectedDateChanged event of the dateFrom control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void dateFrom_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             FilterListOnDateRange();
         }
 
         /// <summary>
-        /// 
+        /// Handles the SelectedDateChanged event of the dateTo control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void dateTo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             FilterListOnDateRange();
         }
 
         /// <summary>
-        /// 
+        /// Handles the SelectionChanged event of the cmbAnimalType control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void cmbAnimalType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FilterListOnAnimalType();
         }
 
         /// <summary>
-        /// 
+        /// Handles the MouseDoubleClick event of the lstSightings control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void lstSightings_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (lstSightings.SelectedItem != null)
@@ -282,10 +287,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the Click event of the btnClose control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             if (ChangeDetected)
@@ -311,10 +316,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the MouseDown event of the Window control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -322,24 +327,103 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the Click event of the btnPrint control.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            var filteredView = FilterListOnDateRange();
+            var filteredList = FilterListOnDateRange();
 
             FlowDocument doc = new FlowDocument();
-            foreach (var item in filteredView)
-            {
-                // Add your items to the document
-                doc.Blocks.Add(new Paragraph(new Run(item.ToString())));
-            }
-            PrintManager.PrintFromCurrentSightingsList(doc);
-        }
-        #endregion
+            Table table = new Table();
 
+            CreateColumns(table);
+
+            TableRowGroup trg = CreateTableRowGroup(table);
+
+            CreateHeaders(trg);
+
+            // Add rows to the TableRowGroup
+            foreach (Sighting sighting in filteredList)
+            {
+                TableRow row = new TableRow();
+                trg.Rows.Add(row);
+
+                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.When.ToString()))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Animal.Name.ToString()))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Count.ToString()))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Description.ToString()))));
+            }
+
+            // Add the table to the FlowDocument
+            doc.Blocks.Add(table);
+
+            SetPageProperties(doc);
+
+            // Print
+            PrintManager.PrintFromCurrentSightingsList(doc);
+
+            #region Local Methods
+            static void CreateColumns(Table table)
+            {
+                //Create columns
+                TableColumn column1 = new TableColumn();
+                column1.Width = new GridLength(150);
+                table.Columns.Add(column1);
+
+                TableColumn column2 = new TableColumn();
+                column2.Width = new GridLength(150);
+                table.Columns.Add(column2);
+
+                TableColumn column3 = new TableColumn();
+                column3.Width = new GridLength(50);
+                table.Columns.Add(column3);
+
+                TableColumn column4 = new TableColumn();
+                table.Columns.Add(column4);
+            }
+
+            static TableRowGroup CreateTableRowGroup(Table table)
+            {
+                // Create and add a TableRowGroup to hold the rows
+                TableRowGroup trg = new TableRowGroup();
+                table.RowGroups.Add(trg);
+                return trg;
+            }
+
+            static void CreateHeaders(TableRowGroup trg)
+            {
+                //Headers
+                TableRow header = new TableRow();
+                trg.Rows.Add(header);
+
+                header.Cells.Add(new TableCell(new Paragraph(new Run("Date"))));
+                header.Cells.Add(new TableCell(new Paragraph(new Run("Name"))));
+                header.Cells.Add(new TableCell(new Paragraph(new Run("Count"))));
+                header.Cells.Add(new TableCell(new Paragraph(new Run("Description"))));
+            }
+
+            static void SetPageProperties(FlowDocument doc)
+            {
+                // Set the page size to A4
+                doc.PageWidth = 793.92;
+                doc.PageHeight = 1122.24;
+
+                // Set the page margins
+                doc.PagePadding = new Thickness(50);
+
+                // Set the content size to match the page size
+                doc.ColumnWidth = double.PositiveInfinity;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Handles the Click event of the btnDeleteSighting control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void btnDeleteSighting_Click(object sender, RoutedEventArgs e)
         {
             SightingManager.DeleteSighting(SelectedSighting);
@@ -347,6 +431,11 @@ namespace Assignment7.UI.Wpf.Windows
             ChangeDetected = true;
         }
 
+        /// <summary>
+        /// Handles the MouseUp event of the lstSightings control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void lstSightings_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (lstSightings.SelectedItem != null)
@@ -356,5 +445,6 @@ namespace Assignment7.UI.Wpf.Windows
                 SelectedSighting = selectedSighting;
             }
         }
+        #endregion
     }
 }

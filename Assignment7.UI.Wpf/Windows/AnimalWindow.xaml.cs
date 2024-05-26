@@ -9,7 +9,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static Assignment7.Helpers.EnumHelper;
 using static Assignment7.UI.Wpf.MainWindow;
-using static Assignment7.Classes.FileManager;
 
 namespace Assignment7.UI.Wpf.Windows
 {
@@ -21,19 +20,19 @@ namespace Assignment7.UI.Wpf.Windows
         #region Fields
 
         /// <summary>
-        /// 
+        /// The animal object associated with the window.
         /// </summary>
         private Animal _animal;
 
         /// <summary>
-        /// 
+        /// Indicates whether the animal is being edited.
         /// </summary>
         private bool _editAnimal;
         #endregion
         #region Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the animal object associated with the window.
         /// </summary>
         public Animal Animal
         {
@@ -42,7 +41,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the animal is being edited.
         /// </summary>
         public bool EditAnimal
         {
@@ -53,18 +52,17 @@ namespace Assignment7.UI.Wpf.Windows
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="AnimalWindow"/> class.
         /// </summary>
-        /// <param name="animalManager"></param>
         public AnimalWindow() : this(new Animal(), false)
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="AnimalWindow"/> class.
         /// </summary>
-        /// <param name="animalManager"></param>
-        /// <param name="animal"></param>
+        /// <param name="animal">The animal object to be displayed in the window.</param>
+        /// <param name="editAnimal">Indicates whether the animal is being edited.</param>
         public AnimalWindow(Animal animal, bool editAnimal)
         {
             InitializeComponent();
@@ -80,7 +78,7 @@ namespace Assignment7.UI.Wpf.Windows
         #region Private Methods
 
         /// <summary>
-        /// 
+        /// Initializes the GUI elements of the window.
         /// </summary>
         private void InitGUI()
         {
@@ -98,7 +96,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the animal ID text box.
         /// </summary>
         private void InitAnimalId()
         {
@@ -106,7 +104,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Loads the animal data into the window controls.
         /// </summary>
         private void LoadAnimal()
         {
@@ -119,7 +117,7 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Initializes the animal type combo box.
         /// </summary>
         private void InitComboBox()
         {
@@ -130,10 +128,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the cancel button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The cancel button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
@@ -141,10 +139,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the save button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The save button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Animal.AnimalType = (AnimalType)cmbAnimalType.SelectedIndex;
@@ -156,10 +154,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the select image button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The select image button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSelectImage_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -195,8 +193,9 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Rotates the animal image by the specified degrees.
         /// </summary>
+        /// <param name="degrees">The number of degrees to rotate the image.</param>
         private void RotateImage(int degrees)
         {
             var viewModel = (AnimalWindowViewModel)DataContext;
@@ -213,10 +212,10 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the mouse down event of the window.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The window.</param>
+        /// <param name="e">The event arguments.</param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -224,40 +223,40 @@ namespace Assignment7.UI.Wpf.Windows
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the rotate 90 degrees button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The rotate 90 degrees button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRotate90_Click(object sender, RoutedEventArgs e)
         {
             RotateImage(90);
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the rotate 180 degrees button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The rotate 180 degrees button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRotate180_Click(object sender, RoutedEventArgs e)
         {
             RotateImage(180);
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the rotate -90 degrees button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The rotate -90 degrees button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRotateNeg90_Click(object sender, RoutedEventArgs e)
         {
             RotateImage(-90);
         }
 
         /// <summary>
-        /// 
+        /// Handles the click event of the rotate 0 degrees button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The rotate 0 degrees button.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRotateZero_Click(object sender, RoutedEventArgs e)
         {
             RotateImage(0);
