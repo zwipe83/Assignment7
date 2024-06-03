@@ -132,7 +132,10 @@ namespace Assignment7.Classes
 
             foreach (Animal animal in ListOfAnimals)
             {
-                animalIds.Add(animal.AnimalId);
+                if (animal.Image.Name != string.Empty)
+                {
+                    animalIds.Add(animal.AnimalId);
+                }
             }
 
             return animalIds;

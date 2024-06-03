@@ -18,7 +18,7 @@
                 <RowDefinition Height="350"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-        <ListView Margin="10,10,10,10" Name="lstAnimals" MouseUp="lstAnimals_MouseUp" MouseDoubleClick="lstAnimals_MouseDoubleClick" Background="Gray" FontSize="16" Grid.Row="0">
+        <ListView Margin="10,10,10,10" Name="lstAnimals" MouseUp="lstAnimals_MouseUp" MouseDoubleClick="lstAnimals_MouseDoubleClick" Background="FloralWhite" FontSize="16" Grid.Row="0">
             <ListView.View>
                 <GridView x:Name="GridViewControl"/>
             </ListView.View>

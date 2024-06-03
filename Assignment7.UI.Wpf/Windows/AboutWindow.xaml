@@ -22,7 +22,7 @@
             <Label Content="Label" HorizontalAlignment="Left" Margin="77,72,0,0" VerticalAlignment="Top" Name="lblVersion" Grid.Row="0"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="77,91,0,0" VerticalAlignment="Top" Name="lblCopyright" Grid.Row="0"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="77,111,0,0" VerticalAlignment="Top" Name="lblCompanyName" Grid.Row="0"/>
-            <TextBox HorizontalAlignment="Left" Margin="77,149,0,49" Name="txtBoxDescription" Width="153" IsEnabled="False" Height="82" TextWrapping="Wrap" Grid.Row="0"/>
+            <TextBox Background="FloralWhite" HorizontalAlignment="Left" Margin="77,149,0,49" Name="txtBoxDescription" Width="153" IsEnabled="False" Height="82" TextWrapping="Wrap" Grid.Row="0"/>
             <Button Content="Close" HorizontalAlignment="Left" Margin="235,261,0,0" VerticalAlignment="Top" Click="btnClose_Click" Name="btnClose" Grid.Row="0" Height="27" Width="53">
                 <Button.Effect>
                     <DropShadowEffect/>

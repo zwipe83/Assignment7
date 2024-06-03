@@ -75,6 +75,7 @@ namespace Assignment7.UI.Wpf.Windows
                 if (window.DialogResult.HasValue && window.DialogResult.Value)
                 {
                     AnimalManager.AddAnimal(window.Animal);
+                    lstAnimals.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(a => a.Name);
                 }
                 else
                 {
@@ -150,7 +151,7 @@ namespace Assignment7.UI.Wpf.Windows
         /// </summary>
         private void InitListView()
         {
-            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals;
+            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(a => a.Name);
 
             GridViewColumn column = new GridViewColumn();
             column.Header = "Name";

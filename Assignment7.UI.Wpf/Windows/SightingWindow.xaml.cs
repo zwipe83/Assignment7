@@ -150,7 +150,7 @@ namespace Assignment7.UI.Wpf.Windows
                 }
                 else
                 {
-                    throw new InvalidOperationException("Animal name in the sighting does not exist in the list of animals. Maybe the animal name was changed after sighting was added? You can update and save a new animal name.");
+                    throw new InvalidOperationException("Animal name in the sighting does not exist in the list of animals. Maybe the animal name was changed after sighting was added? You can update the sighting and save a new animal name.");
                 }
 
                 txtCount.Value = Sighting.Count;

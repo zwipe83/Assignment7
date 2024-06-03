@@ -19,13 +19,13 @@
                 <RowDefinition Height="170"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ComboBox HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" FontSize="14" Height="30" Grid.Column="0" Grid.Row="0">
+            <ComboBox HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="120" Name="cmbAnimalType" FontSize="14" Height="30" Grid.Column="0" Grid.Row="0" Background="FloralWhite">
                 <ComboBox.Effect>
                     <DropShadowEffect/>
                 </ComboBox.Effect>
             </ComboBox>
             <Label Content="What is the species called?" HorizontalAlignment="Left" Margin="158,44,0,0" VerticalAlignment="Top" Name="lblName" FontSize="14" Grid.Column="0" Grid.Row="0"/>
-            <TextBox HorizontalAlignment="Left" Margin="158,72,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="208" Name="txtName" FontSize="18" Height="30" TextAlignment="Center" Grid.Column="0" Grid.Row="0">
+            <TextBox HorizontalAlignment="Left" Margin="158,72,0,0" TextWrapping="Wrap" Text="Animal Name" VerticalAlignment="Top" Width="208" Name="txtName" FontSize="18" Height="30" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Background="FloralWhite">
                 <TextBox.Effect>
                     <DropShadowEffect/>
                 </TextBox.Effect>
@@ -63,7 +63,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="10,10,10,10" Background="Gray"
+            <TextBox  Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="10,10,10,10" Background="FloralWhite"
                     Grid.Column="0"
                     Grid.Row="1"
                       Text="Add description"/>

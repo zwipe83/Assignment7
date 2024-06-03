@@ -19,22 +19,22 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView Margin="10,10,10,10" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="Gray" MouseUp="lstSightings_MouseUp" Grid.Row="1">
+            <ListView Margin="10,10,10,10" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="FloralWhite" MouseUp="lstSightings_MouseUp" Grid.Row="1">
                 <ListView.View>
                     <GridView x:Name="GridViewControl"/>
                 </ListView.View>
             </ListView>
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="24" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged" FontSize="14" Grid.Row="0">
+            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="24" Width="120" Name="cmbAnimalType" SelectionChanged="cmbAnimalType_SelectionChanged" FontSize="14" Grid.Row="0" Background="FloralWhite">
                 <ComboBox.Effect>
                     <DropShadowEffect/>
                 </ComboBox.Effect>
             </ComboBox>
-            <DatePicker HorizontalAlignment="Left" Margin="204,38,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0">
+            <DatePicker HorizontalAlignment="Left" Margin="204,38,0,0" VerticalAlignment="Top" Name="dateFrom" SelectedDateChanged="dateFrom_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0" Background="FloralWhite">
                 <DatePicker.Effect>
                     <DropShadowEffect/>
                 </DatePicker.Effect>
             </DatePicker>
-            <DatePicker HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0">
+            <DatePicker HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Name="dateTo" SelectedDateChanged="dateTo_SelectedDateChanged" Height="24" FontSize="14" Grid.Row="0" Background="FloralWhite">
                 <DatePicker.Effect>
                     <DropShadowEffect/>
                 </DatePicker.Effect>

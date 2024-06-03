@@ -38,3 +38,6 @@
 
 //FIXED: Fix print. It looks terrible
 //FIXED: Other image formats than jpg
+
+//FIXED: Orphaned images return items that dont even have an image.
+//TODO: Disable all Save buttons if there isn't anything to save.
