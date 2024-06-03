@@ -1,5 +1,8 @@
 ﻿using Assignment7.Classes;
 using Assignment7.UI.Wpf.Windows;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
@@ -114,7 +117,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void ReadSightings()
     {
-        DataStore.ReadFromJsonFile(new File(DataStorePath, sightingsFileName), sightingManager.ListOfSightings);
+        DataStore.ReadFromJsonFile(new Assignment7.Classes.File(DataStorePath, sightingsFileName), sightingManager.ListOfSightings);
     }
 
     /// <summary>
@@ -122,7 +125,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void ReadAnimals()
     {
-        DataStore.ReadFromJsonFile(new File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
+        DataStore.ReadFromJsonFile(new Assignment7.Classes.File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
     }
 
     /// <summary>
@@ -133,7 +136,7 @@ public partial class MainWindow : Window
     private void btnHistory_Click(object sender, RoutedEventArgs e)
     {
         AnimalManager animalManagerCopy = AnimalManager.DeepCopy();
-        SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //TODO: Not working? Seems to be...
+        SightingManager sightingManagerCopy = SightingManager.DeepCopy(); //FIXED: Not working? Seems to be... Working
 
         if (sightingManagerCopy.ListOfSightings.Count == 0)
         {
@@ -161,7 +164,7 @@ public partial class MainWindow : Window
     /// <param name="window">The history window.</param>
     private void SaveSightings(HistoryWindow window)
     {
-        DataStore.SaveToJsonFile(new File(DataStorePath, sightingsFileName), window.SightingManager.ListOfSightings);
+        DataStore.SaveToJsonFile(new Assignment7.Classes.File(DataStorePath, sightingsFileName), window.SightingManager.ListOfSightings);
     }
 
     /// <summary>
@@ -169,7 +172,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void SaveSightings()
     {
-        DataStore.SaveToJsonFile(new File(DataStorePath, sightingsFileName), SightingManager.ListOfSightings);
+        DataStore.SaveToJsonFile(new Assignment7.Classes.File(DataStorePath, sightingsFileName), SightingManager.ListOfSightings);
     }
 
     /// <summary>
@@ -200,7 +203,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void SaveAnimals()
     {
-        DataStore.SaveToJsonFile(new File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
+        DataStore.SaveToJsonFile(new Assignment7.Classes.File(DataStorePath, animalsFileName), animalManager.ListOfAnimals);
     }
 
     /// <summary>
@@ -300,5 +303,26 @@ public partial class MainWindow : Window
             //Nothing...
         }
     }
+
+    /// <summary>
+    /// Opens the specified PDF file in the default browser.
+    /// </summary>
+    /// <param name="filePath">The path to the PDF file.</param>
+    private void OpenPdfInBrowser(string filePath)
+    {
+        Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+    }
+
+    /// <summary>
+    /// Handles the click event of the Quick Start Guide menu button.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event arguments.</param>
+    private void menuBtnQSG_Click(object sender, RoutedEventArgs e)
+    {
+        string filePath = Path.Combine(AppDirectory, "Doc", "QSG.pdf");
+        OpenPdfInBrowser(filePath);
+    }
     #endregion
+
 }

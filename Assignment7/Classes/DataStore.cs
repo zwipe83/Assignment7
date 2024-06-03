@@ -8,7 +8,7 @@ namespace Assignment7.Classes
     /// </summary>
     public class DataStore
     {
-        //TODO: Add some form of version handler
+        //FIXED: Add some form of version handler. Not necessary in this version
         #region Public Methods
 
         /// <summary>

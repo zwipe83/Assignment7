@@ -116,7 +116,7 @@ namespace Assignment7.Classes
             List<string> ids = [.. animalIds.Select(id => id.ToString())];
 
             // Strip extensions from list1
-            List<string> imagesWithoutExtensions = images.Select(Path.GetFileNameWithoutExtension).ToList(); //TODO: This just looks plain wrong.
+            List<string> imagesWithoutExtensions = images.Select(Path.GetFileNameWithoutExtension).ToList(); //FIXED: This just looks plain wrong. Working
 
             var uniqueInList1 = images.Where(file => !ids.Contains(Path.GetFileNameWithoutExtension(file))).ToList();
 

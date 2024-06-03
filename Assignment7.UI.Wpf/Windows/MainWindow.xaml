@@ -35,6 +35,8 @@
                             <MenuItem Header="_Clear orphaned images" Name="menuBtnClearImages" Click="menuBtnClearImages_Click"/>
                         </MenuItem>
                         <MenuItem Header="_Help">
+                            <MenuItem Header="_Quick Start Guide" Name="menuBtnQSG" Click="menuBtnQSG_Click"/>
+                            <Separator/>
                             <MenuItem Header="_About" Name="menuBtnAbout" Click="menuBtnAbout_Click"/>
                         </MenuItem>
                     </Menu>

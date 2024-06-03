@@ -41,7 +41,7 @@
                 </Button.Resources>
             </Button>
             <Label Content="Select Image" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Name="lblSelectImage" FontSize="14"  Grid.Column="1"/>
-            <Button Content="Save" HorizontalAlignment="Left" Margin="230,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56" Grid.Column="1" Grid.Row="0">
+            <Button Content="OK" HorizontalAlignment="Left" Margin="230,14,0,0" VerticalAlignment="Top" Name="btnSave" Click="btnSave_Click" Height="36" Width="56" Grid.Column="1" Grid.Row="0">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

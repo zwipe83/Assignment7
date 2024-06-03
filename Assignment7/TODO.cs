@@ -32,8 +32,9 @@
 
 //FIXED: Add comments
 
-//TODO: Add help doc
+//FIXED: Add help doc
 //FIXED: Add icon
 //FIXED: Change font
 
 //FIXED: Fix print. It looks terrible
+//FIXED: Other image formats than jpg
