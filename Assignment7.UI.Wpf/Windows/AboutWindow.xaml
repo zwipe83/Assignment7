@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="About WildSights" Height="300" Width="300" Background="Transparent" ResizeMode="NoResize" MouseDown="Window_MouseDown" WindowStyle="None" AllowsTransparency="True">
     <Border Background="Gray"
-            CornerRadius="20"
+            CornerRadius="10"
             BorderThickness="1"
             BorderBrush="Black">
         <Grid>

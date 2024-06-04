@@ -9,7 +9,7 @@
         Title="SightingWindow" Height="600" Width="820" WindowStyle="None" Background="Transparent" MouseDown="Window_MouseDown" ResizeMode="NoResize" AllowsTransparency="True">
     <Border BorderThickness="1"
             BorderBrush="Black"
-            CornerRadius="20"
+            CornerRadius="15"
             Background="Gray">
         <Grid>
             <Grid.ColumnDefinitions>

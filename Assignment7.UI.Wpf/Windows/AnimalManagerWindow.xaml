@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Manage Animal" Height="450" Width="800" ResizeMode="NoResize" Background="Transparent" WindowStyle="None" MouseDown="Window_MouseDown" AllowsTransparency="True">
     <Border Background="Gray"
-            CornerRadius="20"
+            CornerRadius="15"
             BorderThickness="1"
             BorderBrush="Black">
         <Grid>

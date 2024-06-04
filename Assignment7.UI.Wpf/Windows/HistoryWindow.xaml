@@ -8,7 +8,7 @@
         Title="Sightings History" Height="450" Width="1280" WindowStyle="None" Background="Transparent" MouseDown="Window_MouseDown"
         AllowsTransparency="True">
     <Border Background="Gray"
-            CornerRadius="20"
+            CornerRadius="15"
             BorderThickness="1"
             BorderBrush="Black">
         <Grid>

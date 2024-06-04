@@ -13,7 +13,7 @@
         <KeyBinding Key="P" Modifiers="Control" Command="Print"/>
     </Window.InputBindings>
     <Border Background="Gray"
-            CornerRadius="50"
+            CornerRadius="25"
             BorderThickness="1"
             BorderBrush="Black">
         <Grid>

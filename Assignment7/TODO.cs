@@ -40,4 +40,6 @@
 //FIXED: Other image formats than jpg
 
 //FIXED: Orphaned images return items that dont even have an image.
-//TODO: Disable all Save buttons if there isn't anything to save.
+//FIXED: Disable all Save buttons if there isn't anything to save.
+
+//TODO: Fix aspect ratio on images.

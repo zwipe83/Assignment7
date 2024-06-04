@@ -76,6 +76,7 @@ namespace Assignment7.UI.Wpf.Windows
                 {
                     AnimalManager.AddAnimal(window.Animal);
                     lstAnimals.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(a => a.Name);
+                    btnSave.IsEnabled = true;
                 }
                 else
                 {
@@ -108,7 +109,8 @@ namespace Assignment7.UI.Wpf.Windows
                 SelectedAnimal.Image = window.Animal.Image;
                 SelectedAnimal.AnimalType = window.Animal.AnimalType;
                 AnimalManager.ChangeAnimal(SelectedAnimal);
-                lstAnimals.Items.Refresh();
+                lstAnimals.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(a => a.Name);
+                btnSave.IsEnabled = true;
             }
             else
             {
@@ -134,8 +136,19 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            this.Close();
+            // Show a confirmation dialog box
+            MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            // Check the user's response
+            if (result == MessageBoxResult.Yes)
+            {
+                DialogResult = true;
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -144,6 +157,8 @@ namespace Assignment7.UI.Wpf.Windows
         private void InitGUI()
         {
             InitListView();
+
+            btnSave.IsEnabled = false;
         }
 
         /// <summary>
@@ -195,6 +210,8 @@ namespace Assignment7.UI.Wpf.Windows
         private void btnDeleteAnimal_Click(object sender, RoutedEventArgs e)
         {
             AnimalManager.DeleteAnimal(SelectedAnimal);
+            lstAnimals.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(a => a.Name);
+            btnSave.IsEnabled = true;
         }
 
         /// <summary>
