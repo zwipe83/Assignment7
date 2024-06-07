@@ -11,6 +11,7 @@
     <AssemblyName>WildSights</AssemblyName>
     <Copyright>Copyright © 2024 Samuel Jeffman</Copyright>
     <Company>Samuel Jeffman</Company>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

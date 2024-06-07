@@ -338,7 +338,7 @@ namespace Assignment7.UI.Wpf.Windows
             CollectionView filteredList = FilterListOnDateRange();
 
             //Create doc
-            FlowDocument doc = PrintManager.CreateDocument(filteredList);            
+            FlowDocument doc = PrintManager.CreateDocument(filteredList);
 
             // Print
             PrintManager.PrintFromCurrentSightingsList(doc);

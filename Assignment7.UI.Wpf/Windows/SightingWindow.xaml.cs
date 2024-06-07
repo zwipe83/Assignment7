@@ -188,7 +188,7 @@ namespace Assignment7.UI.Wpf.Windows
             cmbAnimal.Items.Clear();
 
             cmbAnimal.DisplayMemberPath = "Name";
-            cmbAnimal.ItemsSource = AnimalManager.ListOfAnimals.OrderBy(animal => animal.Name);
+            cmbAnimal.ItemsSource = AnimalManager.ListOfAnimals; //.OrderBy(animal => animal.Name); //Causes problems when setting index
             cmbAnimal.SelectedIndex = 0;
         }
 
