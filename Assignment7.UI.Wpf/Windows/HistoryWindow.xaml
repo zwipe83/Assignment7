@@ -19,7 +19,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView Margin="10,10,10,10" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="FloralWhite" MouseUp="lstSightings_MouseUp" Grid.Row="1">
+            <ListView Margin="10,10,10,10" Name="lstSightings" MouseDoubleClick="lstSightings_MouseDoubleClick" Background="FloralWhite" MouseUp="lstSightings_MouseUp" Grid.Row="1" SelectionMode="Single">
                 <ListView.View>
                     <GridView x:Name="GridViewControl"/>
                 </ListView.View>

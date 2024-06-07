@@ -114,6 +114,8 @@ namespace Assignment7.UI.Wpf.Windows
             InitComboBox();
 
             InitListView();
+
+            btnDeleteSighting.IsEnabled = false;
         }
 
         /// <summary>
@@ -145,29 +147,29 @@ namespace Assignment7.UI.Wpf.Windows
             column0.Width = 150;
             GridViewControl.Columns.Add(column0);
 
-            GridViewColumn column00 = new GridViewColumn();
-            column00.Header = "Time";
-            column00.DisplayMemberBinding = new Binding("When.DateTime") { StringFormat = "HH\\:mm" };
-            column00.Width = 150;
-            GridViewControl.Columns.Add(column00);
-
-            GridViewColumn column = new GridViewColumn();
-            column.Header = "Name";
-            column.DisplayMemberBinding = new Binding("Animal.Name");
-            column.Width = 150;
-            GridViewControl.Columns.Add(column);
-
-            GridViewColumn column11 = new GridViewColumn();
-            column11.Header = "Count";
-            column11.DisplayMemberBinding = new Binding("Count");
-            column11.Width = 150;
-            GridViewControl.Columns.Add(column11);
+            GridViewColumn column1 = new GridViewColumn();
+            column1.Header = "Time";
+            column1.DisplayMemberBinding = new Binding("When.DateTime") { StringFormat = "HH\\:mm" };
+            column1.Width = 150;
+            GridViewControl.Columns.Add(column1);
 
             GridViewColumn column2 = new GridViewColumn();
-            column2.Header = "Type";
-            column2.DisplayMemberBinding = new Binding("Animal.AnimalType");
+            column2.Header = "Name";
+            column2.DisplayMemberBinding = new Binding("Animal.Name");
             column2.Width = 150;
             GridViewControl.Columns.Add(column2);
+
+            GridViewColumn column3 = new GridViewColumn();
+            column3.Header = "Count";
+            column3.DisplayMemberBinding = new Binding("Count");
+            column3.Width = 150;
+            GridViewControl.Columns.Add(column3);
+
+            GridViewColumn column4 = new GridViewColumn();
+            column4.Header = "Type";
+            column4.DisplayMemberBinding = new Binding("Animal.AnimalType");
+            column4.Width = 150;
+            GridViewControl.Columns.Add(column4);
         }
 
         /// <summary>
@@ -333,90 +335,14 @@ namespace Assignment7.UI.Wpf.Windows
         /// <param name="e">The event data.</param>
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            var filteredList = FilterListOnDateRange();
+            CollectionView filteredList = FilterListOnDateRange();
 
-            FlowDocument doc = new FlowDocument();
-            Table table = new Table();
-
-            CreateColumns(table);
-
-            TableRowGroup trg = CreateTableRowGroup(table);
-
-            CreateHeaders(trg);
-
-            // Add rows to the TableRowGroup
-            foreach (Sighting sighting in filteredList)
-            {
-                TableRow row = new TableRow();
-                trg.Rows.Add(row);
-
-                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.When.ToString()))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Animal.Name.ToString()))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Count.ToString()))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(sighting.Description.ToString()))));
-            }
-
-            // Add the table to the FlowDocument
-            doc.Blocks.Add(table);
-
-            SetPageProperties(doc);
+            //Create doc
+            FlowDocument doc = PrintManager.CreateDocument(filteredList);            
 
             // Print
             PrintManager.PrintFromCurrentSightingsList(doc);
 
-            #region Local Methods
-            static void CreateColumns(Table table)
-            {
-                //Create columns
-                TableColumn column1 = new TableColumn();
-                column1.Width = new GridLength(150);
-                table.Columns.Add(column1);
-
-                TableColumn column2 = new TableColumn();
-                column2.Width = new GridLength(150);
-                table.Columns.Add(column2);
-
-                TableColumn column3 = new TableColumn();
-                column3.Width = new GridLength(50);
-                table.Columns.Add(column3);
-
-                TableColumn column4 = new TableColumn();
-                table.Columns.Add(column4);
-            }
-
-            static TableRowGroup CreateTableRowGroup(Table table)
-            {
-                // Create and add a TableRowGroup to hold the rows
-                TableRowGroup trg = new TableRowGroup();
-                table.RowGroups.Add(trg);
-                return trg;
-            }
-
-            static void CreateHeaders(TableRowGroup trg)
-            {
-                //Headers
-                TableRow header = new TableRow();
-                trg.Rows.Add(header);
-
-                header.Cells.Add(new TableCell(new Paragraph(new Run("Date"))));
-                header.Cells.Add(new TableCell(new Paragraph(new Run("Name"))));
-                header.Cells.Add(new TableCell(new Paragraph(new Run("Count"))));
-                header.Cells.Add(new TableCell(new Paragraph(new Run("Description"))));
-            }
-
-            static void SetPageProperties(FlowDocument doc)
-            {
-                // Set the page size to A4
-                doc.PageWidth = 793.92;
-                doc.PageHeight = 1122.24;
-
-                // Set the page margins
-                doc.PagePadding = new Thickness(50);
-
-                // Set the content size to match the page size
-                doc.ColumnWidth = double.PositiveInfinity;
-            }
-            #endregion
         }
 
         /// <summary>
@@ -443,6 +369,8 @@ namespace Assignment7.UI.Wpf.Windows
                 Sighting selectedSighting = (Sighting)lstSightings.SelectedItem;
 
                 SelectedSighting = selectedSighting;
+
+                btnDeleteSighting.IsEnabled = true;
             }
         }
         #endregion

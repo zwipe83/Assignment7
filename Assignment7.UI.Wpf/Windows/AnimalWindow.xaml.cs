@@ -162,7 +162,6 @@ namespace Assignment7.UI.Wpf.Windows
         {
             try
             {
-
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "Jpeg files (*.jpg)|*.jpg|Png files (*.png)|*.png|Bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == true)

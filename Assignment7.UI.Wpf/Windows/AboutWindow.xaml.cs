@@ -17,16 +17,38 @@ namespace Assignment7.UI.Wpf.Windows
         {
             InitializeComponent();
 
-            this.lblHeader.Content = "About WildSights";
-            this.lblProductName.Content = "WildSights";
-            this.lblVersion.Content = "Version 1.0";
-            this.lblCopyright.Content = "Copyright 2024. No rights reserved.";
-            this.lblCompanyName.Content = "No Company";
-            this.txtBoxDescription.Text = "WildSights lets you manage animal encounters in the wild.";
+            InitGUI();
         }
         #endregion
-
         #region Private Methods
+
+        /// <summary>
+        /// Initializes the GUI elements in the AboutWindow.
+        /// </summary>
+        private void InitGUI()
+        {
+            SetAssemblyInfo();
+        }
+
+        /// <summary>
+        /// Sets the assembly information in the GUI elements.
+        /// </summary>
+        private void SetAssemblyInfo()
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+            string copyright = fvi.LegalCopyright;
+            string company = fvi.CompanyName;
+            string product = fvi.ProductName;
+
+            this.lblHeader.Content = "About WildSights";
+            this.lblProductName.Content = product;
+            this.lblVersion.Content = version;
+            this.lblCopyright.Content = copyright;
+            this.lblCompanyName.Content = company;
+            this.txtBoxDescription.Text = "WildSights lets you manage animal encounters in the wild.";
+        }
 
         /// <summary>
         /// Handles the MouseDown event of the Window control.

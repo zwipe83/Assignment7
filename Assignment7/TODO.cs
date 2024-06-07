@@ -42,4 +42,4 @@
 //FIXED: Orphaned images return items that dont even have an image.
 //FIXED: Disable all Save buttons if there isn't anything to save.
 
-//TODO: Fix aspect ratio on images.
+//FIXED: Fix aspect ratio on images.

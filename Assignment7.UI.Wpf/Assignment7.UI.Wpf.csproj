@@ -9,6 +9,8 @@
     <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
     <Platforms>x64</Platforms>
     <AssemblyName>WildSights</AssemblyName>
+    <Copyright>Copyright © 2024 Samuel Jeffman</Copyright>
+    <Company>Samuel Jeffman</Company>
   </PropertyGroup>
 
   <ItemGroup>
